@@ -32,7 +32,7 @@
 		<link href="{{URL::to('public/assets/plugins/custom/datatables/datatables.bundle.css')}}" rel="stylesheet" type="text/css" />
 		<!--end::Datatables-->
 
-		<link rel="shortcut icon" href="{{URL::to('public/assets/media/logos/favicon.ico')}}" />
+		<link rel="shortcut icon" href="{{URL::to('public/assets/media/logos/nfs2.PNG')}}" />
 		@if(Config::get('defaults.default.is_local')==1)
 		<base href="/ffos-kpi/">
 		@else

@@ -4,7 +4,7 @@
 
 			<!--begin::Logo-->
 			<a href="?page=index">
-				<img alt="Logo" src="{{URL::to('public/assets/media/logos/nfs.PNG')}}" style="height:40px;" />
+				<img alt="Logo" src="{{URL::to('public/assets/media/logos/nfs2.PNG')}}" style="height:40px;" />
 				<!-- <img alt="Logo" src="assets/media/logos/logo-4.png" class="max-h-30px" /> -->
 			</a>
 

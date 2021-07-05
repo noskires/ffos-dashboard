@@ -75,10 +75,13 @@
                                 type: 'line',
                                 data: response.data.data.kpi.net_ava
                             }],
+                            
                             chart: {
                                 height: 250,
                                 type: 'line',
                                 stacked: false,
+
+                                
                                  
                             },
                             dataLabels: {
@@ -88,6 +91,8 @@
                             stroke: {
                                 width: [1, 1, 4]
                             },
+
+                            
                             title: {
                                 text: 'Jan - '+response.data.data.kpi.last_month+' data',
                                 align: 'left',
@@ -116,7 +121,10 @@
                             //       }
                             //     ]
                             //   },
+
+                            
                             yaxis: [
+
                                 {
                                     axisTicks: {
                                         show: true,
@@ -200,8 +208,9 @@
                                     min: 99,
                                     max: 100,
                                     tickAmount: 5,
-    
                                 },
+
+                                
                             ],
                             tooltip: {
                                 fixed: {

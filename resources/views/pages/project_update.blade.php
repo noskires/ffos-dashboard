@@ -39,11 +39,41 @@
         
     </div>
 
+
+
+<!--  -->
+
+<!-- annotation -->
+        
+<div class="row">   
+        <div class="col-lg-12">
+            <!--begin::Card-->
+            <div class="card card-custom gutter-b">
+                <!--begin::Header-->
+                <div class="card-header h-auto">
+                    <!--begin::Title-->
+                    <div class="card-title py-5">
+                        <h3 class="card-label">ANNOTATION</h3>
+                    </div>
+                    <!--end::Title-->
+                </div>
+                <!--end::Header-->
+                <div class="card-body">
+                    <!--begin::Chart-->
+                    <div apexcharts options="StaticCtrl.annotation"></div>
+                    <!--end::Chart-->
+                </div>
+            </div>
+            <!--end::Card-->
+        </div>
+        
+    </div>
+
+        
+<!--  -->
         <!-- slider -->
         <div class="row">
-									
 
-			
 			<div class="col-lg-12">
 				<!--begin::Card-->
 				<div class="card card-custom gutter-b">
