@@ -27,5 +27,7 @@ Route::get('dashboard/{year}/{division}', [FocController::class, 'index']);
 Route::get('dashboard/{year}/{division}/{section}', [FocController::class, 'index']);
 
 
+Route::get('project_update', [FocController::class, 'index']);
+
 // Route::get('patients', [PatientController::class, 'index']);
 // Route::get('registration', [PatientController::class, 'index']);

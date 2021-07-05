@@ -54,23 +54,29 @@
                 templateUrl: 'section.view'
             })
 
-            .state('patients', {
-                url: '/patients',
-                controller: 'EmployeesCtrl as EmployeesCtrl',
-                templateUrl: 'patients.view'
+            .state('project_update', {
+                url: '/project_update',
+                controller: 'StaticCtrl as StaticCtrl',
+                templateUrl: 'project_update.view'
             })
 
-            .state('registration', {
-                url: '/registration',
-                controller: 'EmployeesCtrl as EmployeesCtrl',
-                templateUrl: 'registration.view'
-            })
+            // .state('patients', {
+            //     url: '/patients',
+            //     controller: 'EmployeesCtrl as EmployeesCtrl',
+            //     templateUrl: 'patients.view'
+            // })
 
-            .state('employee-details', {
-                url: '/employee/:id/:actionType',
-                controller: 'EmployeesCtrl as EmployeesCtrl',
-                templateUrl: 'employees.view'
-            })
+            // .state('registration', {
+            //     url: '/registration',
+            //     controller: 'EmployeesCtrl as EmployeesCtrl',
+            //     templateUrl: 'registration.view'
+            // })
+
+            // .state('employee-details', {
+            //     url: '/employee/:id/:actionType',
+            //     controller: 'EmployeesCtrl as EmployeesCtrl',
+            //     templateUrl: 'employees.view'
+            // })
 
             $urlRouterProvider.otherwise('/index');
 

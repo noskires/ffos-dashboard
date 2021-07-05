@@ -56,6 +56,10 @@
 							@include('pages.content_section')
 						</script>
 
+						<script type="text/ng-template" id="project_update.view">
+							@include('pages.project_update')
+						</script>
+
 						<script type="text/ng-template" id="patient.view">
 							@include('pages.patient-list')
 						</script>

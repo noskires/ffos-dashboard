@@ -14,7 +14,7 @@
 			<!--begin::Header Nav-->
 			<ul class="menu-nav">
 				<li class="menu-item" aria-haspopup="true">
-					<a href="?page=index" class="menu-link">
+					<a href="dashboard/2021" class="menu-link">
 						<span class="menu-text">Dashboard</span>
 					</a>
 				</li>
@@ -28,7 +28,7 @@
 					<div class="menu-submenu menu-submenu-classic menu-submenu-left">
 						<ul class="menu-subnav">
 							<li class="menu-item" aria-haspopup="true">
-								<a href="" class="menu-link">
+								<a href="project_update" class="menu-link">
 									<span class="svg-icon menu-icon">
 
 										<!--begin::Svg Icon | path:assets/media/svg/icons/General/Shield-check.svg-->
@@ -42,7 +42,7 @@
 
 										<!--end::Svg Icon-->
 									</span>
-									<span class="menu-text">PROJECTS</span>
+									<span class="menu-text">PROJECT UPDATE</span>
 								</a>
 							</li>
 							<li class="menu-item" aria-haspopup="true">

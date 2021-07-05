@@ -196,6 +196,8 @@
 		<script src="{{URL::to('public/js/controllers/divisions.ctrl.js')}}"></script>
 		<script src="{{URL::to('public/js/controllers/sections.ctrl.js')}}"></script>
 
+		<script src="{{URL::to('public/js/controllers/static.pages.ctrl.js')}}"></script>
+
 		<!-- Services -->
 		<script src="{{URL::to('public/js/services/employees.srvcs.js')}}"></script>
 		<script src="{{URL::to('public/js/services/divisions.srvcs.js')}}"></script>
