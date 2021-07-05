@@ -77,7 +77,7 @@ class FocController extends Controller
         $mttr_node_sa = $this->get_mttr($req['year'], 6, $req['division'], '', 'NODE', 'Y');
         $mttr_foc_sa = $this->get_mttr($req['year'], 6, $req['division'], '', 'FOC', 'Y');
 
-        $data['kpi'] = $this->get_net_ava_node($mttr_node_sa, $mttr_foc_sa, $req['division'], '');
+        $data['kpi'] = $this->get_net_ava_node($mttr_node_sa, $mttr_foc_sa, $req['year'], $req['division'], '');
 
         $data['mttr_node'] = $this->get_mttr($req['year'], 6, $req['division'], '', 'NODE', 'Y');
         $data['mttr_foc'] = $this->get_mttr($req['year'], 6, $req['division'], '', 'FOC', 'Y');
@@ -151,13 +151,14 @@ class FocController extends Controller
     }
 
     public function get_top_contributor($year, $division, $section, $type){
-        
+        $highest_month = Foc::where('year','=', $year)->max('month');
+
         $total_root_cause = Foc::select(
             DB::raw("COUNT(*) as total_ticket"),
             DB::raw("SUM(duration) as total_duration"),
         )
         ->where('is_service_affecting', 'Y')
-        ->where('month', '<=',6)
+        ->where('month', '<=',$highest_month)
         ->where('ticket_type','LIKE', '%'.$type.'%')
         ->where('year', '=', $year);
 
@@ -177,7 +178,7 @@ class FocController extends Controller
                 DB::raw("SUM(duration) as total_duration"),
             )
             ->where('is_service_affecting', 'Y')
-            ->where('month', '<=',6)
+            ->where('month', '<=',$highest_month)
             ->where('ticket_type','LIKE', '%'.$type.'%')
             ->where('year', '=', $year);
 
@@ -200,7 +201,7 @@ class FocController extends Controller
                 DB::raw("SUM(duration) as total_duration"),
             )
             ->where('is_service_affecting', 'Y')
-            ->where('month', '<=',6)
+            ->where('month', '<=',$highest_month)
             ->where('ticket_type','LIKE', '%'.$type.'%')
             ->where('year', '=', $year);
 
@@ -232,6 +233,7 @@ class FocController extends Controller
 
 
     function get_mttr($year, $month, $division, $section, $ticket_type, $is_service_affecting){
+        $highest_month = Foc::where('year','=', $year)->max('month');
 
         $data['per_month'] = Foc::select("month", 
                 DB::raw("COUNT(*) as total_ticket"),
@@ -250,7 +252,7 @@ class FocController extends Controller
                 $data['per_month'] = $data['per_month']->where('d', 'like', '%NODE%');
             }
 
-        $data['per_month'] = $data['per_month']->where('month', '<=',6)
+        $data['per_month'] = $data['per_month']->where('month', '<=',$highest_month)
             ->orderBy('month', 'asc')
             ->groupby('month')
             ->get();
@@ -272,18 +274,27 @@ class FocController extends Controller
                 $data['ytd'] = $data['ytd']->where('d', 'like', '%NODE%');
             }
 
-        $data['ytd'] = $data['ytd']->where('month', '<=',6)->first();
+        $data['ytd'] = $data['ytd']->where('month', '<=',$highest_month)->first();
         $data['DIVHERE'] = $division;
         
         return $data;    
     }
 
 
-    function get_net_ava_node($get_mttr_node, $get_mttr_foc, $division, $field_force){
+    function get_net_ava_node($get_mttr_node, $get_mttr_foc, $year, $division, $field_force){
+
+        $highest_month = Foc::where('year','=', $year)->max('month');
 
         $months         = array("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec");
         $days_per_month = array(31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31);
-        $ne_per_month   = array(3653, 3653, 3664, 3685, 3685, 3685, 3685, 3685, 3685, 3685, 3685, 3685);
+
+        if($year==2020){
+            $ne_per_month   = array(3090, 3219, 3197, 3586, 3695, 3695, 3714, 3688, 3679, 3679, 3675, 3664);
+        }else{
+            $ne_per_month   = array(3653, 3653, 3664, 3685, 3685, 3685, 3685, 3685, 3685, 3685, 3685, 3685);
+        }
+        
+        
 
         $ne_per_month_division = array(
             "NFS_WESTNL"=>array(1216,1216,1223,1230,1230,1230,1230,1230,1230,1230,1230,1230),
@@ -303,7 +314,8 @@ class FocController extends Controller
         $days_per_month_display = array();
         $months_display = array();
 
-        for($i=0;$i<=5;$i++){
+        for($i=0;$i<$highest_month;$i++){
+
             foreach ($get_mttr_node['per_month'] as $key=>$mttr) {
                 if($key==$i){
                     array_push($ticket_count_node, $mttr['total_ticket']);
@@ -370,20 +382,21 @@ class FocController extends Controller
         $data['ytd_avg_duration_node']=round($get_mttr_node['ytd']['avg_duration'],2);
         $data['ytd_avg_duration_foc']=round($get_mttr_foc['ytd']['avg_duration'],2);
 
-        if($field_force!=""){
+        // if($field_force!=""){
                 
-        }elseif($division!=""){
-            // $ne = $ne_per_month['NFS_EASTNL'][$i];
-            $ne = $ne_per_month_division[$division][$i];
-        }else{
-            $ne = $ne_per_month[$i];
-        }
+        // }elseif($division!=""){
+        //     $ne = $ne_per_month_division[$division][$i];
+        // }else{
+            $ne = $ne_per_month[$highest_month-1];
+        // }
         
         $kpi = round((((($ne)*(array_sum($days_per_month_display))*(24))-(($ticket_count_node[$number_of_elements]*$mttr_node[$number_of_elements])+($ticket_count_foc[$number_of_elements]*$mttr_foc[$number_of_elements])))/(($ne)*(array_sum($days_per_month_display))*(24)))*100,3);
         array_push($data['net_ava'], $kpi);
 
         $data['ytd_net_ava']=round($kpi,3);
         $data['division']=$division;
+        $data['highest_month']=$highest_month;
+        
  
         return $data;
     }

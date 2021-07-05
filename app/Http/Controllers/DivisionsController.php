@@ -81,7 +81,7 @@ class DivisionsController extends Controller
         $mttr_node_sa = $this->get_mttr($req['year'], 6, $req['division'], '', 'NODE', 'Y');
         $mttr_foc_sa = $this->get_mttr($req['year'], 6, $req['division'], '', 'FOC', 'Y');
 
-        $data['kpi'] = $this->get_net_ava_node($mttr_node_sa, $mttr_foc_sa, $req['division'], '');
+        $data['kpi'] = $this->get_net_ava_node($mttr_node_sa, $mttr_foc_sa, $req['year'], $req['division'], '');
 
         $data['mttr_node'] = $this->get_mttr($req['year'], 6, $req['division'], '', 'NODE', 'Y');
         $data['mttr_foc'] = $this->get_mttr($req['year'], 6, $req['division'], '', 'FOC', 'Y');
@@ -151,13 +151,14 @@ class DivisionsController extends Controller
     }
 
     public function get_top_contributor($year, $division, $section, $type){
-        
+        $highest_month = Foc::where('year','=', $year)->max('month');
+
         $total_root_cause = Foc::select(
             DB::raw("COUNT(*) as total_ticket"),
             DB::raw("SUM(duration) as total_duration"),
         )
         ->where('is_service_affecting', 'Y')
-        ->where('month', '<=',6)
+        ->where('month', '<=',$highest_month)
         ->where('ticket_type','LIKE', '%'.$type.'%')
         ->where('year', '=', $year);
 
@@ -177,7 +178,7 @@ class DivisionsController extends Controller
                 DB::raw("SUM(duration) as total_duration"),
             )
             ->where('is_service_affecting', 'Y')
-            ->where('month', '<=',6)
+            ->where('month', '<=',$highest_month)
             ->where('ticket_type','LIKE', '%'.$type.'%')
             ->where('year', '=', $year);
 
@@ -200,7 +201,7 @@ class DivisionsController extends Controller
                 DB::raw("SUM(duration) as total_duration"),
             )
             ->where('is_service_affecting', 'Y')
-            ->where('month', '<=',6)
+            ->where('month', '<=',$highest_month)
             ->where('ticket_type','LIKE', '%'.$type.'%')
             ->where('year', '=', $year);
 
@@ -232,6 +233,7 @@ class DivisionsController extends Controller
 
 
     function get_mttr($year, $month, $division, $section, $ticket_type, $is_service_affecting){
+        $highest_month = Foc::where('year','=', $year)->max('month');
 
         $data['per_month'] = Foc::select("month", 
                 DB::raw("COUNT(*) as total_ticket"),
@@ -250,7 +252,7 @@ class DivisionsController extends Controller
                 $data['per_month'] = $data['per_month']->where('d', 'like', '%NODE%');
             }
 
-        $data['per_month'] = $data['per_month']->where('month', '<=',6)
+        $data['per_month'] = $data['per_month']->where('month', '<=',$highest_month)
             ->orderBy('month', 'asc')
             ->groupby('month')
             ->get();
@@ -272,24 +274,39 @@ class DivisionsController extends Controller
                 $data['ytd'] = $data['ytd']->where('d', 'like', '%NODE%');
             }
 
-        $data['ytd'] = $data['ytd']->where('month', '<=',6)->first();
+        $data['ytd'] = $data['ytd']->where('month', '<=',$highest_month)->first();
         $data['DIVHERE'] = $division;
         
         return $data;    
     }
 
 
-    function get_net_ava_node($get_mttr_node, $get_mttr_foc, $division, $field_force){
+    function get_net_ava_node($get_mttr_node, $get_mttr_foc, $year, $division, $field_force){
+
+        $highest_month = Foc::where('year','=', $year)->max('month');
 
         $months         = array("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec");
         $days_per_month = array(31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31);
-        $ne_per_month   = array(3653, 3653, 3664, 3685, 3685, 3685, 3685, 3685, 3685, 3685, 3685, 3685);
+        // $ne_per_month   = array(3653, 3653, 3664, 3685, 3685, 3685, 3685, 3685, 3685, 3685, 3685, 3685);
 
-        $ne_per_month_division = array(
-            "NFS_WESTNL"=>array(1216,1216,1223,1230,1230,1230,1230,1230,1230,1230,1230,1230),
-            "NFS_EASTNL"=>array(864,864,865,867,867,867,867,867,867,867,867,867),
-            "NFS_CENTRALNL"=>array(1573,1573,1576,1588,1588,1588,1588,1588,1588,1588,1588,1588),
-        );
+
+        if($year==2020){
+            $ne_per_month   = array(3090, 3219, 3197, 3586, 3695, 3695, 3714, 3688, 3679, 3679, 3675, 3664);
+            $ne_per_month_division = array(
+                "NFS_WESTNL"=>array(1012,1061,1044,1208,1232,1232,1243,1231,1228,1228,1227,1214),
+                "NFS_EASTNL"=>array(695,745,747,868,881,881,880,871,874,874,874,874),
+                "NFS_CENTRALNL"=>array(1383,1413,1406,1510,1582,1582,1591,1586,1577,1577,1574,1576),
+            );
+        }else{
+            $ne_per_month   = array(3653, 3653, 3664, 3685, 3685, 3685, 3685, 3685, 3685, 3685, 3685, 3685);
+            $ne_per_month_division = array(
+                "NFS_WESTNL"=>array(1216,1216,1223,1230,1230,1230,1230,1230,1230,1230,1230,1230),
+                "NFS_EASTNL"=>array(864,864,865,867,867,867,867,867,867,867,867,867),
+                "NFS_CENTRALNL"=>array(1573,1573,1576,1588,1588,1588,1588,1588,1588,1588,1588,1588),
+            );
+        }
+
+        
 
         $number_of_elements = count($get_mttr_node['per_month']);
 
@@ -303,7 +320,8 @@ class DivisionsController extends Controller
         $days_per_month_display = array();
         $months_display = array();
 
-        for($i=0;$i<=5;$i++){
+        for($i=0;$i<$highest_month;$i++){
+
             foreach ($get_mttr_node['per_month'] as $key=>$mttr) {
                 if($key==$i){
                     array_push($ticket_count_node, $mttr['total_ticket']);
@@ -323,14 +341,14 @@ class DivisionsController extends Controller
             array_push($days_per_month_display, $days_per_month[$i]);
             array_push($months_display, $months[$i]);
 
-            if($field_force!=""){
+            // if($field_force!=""){
                 
-            }elseif($division!=""){
+            // }elseif($division!=""){
                 // $ne = $ne_per_month['NFS_EASTNL'][$i];
                 $ne = $ne_per_month_division[$division][$i];
-            }else{
-                $ne = $ne_per_month[$i];
-            }
+            // }else{
+            //     $ne = $ne_per_month[$i];
+            // }
             
             $kpi = round((((($ne)*($days_per_month_display[$i])*(24))
                 -(($ticket_count_node[$i]
@@ -360,6 +378,7 @@ class DivisionsController extends Controller
         $data['ticket_count_foc']=$ticket_count_foc;
         $data['net_ava']=$net_ava;
         $data['ne_per_month']=$ne_per_month;
+        $data['ne_per_month_division']=$ne_per_month_division;
         $data['days_per_month']=$days_per_month;
         $data['days_per_month_display']=$days_per_month_display;
         $data['months_display']=$months_display;
@@ -370,14 +389,14 @@ class DivisionsController extends Controller
         $data['ytd_avg_duration_node']=round($get_mttr_node['ytd']['avg_duration'],2);
         $data['ytd_avg_duration_foc']=round($get_mttr_foc['ytd']['avg_duration'],2);
 
-        if($field_force!=""){
+        // if($field_force!=""){
                 
-        }elseif($division!=""){
+        // }elseif($division!=""){
             // $ne = $ne_per_month['NFS_EASTNL'][$i];
-            $ne = $ne_per_month_division[$division][11];
-        }else{
-            $ne = $ne_per_month[$i];
-        }
+            $ne = $ne_per_month_division[$division][$highest_month-1];
+        // }else{
+        //     $ne = $ne_per_month[$i];
+        // }
         
         $kpi = round((((($ne)*(array_sum($days_per_month_display))*(24))-(($ticket_count_node[$number_of_elements]*$mttr_node[$number_of_elements])+($ticket_count_foc[$number_of_elements]*$mttr_foc[$number_of_elements])))/(($ne)*(array_sum($days_per_month_display))*(24)))*100,3);
         array_push($data['net_ava'], $kpi);

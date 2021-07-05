@@ -84,7 +84,7 @@ class SectionsController extends Controller
         $mttr_node_sa = $this->get_mttr($req['year'], 6, $req['division'], $req['section'], 'NODE', 'Y');
         $mttr_foc_sa = $this->get_mttr($req['year'], 6, $req['division'], $req['section'], 'FOC', 'Y');
 
-        $data['kpi'] = $this->get_net_ava_node($mttr_node_sa, $mttr_foc_sa, $req['division'], $req['section']);
+        $data['kpi'] = $this->get_net_ava_node($mttr_node_sa, $mttr_foc_sa, $req['year'], $req['division'], $req['section']);
 
         $data['mttr_node'] = $this->get_mttr($req['year'], 6, $req['division'], $req['section'], 'NODE', 'Y');
         $data['mttr_foc'] = $this->get_mttr($req['year'], 6, $req['division'], $req['section'], 'FOC', 'Y');
@@ -238,6 +238,7 @@ class SectionsController extends Controller
 
 
     function get_mttr($year, $month, $division, $section, $ticket_type, $is_service_affecting){
+        $highest_month = Foc::where('year','=', $year)->max('month');
 
         $data['per_month'] = Foc::select("month", 
                 DB::raw("COUNT(*) as total_ticket"),
@@ -257,7 +258,7 @@ class SectionsController extends Controller
                 $data['per_month'] = $data['per_month']->where('d', 'like', '%NODE%');
             }
 
-        $data['per_month'] = $data['per_month']->where('month', '<=',6)
+        $data['per_month'] = $data['per_month']->where('month', '<=',$highest_month)
             ->orderBy('month', 'asc')
             ->groupby('month')
             ->get();
@@ -280,42 +281,75 @@ class SectionsController extends Controller
                 $data['ytd'] = $data['ytd']->where('d', 'like', '%NODE%');
             }
 
-        $data['ytd'] = $data['ytd']->where('month', '<=',6)->first();
+        $data['ytd'] = $data['ytd']->where('month', '<=',$highest_month)->first();
         $data['DIVHERE'] = $division;
         
         return $data;    
     }
 
 
-    function get_net_ava_node($get_mttr_node, $get_mttr_foc, $division, $section){
+    function get_net_ava_node($get_mttr_node, $get_mttr_foc, $year, $division, $section){
+        $highest_month = Foc::where('year','=', $year)->max('month');
 
         $months         = array("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec");
         $days_per_month = array(31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31);
-        $ne_per_month   = array(3653, 3653, 3664, 3685, 3685, 3685, 3685, 3685, 3685, 3685, 3685, 3685);
 
-        $ne_per_month_division = array(
-            "NFS_WESTNL"=>array(1216,1216,1223,1230,1230,1230,1230,1230,1230,1230,1230,1230),
-            "NFS_EASTNL"=>array(864,864,865,867,867,867,867,867,867,867,867,867),
-            "NFS_CENTRALNL"=>array(1573,1573,1576,1588,1588,1588,1588,1588,1588,1588,1588,1588),
-        );
 
-        $ne_per_month_section = array(
+        if($year==2020){
+            $ne_per_month   = array(3090, 3219, 3197, 3586, 3695, 3695, 3714, 3688, 3679, 3679, 3675, 3664);
+            $ne_per_month_division = array(
+                "NFS_WESTNL"=>array(1012,1061,1044,1208,1232,1232,1243,1231,1228,1228,1227,1214),
+                "NFS_EASTNL"=>array(695,745,747,868,881,881,880,871,874,874,874,874),
+                "NFS_CENTRALNL"=>array(1383,1413,1406,1510,1582,1582,1591,1586,1577,1577,1574,1576),
+            );
+            
+            $ne_per_month_section = array(
 
-            "NFS_WESTNL"=>array(
-                "NFS_WESTNL_FFS1"=>array(593,593,593,596,596,596,596,596,596,596,596,596),
-                "NFS_WESTNL_FFS2"=>array(371,371,378,381,381,381,381,381,381,381,381,381),
-                "NFS_WESTNL_FFS3"=>array(252,252,252,253,253,253,253,253,253,253,253,253)
-            ),
-            "NFS_EASTNL"=>array(
-                "NFS_EASTNL_FFS4"=>array(544,544,542,544,544,544,544,544,544,544,544,544),
-                "NFS_EASTNL_FFS5"=>array(320,320,323,323,323,323,323,323,323,323,323,323)
-            ),
-            "NFS_CENTRALNL"=>array(
-                "NFS_CENTRALNL_FFS6"=>array(484,484,482,482,482,482,482,482,482,482,482,482),
-                "NFS_CENTRALNL_FFS7"=>array(739,739,739,743,743,743,743,743,743,743,743,743),
-                "NFS_CENTRALNL_FFS8"=>array(350,350,355,363,363,363,363,363,363,363,363,363)
-            )
-        );
+                "NFS_WESTNL"=>array(
+                    "NFS_WESTNL_FFS1"=>array(466,499,492,590,599,599,607,598,595,595,595,592),
+                    "NFS_WESTNL_FFS2"=>array(339,343,336,359,383,383,383,382,381,381,380,376),
+                    "NFS_WESTNL_FFS3"=>array(207,219,216,259,250,250,253,251,252,252,252,246)
+                ),
+                "NFS_EASTNL"=>array(
+                    "NFS_EASTNL_FFS4"=>array(417,452,453,527,558,558,555,549,551,551,550,548),
+                    "NFS_EASTNL_FFS5"=>array(278,293,294,341,323,323,325,322,323,323,324,326)
+                ),
+                "NFS_CENTRALNL"=>array(
+                    "NFS_CENTRALNL_FFS6"=>array(412,419,420,460,486,486,485,486,485,485,484,485),
+                    "NFS_CENTRALNL_FFS7"=>array(658,676,668,719,746,746,753,744,740,740,738,741),
+                    "NFS_CENTRALNL_FFS8"=>array(313,318,318,331,350,350,353,356,352,352,352,350)
+                )
+            );
+ 
+        }else{
+            $ne_per_month   = array(3653, 3653, 3664, 3685, 3685, 3685, 3685, 3685, 3685, 3685, 3685, 3685);
+            $ne_per_month_division = array(
+                "NFS_WESTNL"=>array(1216,1216,1223,1230,1230,1230,1230,1230,1230,1230,1230,1230),
+                "NFS_EASTNL"=>array(864,864,865,867,867,867,867,867,867,867,867,867),
+                "NFS_CENTRALNL"=>array(1573,1573,1576,1588,1588,1588,1588,1588,1588,1588,1588,1588),
+            );
+
+            $ne_per_month_section = array(
+
+                "NFS_WESTNL"=>array(
+                    "NFS_WESTNL_FFS1"=>array(593,593,593,596,596,596,596,596,596,596,596,596),
+                    "NFS_WESTNL_FFS2"=>array(371,371,378,381,381,381,381,381,381,381,381,381),
+                    "NFS_WESTNL_FFS3"=>array(252,252,252,253,253,253,253,253,253,253,253,253)
+                ),
+                "NFS_EASTNL"=>array(
+                    "NFS_EASTNL_FFS4"=>array(544,544,542,544,544,544,544,544,544,544,544,544),
+                    "NFS_EASTNL_FFS5"=>array(320,320,323,323,323,323,323,323,323,323,323,323)
+                ),
+                "NFS_CENTRALNL"=>array(
+                    "NFS_CENTRALNL_FFS6"=>array(484,484,482,482,482,482,482,482,482,482,482,482),
+                    "NFS_CENTRALNL_FFS7"=>array(739,739,739,743,743,743,743,743,743,743,743,743),
+                    "NFS_CENTRALNL_FFS8"=>array(350,350,355,363,363,363,363,363,363,363,363,363)
+                )
+            );
+
+        }
+
+        
 
         $data['selected_ne'] = array();
 
@@ -331,7 +365,8 @@ class SectionsController extends Controller
         $days_per_month_display = array();
         $months_display = array();
 
-        for($i=0;$i<=5;$i++){
+        for($i=0;$i<$highest_month;$i++){
+
             foreach ($get_mttr_node['per_month'] as $key=>$mttr) {
                 if($key==$i){
                     array_push($ticket_count_node, $mttr['total_ticket']);
@@ -392,6 +427,7 @@ class SectionsController extends Controller
         $data['ticket_count_foc']=$ticket_count_foc;
         $data['net_ava']=$net_ava;
         $data['ne_per_month']=$ne_per_month;
+        $data['ne_per_month_section']=$ne_per_month_section;
         $data['days_per_month']=$days_per_month;
         $data['days_per_month_display']=$days_per_month_display;
         $data['months_display']=$months_display;
@@ -411,13 +447,14 @@ class SectionsController extends Controller
         //     $ne = $ne_per_month[$i];
         // }
 
-        $ne = $ne_per_month_section[$division][$section][11];
+        $ne = $ne_per_month_section[$division][$section][$highest_month-1];
         
         $kpi = round((((($ne)*(array_sum($days_per_month_display))*(24))-(($ticket_count_node[$number_of_elements]*$mttr_node[$number_of_elements])+($ticket_count_foc[$number_of_elements]*$mttr_foc[$number_of_elements])))/(($ne)*(array_sum($days_per_month_display))*(24)))*100,3);
         array_push($data['net_ava'], $kpi);
 
         $data['ytd_net_ava']=round($kpi,3);
         $data['division']=$division;
+        
  
         return $data;
     }

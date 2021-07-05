@@ -396,7 +396,7 @@
             }
 
             vm.select_section = function(year, division, section){
-                alert(section) 
+                
                 if(section==""){
                     $state.go("dashboard_division", {"year":vm.selected_year, "division": division});
                 }else{
