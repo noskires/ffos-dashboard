@@ -386,20 +386,18 @@ class SectionsController extends Controller
             array_push($days_per_month_display, $days_per_month[$i]);
             array_push($months_display, $months[$i]);
 
-            // if($section!=""){
-                
-            // }elseif($division!=""){
-            //     // $ne = $ne_per_month['NFS_EASTNL'][$i];
-            //     $ne = $ne_per_month_division[$division][$i];
-            // }else{
-            //     $ne = $ne_per_month[$i];
-            // }
-
-            $ne = $ne_per_month_section[$division][$section][$i];
+            if($section!=""){
+                $ne = $ne_per_month_section[$division][$section][$i];
+            }elseif($division!=""){
+                $ne = $ne_per_month_division[$division][$i];
+            }else{
+                $ne = $ne_per_month[$i];
+            }
 
             array_push($data['selected_ne'],$ne);
             
             $kpi = round((((($ne)*($days_per_month_display[$i])*(24))
+
                 -(($ticket_count_node[$i]
                 *$mttr_node[$i])
                 +($ticket_count_foc[$i]
@@ -454,7 +452,7 @@ class SectionsController extends Controller
 
         $data['ytd_net_ava']=round($kpi,3);
         $data['division']=$division;
-        
+        $data['title_header_kpi'] = $section." (".$year." DATA)";
  
         return $data;
     }

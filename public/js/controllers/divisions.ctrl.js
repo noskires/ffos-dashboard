@@ -53,6 +53,8 @@
                         console.log(response.data.data.kpi.mttr_node_display)
                         console.log(response.data.data.kpi.mttr_foc_display)
                         console.log(response.data.data)
+
+                        vm.data_response = response.data.data;
                     
                         vm.ytd_total_ticket_node = response.data.data.kpi.ytd_total_ticket_node;
                         vm.ytd_total_ticket_foc = response.data.data.kpi.ytd_total_ticket_foc;
@@ -205,6 +207,90 @@
     
                     }
                 }, function (){ alert('Bad Request!!!') });
+
+                DivisionsSrvcs.topContributors({id:'', year:$stateParams.year, division:$stateParams.division}).then (function (response) {
+                    if(response.data.status == 200){
+                        vm.contributors = response.data.data;
+    
+                        vm.top_contributors_number_of_tickets_node = [];
+                        vm.top_contributors_name_node = [];
+    
+                        vm.top_contributors_number_of_tickets_foc = [];
+                        vm.top_contributors_name_foc = [];
+                        
+                        angular.forEach(vm.contributors.top_contributor_node, function(value, key) {
+                            vm.top_contributors_number_of_tickets_node.push(value.total_ticket);
+                        });
+    
+                        angular.forEach(vm.contributors.top_contributor_node, function(value, key) {
+                            vm.top_contributors_name_node.push(value.root_cause+' ('+value.total_duration.toFixed(2)+' H)');
+                        });
+    
+                        angular.forEach(vm.contributors.top_contributor_foc, function(value, key) {
+                            vm.top_contributors_number_of_tickets_foc.push(value.total_ticket);
+                        });
+    
+                        angular.forEach(vm.contributors.top_contributor_foc, function(value, key) {
+                            vm.top_contributors_name_foc.push(value.root_cause+' ('+value.total_duration.toFixed(2)+' H)');
+                        });
+    
+                        console.log(vm.top_contributors_number_of_tickets_node)
+                        console.log(vm.top_contributors_name_node)
+                        console.log(vm.top_contributors_number_of_tickets_foc)
+                        console.log(vm.top_contributors_name_foc)
+    
+                        vm.top_contributors_node = {
+                            
+                            // series: [154, 56, 41, 19, 18, 62],
+                            series: vm.top_contributors_number_of_tickets_node,
+                            chart: {
+                                width: 570,
+                                type: 'donut',
+                            },
+                            // labels: ['AC Power Dis', 'Vehicular Acc', 'Individual Core Trouble', 'Animal Bites', 'Tree Trimming', 'Others'],
+                            labels: vm.top_contributors_name_node,
+                            responsive: [{
+                                breakpoint: 480,
+                                options: {
+                                    chart: {
+                                        width: 200
+                                    },
+                                    legend: {
+                                        position: 'top'
+                                    }
+                                }
+                            }],
+                            colors: [primary, success, warning, danger, info, navyblue]
+                            
+                        };
+    
+                        vm.top_contributors_foc = {
+             
+                            // series: [154, 56, 41, 19, 18, 62],
+                            series: vm.top_contributors_number_of_tickets_foc,
+                            chart: {
+                                width: 550,
+                                type: 'donut',
+                            },
+                            // labels: ['AC Power Dis', 'Vehicular Acc', 'Individual Core Trouble', 'Animal Bites', 'Tree Trimming', 'Others'],
+                            labels: vm.top_contributors_name_foc,
+                            responsive: [{
+                                breakpoint: 480,
+                                options: {
+                                    chart: {
+                                        width: 200
+                                    },
+                                    legend: {
+                                        position: 'top'
+                                    }
+                                }
+                            }],
+                            colors: [primary, success, warning, danger, info, navyblue]
+            
+                        };
+    
+                    }
+                }, function (){ alert('Bad Request!!!') })
             }
 
             vm.select_division = function(year, division, field_force){
@@ -599,89 +685,7 @@
 
             };
 
-            DivisionsSrvcs.topContributors({id:'', year:$stateParams.year, division:$stateParams.division}).then (function (response) {
-                if(response.data.status == 200){
-                    vm.contributors = response.data.data;
-
-                    vm.top_contributors_number_of_tickets_node = [];
-                    vm.top_contributors_name_node = [];
-
-                    vm.top_contributors_number_of_tickets_foc = [];
-                    vm.top_contributors_name_foc = [];
-                    
-                    angular.forEach(vm.contributors.top_contributor_node, function(value, key) {
-                        vm.top_contributors_number_of_tickets_node.push(value.total_ticket);
-                    });
-
-                    angular.forEach(vm.contributors.top_contributor_node, function(value, key) {
-                        vm.top_contributors_name_node.push(value.root_cause+' ('+value.total_duration.toFixed(2)+' H)');
-                    });
-
-                    angular.forEach(vm.contributors.top_contributor_foc, function(value, key) {
-                        vm.top_contributors_number_of_tickets_foc.push(value.total_ticket);
-                    });
-
-                    angular.forEach(vm.contributors.top_contributor_foc, function(value, key) {
-                        vm.top_contributors_name_foc.push(value.root_cause+' ('+value.total_duration.toFixed(2)+' H)');
-                    });
-
-                    console.log(vm.top_contributors_number_of_tickets_node)
-                    console.log(vm.top_contributors_name_node)
-                    console.log(vm.top_contributors_number_of_tickets_foc)
-                    console.log(vm.top_contributors_name_foc)
-
-                    vm.top_contributors_node = {
-                        
-                        // series: [154, 56, 41, 19, 18, 62],
-                        series: vm.top_contributors_number_of_tickets_node,
-                        chart: {
-                            width: 570,
-                            type: 'donut',
-                        },
-                        // labels: ['AC Power Dis', 'Vehicular Acc', 'Individual Core Trouble', 'Animal Bites', 'Tree Trimming', 'Others'],
-                        labels: vm.top_contributors_name_node,
-                        responsive: [{
-                            breakpoint: 480,
-                            options: {
-                                chart: {
-                                    width: 200
-                                },
-                                legend: {
-                                    position: 'top'
-                                }
-                            }
-                        }],
-                        colors: [primary, success, warning, danger, info, navyblue]
-                        
-                    };
-
-                    vm.top_contributors_foc = {
-         
-                        // series: [154, 56, 41, 19, 18, 62],
-                        series: vm.top_contributors_number_of_tickets_foc,
-                        chart: {
-                            width: 550,
-                            type: 'donut',
-                        },
-                        // labels: ['AC Power Dis', 'Vehicular Acc', 'Individual Core Trouble', 'Animal Bites', 'Tree Trimming', 'Others'],
-                        labels: vm.top_contributors_name_foc,
-                        responsive: [{
-                            breakpoint: 480,
-                            options: {
-                                chart: {
-                                    width: 200
-                                },
-                                legend: {
-                                    position: 'top'
-                                }
-                            }
-                        }],
-                        colors: [primary, success, warning, danger, info, navyblue]
-        
-                    };
-
-                }
-            }, function (){ alert('Bad Request!!!') })
+            
 
             
 

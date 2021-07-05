@@ -403,6 +403,7 @@ class DivisionsController extends Controller
 
         $data['ytd_net_ava']=round($kpi,3);
         $data['division']=$division;
+        $data['title_header_kpi'] = $division." (".$year." DATA)";
  
         return $data;
     }

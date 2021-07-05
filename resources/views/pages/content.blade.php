@@ -149,7 +149,7 @@
 				<div class="card card-custom gutter-b">
 					<div class="card-header">
 						<div class="card-title">
-							<h3 class="card-label">2021 Data</h3>
+							<h3 class="card-label">NORTH LUZON</h3>
 						</div>
 					</div>
 					<div class="card-body">
