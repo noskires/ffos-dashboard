@@ -1,0 +1,12 @@
+/*Letter-spacing*/
+.letterspace_1 {
+	letter-spacing: 0.25rem !important;
+}
+.letterspace_2 {
+	letter-spacing: 0.50rem !important;
+}
+
+#kt_datatable2 td {
+	font-size: 0.90rem !important;
+	padding: 0.30rem 0.30rem !important;
+}

@@ -2,6 +2,11 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PatientController;
+use App\Http\Controllers\FocController;
+use App\Http\Controllers\DivisionsController;
+use App\Http\Controllers\SectionsController;
+use App\Http\Controllers\ExportPatientController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +22,20 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('patients', [PatientController::class, 'show']);
+Route::get('dashboard', [FocController::class, 'show']);
+
+Route::get('v1/patients', [PatientController::class, 'show']);
+Route::post('v1/patient/store', [PatientController::class, 'store']);
+Route::post('v1/patient/update', [PatientController::class, 'update']);
+Route::post('v1/patient/remove', [PatientController::class, 'remove']);
+Route::get('v1/patient/export', [ExportPatientController::class, 'exportPatients']);
+
+Route::get('v1/foc', [FocController::class, 'show']);
+Route::get('v1/list_per_week', [FocController::class, 'show']);
+Route::get('v1/division_kpi', [DivisionsController::class, 'show']);
+Route::get('v1/section_kpi', [SectionsController::class, 'show']);
+// Route::get('v1/list', [DivisionsController::class, 'list']);
+
+// Route::get('/export-transactions','ExportExcelController@exportTransactions');
