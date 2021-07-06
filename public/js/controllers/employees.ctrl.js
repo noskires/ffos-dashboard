@@ -383,6 +383,109 @@
                 offsetX: 40
               }
               };
+
+
+            //   comparison start
+            vm.comparison = {
+                chart: {
+                  height: 350,
+                  type: "line",
+                  stacked: false
+                },
+                dataLabels: {
+                  enabled: false
+                },
+                colors: ["#FF1654", "#247BA0"],
+                series: [
+                  {
+                    name: "JAN - JUN 2020 DATA",
+                    data: [99.803, 99.794, 99.861, 99.905, 99.859, 99.841, 99.974]
+                  },
+                  {
+                    name: "JAN - JUN 2021 DATA",
+                    data: [99.841, 99.871, 99.867, 99.840, 99.811, 99.773, 99.834]
+                  }
+                ],
+                stroke: {
+                  width: [4, 4]
+                },
+                plotOptions: {
+                  bar: {
+                    columnWidth: "20%"
+                  }
+                },
+                xaxis: {
+                  categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "YTD"]
+                },
+                markers: {
+                    size: 5
+                  },
+                yaxis: [
+                  {
+                    axisTicks: {
+                      show: true
+                    },
+                    axisBorder: {
+                      show: true,
+                      color: "#FF1654"
+                    },
+                    labels: {
+                      style: {
+                        colors: "#FF1654"
+                      }
+                    },
+                    title: {
+                      text: "2021 Data",
+                      style: {
+                        color: "#FF1654"
+                      }
+                    }
+
+                    ,
+                    min: 99.5,
+                                    max: 100,
+                                    tickAmount: 5,
+                  },
+                  {
+                    opposite: true,
+                    axisTicks: {
+                      show: true
+                    },
+                    axisBorder: {
+                      show: true,
+                      color: "#247BA0"
+                    },
+                    labels: {
+                      style: {
+                        colors: "#247BA0"
+                      }
+                    },
+                    title: {
+                      text: "2020 Data",
+                      style: {
+                        color: "#247BA0"
+                      }
+                    }
+                    ,
+                    min: 99.5,
+                                    max: 100,
+                                    tickAmount: 5,
+                  }
+                ],
+                tooltip: {
+                  shared: false,
+                  intersect: true,
+                  x: {
+                    show: false
+                  }
+                },
+                legend: {
+                  horizontalAlign: "center",
+                //   offsetX: 40
+                }
+              };
+
+              //comparison end
       
              
             // stack 100
@@ -851,180 +954,6 @@
             }, function (){ alert('Bad Request!!!') })
 
             
-            //render dtables here
-
-            vm.editEmployee = function(id){
- 
-                alert(id)
-
-                EmployeesSrvcs.list({id:id}).then (function (response) {
-                    if(response.data.status == 200)
-                    {
-                        vm.employee = response.data.data[0];
-
-                        $uibModal.open({
-                            templateUrl: 'edit-employee-modal',
-                            controller: 'EditEmployeesCtrl',
-                            controllerAs: 'EmployeesCtrl',
-                            backdrop: 'static',
-                            keyboard  : false,
-                            resolve :{
-                                collection: function () {
-                                    return {
-                                        data: vm.employee
-                                    };
-                                }
-                            },
-                            // size: 'lg'
-                        });
-                        
-                    }
-                }, function (){ alert('Bad Request!!!') })
-
-               
-
-            }
-
-            vm.deleteEmployee = function(code){
- 
-                alert(code)
-
-            }
-
-            vm.renderActions = function(data) {
-                return ' <a nowrap="nowrap" href="#" ng-click="EmployeesCtrl.editEmployee(\'' + data + '\');"> 1 </a>';
-                // return ' <a nowrap="nowrap" href="#" ng-click="EmployeesCtrl.editEmployee(\'' + data + '\');"> edit </a> | <a nowrap="nowrap" href="#" ng-click="EmployeesCtrl.deleteEmployee(\'' + data + '\');"> delete </a>';
-            }
-
-
-            vm.dtOptions = DTOptionsBuilder.newOptions()
-                .withOption('ajax', {
-                // Either you specify the AjaxDataProp here
-                // dataSrc: 'data',
-                url: 'api/v1/patients',
-                type: 'GET'
-            })
-            // or here
-            .withDataProp('data')
-                .withOption('processing', true)
-                .withOption('serverSide', true)
-                .withPaginationType('full_numbers');
-            vm.dtColumns = [ 
-                DTColumnBuilder.newColumn('id').withTitle('ID'),
-                DTColumnBuilder.newColumn('lname').withTitle('Last name'),
-                DTColumnBuilder.newColumn('fname').withTitle('First name'),
-                DTColumnBuilder.newColumn('mname').withTitle('Middle name'),
-                DTColumnBuilder.newColumn('id').withTitle('Actions').renderWith(vm.renderActions)
-                .withOption('createdCell', function(cell, cellData, rowData, rowIndex, colIndex) {
-                    $compile(angular.element(cell).contents())($scope);
-                }), 
-                DTColumnBuilder.newColumn('').withTitle('Action')
-                
-            ];
-
-            vm.newEmployeeBtn = ()=>{
-                
-                $uibModal.open({
-                    templateUrl: 'add-employee-modal',
-                    controller: 'CreateEmployeesCtrl',
-                    controllerAs: 'EmployeesCtrl',
-                    backdrop: 'static',
-                    keyboard  : false,
-                    resolve :{
-                        collection: function () {
-                            return {
-                                data: null
-                            };
-                        }
-                    },
-                    // size: 'lg'
-                });
-            }
-
-            vm.deleteEmployee = (id)=>{
-                SweetAlert.swal({
-                    title: "Are you sure you want to delete this record?",
-                    text: "sample text",
-                    type: "warning",
-                    showCancelButton: true,
-                    confirmButtonClass: "btn-danger",
-                    confirmButtonText: "Yes, delete it!",
-                    cancelButtonText: "No, cancel!",
-                    closeOnConfirm: false,
-                    closeOnCancel: false
-                },
-                function(isConfirm) {
-                    if (!isConfirm) {
-                        SweetAlert.swal("Cancelled!", "", "error");
-                        
-                    } else {
-
-                        EmployeesSrvcs.remove({id:id}).then ( (response)=> {
-                            if(response.data.status == 200){
-                                SweetAlert.swal("Success!", "This record has been deleted.", "success");
-                                $state.reload();
-                            }else{
-                                SweetAlert.swal("Error!", "Bad request!.", "error");
-                            }
-                        },()=>{ alert('Bad Request!!!') })
-                    }
-                });
-            }
-
-            vm.routeTo = function(route){
-                $window.location.href = route;
-            }; 
-            
-        }
-
-
-        CreateEmployeesCtrl.$inject = ['EmployeesSrvcs', '$state', '$stateParams', '$uibModal', '$uibModalInstance', '$window', 'SweetAlert'];
-        function CreateEmployeesCtrl(EmployeesSrvcs, $state, $stateParams, $uibModal, $uibModalInstance, $window, SweetAlert){
-            var vm = this;
-            var data = {};
-
-            vm.createEmployeeBtn = (data)=>{
-                
-                EmployeesSrvcs.store(data).then (function (response) {
-                    if(response.data.status == 200){
-                        // alert('Successfully Saved!')
-                        SweetAlert.swal("Success!", "Successfully saved!", "success");
-                        $state.reload();
-                        vm.close()
-                    }
-                }, function (){ alert('Bad Request!!!') })
-            }
-
-            vm.close = function() {
-                $uibModalInstance.close();
-            };
-
-        }
-
-        EditEmployeesCtrl.$inject = ['collection', 'EmployeesSrvcs', '$state', '$stateParams', '$uibModal', '$uibModalInstance', '$window', 'SweetAlert'];
-        function EditEmployeesCtrl(collection, EmployeesSrvcs, $state, $stateParams, $uibModal, $uibModalInstance, $window, SweetAlert){
-            var vm = this;
-            var data = {};
-
-            vm.collection = collection.data;
-            console.log(vm.collection)
-
-            vm.updateEmployeeBtn = (data)=>{
-                
-                EmployeesSrvcs.update(data).then (function (response) {
-                    if(response.data.status == 200){
-                        // alert('Successfully Updated!')
-                        SweetAlert.swal("Success!", "Successfully updated!", "success");
-                        $state.reload();
-                        vm.close()
-                    }
-                }, function (){ alert('Bad Request!!!') })
-            }
-
-            vm.close = function() {
-                $uibModalInstance.close();
-            };
-
         }
 
 })();

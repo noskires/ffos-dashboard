@@ -207,6 +207,31 @@
 </div>
 </div>
 
+
+<div class="row">
+
+            <div class="col-lg-12">
+				<!--begin::Card-->
+				<div class="card card-custom gutter-b">
+					<div class="card-header">
+						<div class="card-title">
+							<h3 class="card-label">2020 VS 2021 (JAN - JUN DATA) </h3>
+						</div>
+					</div>
+					<div class="card-body">
+						<!--begin::Chart-->
+						<div apexcharts options="EmployeesCtrl.comparison"></div>
+						<!--end::Chart-->
+					</div>
+				</div>
+				<!--end::Card-->
+			</div>
+
+ 
+
+           
+		</div>
+
       
         
  
