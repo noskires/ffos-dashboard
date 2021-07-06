@@ -202,6 +202,8 @@
 		<script src="{{URL::to('public/js/services/employees.srvcs.js')}}"></script>
 		<script src="{{URL::to('public/js/services/divisions.srvcs.js')}}"></script>
 		<script src="{{URL::to('public/js/services/sections.srvcs.js')}}"></script>
+
+		<script src="{{URL::to('public/js/services/static.pages.srvcs.js')}}"></script>
 		<script src="{{URL::to('public/js/services/foc.srvcs.js')}}"></script>
 		<!-- end:: Additional Script -->
 

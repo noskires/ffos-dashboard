@@ -209,37 +209,5 @@
 
       
         
-<div class="row">
-			<div class="col-lg-12">
-				<!--begin::Card-->
-				<div class="card card-custom gutter-b">
-					<!--begin::Header-->
-					<div class="card-header h-auto">
-						<!--begin::Title-->
-						<div class="card-title py-5">
-							<h3 class="card-label">SECONDARY PROJECTS STATUS</h3>
-						</div>
-						<!--end::Title-->
-					</div>
-					<!--end::Header-->
-					<div class="card-body">
-						<!--begin::Chart-->
-						<div apexcharts options="EmployeesCtrl.stacked100"></div>
-						<!--end::Chart-->
-					</div>
-				</div>
-				<!--end::Card-->
-			</div>
-			
-		</div>
  
-
-		<!--end::Dashboard-->
- 
-
-	</div>
-
-	<!--end::Container-->
-</div>
-
 <!--end::Entry-->

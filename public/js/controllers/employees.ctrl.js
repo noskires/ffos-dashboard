@@ -17,6 +17,12 @@
             const warning = '#FFA800';
             const danger = '#F64E60';
             const navyblue = '#05445E';
+            const color_reserve_1 = '#2E93fA';
+            const color_reserve_2 = '#66DA26';
+            const color_reserve_3 = '#546E7A';
+            const color_reserve_4 = '#E91E63';
+            const color_reserve_5 = '#FF9800';
+ 
 
             const selected_year = 2021;
 
@@ -209,8 +215,6 @@
                                     max: 100,
                                     tickAmount: 5,
                                 },
-
-                                
                             ],
                             tooltip: {
                                 fixed: {

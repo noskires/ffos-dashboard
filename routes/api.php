@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\FocController;
+use App\Http\Controllers\ProjectsController;
 use App\Http\Controllers\DivisionsController;
 use App\Http\Controllers\SectionsController;
 use App\Http\Controllers\ExportPatientController;
@@ -37,5 +38,8 @@ Route::get('v1/list_per_week', [FocController::class, 'show']);
 Route::get('v1/division_kpi', [DivisionsController::class, 'show']);
 Route::get('v1/section_kpi', [SectionsController::class, 'show']);
 // Route::get('v1/list', [DivisionsController::class, 'list']);
+
+// Projects
+Route::get('v1/projects', [ProjectsController::class, 'show']);
 
 // Route::get('/export-transactions','ExportExcelController@exportTransactions');
