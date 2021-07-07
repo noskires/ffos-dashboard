@@ -210,6 +210,13 @@
 						</ul>
 					</div>
 				</li>
+<!-- 
+				<div class="pull-right">
+				 	<b><h4>Date: {{ \Carbon\Carbon::now()->format('M d, Y H:i:s A') }}</h4> </b>
+				</div>
+
+				<span class="border pull-right">asdf</span>
+		  -->
 				
 				<!-- <li class="menu-item ">
 					<a href="" class="menu-link pull-right"> Date: {{ \Carbon\Carbon::now()->toDateString() }} </a>

@@ -434,8 +434,11 @@
                         colors: "#FF1654"
                       }
                     },
+                    labels: {
+                        formatter: (value) => value.toFixed(3) +'%',
+                    },
                     title: {
-                      text: "2021 Data",
+                      text: "2020 Data",
                       style: {
                         color: "#FF1654"
                       }
@@ -460,17 +463,20 @@
                         colors: "#247BA0"
                       }
                     },
+                    labels: {
+                        formatter: (value) => value.toFixed(3) +'%',
+                    },
                     title: {
-                      text: "2020 Data",
+                      text: "2021 Data",
                       style: {
                         color: "#247BA0"
                       }
-                    }
-                    ,
-                    min: 99.5,
-                                    max: 100,
-                                    tickAmount: 5,
-                  }
+                    },
+                        min: 99.5,
+                        max: 100,
+                        tickAmount: 5,
+                    },
+                    
                 ],
                 tooltip: {
                   shared: false,

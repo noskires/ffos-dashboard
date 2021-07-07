@@ -35,7 +35,7 @@
 
 		 
 			<div class="col-lg-3" style="margin-top:-120;">
-				<a href="" class="text-dark-90" style="color:#000000;"> <b><h4>Date: {{ \Carbon\Carbon::now()->format('M d, Y') }}</h4> </b></a>
+			<a href="" class="text-dark-90" style="color:#000000;"> <b><h5>Date: {{ \Carbon\Carbon::now()->format('M d, Y H:i:s A') }}</h5> </b></a>
             </div>
         </div>
 
