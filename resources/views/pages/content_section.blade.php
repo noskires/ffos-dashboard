@@ -33,6 +33,12 @@
                     <option value="2020">2020</option>
                 </select>
             </div>
+
+		 
+
+			<div class="col-lg-3" style="margin-top:-120;">
+				<a href="" class="text-dark-90" style="color:#000000;"> <b><h4>Date: {{ \Carbon\Carbon::now()->format('M d, Y') }}</h4> </b></a>
+            </div>
         </div>
 
 		<!--[html-partial:begin:{"id":"demo3/dist/inc/view/demos/pages/index","page":"index"}]/-->

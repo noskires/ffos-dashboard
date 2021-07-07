@@ -210,19 +210,23 @@
 						</ul>
 					</div>
 				</li>
+				
+				<!-- <li class="menu-item ">
+					<a href="" class="menu-link pull-right"> Date: {{ \Carbon\Carbon::now()->toDateString() }} </a>
+				</li> -->
+
 				<!-- <li class="menu-item" aria-haspopup="true">
-					<a target="_blank" href="" class="menu-link">
-						<span class="menu-text">Users</span>
-						<span class="menu-desc"></span>
+					<a href="" class="menu-link">
+						<span class="menu-text">Date: {{ \Carbon\Carbon::now()->toDateString() }}</span>
 					</a>
-				</li>
-				<li class="menu-item" aria-haspopup="true">
+				</li> -->
+				<!-- <li class="menu-item" aria-haspopup="true">
 					<a target="_blank" href="" class="menu-link">
 						<span class="menu-text">FAQs</span>
 						<span class="menu-desc"></span>
 					</a>
 				</li>
-				<li class="menu-item" aria-haspopup="true">
+				<li class="me -item" aria-haspopup="true">
 					<a target="_blank" href="" class="menu-link">
 						<span class="menu-text">Changelog</span>
 						<span class="menu-desc"></span>

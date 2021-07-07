@@ -16,6 +16,10 @@
                 </select>
             </div> -->
 
+			
+
+			
+
             <div class="col-lg-3">
                 <select class="form-control" id="selectB" name="" ng-model="EmployeesCtrl.division"
                     ng-change="EmployeesCtrl.select_division(EmployeesCtrl.division)">
@@ -33,6 +37,14 @@
                     <option value="2021">2021</option>
                     <option value="2020">2020</option>
                 </select>
+            </div>
+
+			<div class="col-lg-3">
+               
+            </div>
+
+			<div class="col-lg-3" style="margin-top:-120;">
+				<a href="" class="text-dark-90" style="color:#000000;"> <b><h4>Date: {{ \Carbon\Carbon::now()->format('M d, Y') }}</h4> </b></a>
             </div>
             
         </div>
