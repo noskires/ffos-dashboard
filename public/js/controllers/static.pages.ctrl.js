@@ -59,18 +59,20 @@
              vm.secondary_rehab = 
              {
                   series: [{
-                  name: 'OPEN',
-                  data: [0,	0,	0,	0,	0,	1,	3,	0]
+                  name: 'PERMIT APPROVAL',
+                  data: [1,	0,	0,	0,	0,	1,	3,	0]
                 }, {
 
                   name: 'ONGOING',
-                  data: [1,	2,	4,	3,	0,	1,	3,	1]
-                }, {
-                  name: 'FOR IMPLEMENTATION',
-                  data: [0,	0,	1,	0,	0,	0,	0,	0]
-                }, {
+                  data: [1,	0,	3,	0,	1,	1,	3,	0]
+                }, 
+                // {
+                //   name: 'FOR IMPLEMENTATION',
+                //   data: [0,	0,	1,	0,	0,	0,	0,	0]
+                // }, 
+                {
                   name: 'ACCEPTED',
-                  data: [7,	0,	1,	4,	0,	1,	1,	6]
+                  data: [7,	2,	3,	7,	0,	1,	4,	7]
                 }
               ],
                   chart: {
@@ -84,7 +86,8 @@
                     horizontal: true,
                   },
                 },
-                colors: ['#2E294E', '#F46036', '#EA3546', '#00E396'],
+                colors: ['#2E294E', '#F46036', '#00E396', '#EA3546'],
+                // colors: ['#2E294E', '#F46036', '#EA3546', '#00E396'],
                 stroke: {
                   width: 1,
                   colors: ['#fff']
@@ -122,23 +125,36 @@
               };
 
               vm.primary_rebuild = 
+              
               {
-                   series: [{
+                   series: [
+                     
+                    {
+                      name: 'FOR PERMIT APPLICATION',
+                      data: [0, 0, 0, 0, 0, 0, 1, 0]
+                    },
+
+                    {
                    name: 'FOR PERMIT APPROVAL',
-                   data: [4, 6, 1, 0, 6, 0, 2, 1]
-                 }, {
+                   data: [4, 2, 0, 0, 6, 0, 1, 1]
+                 }, 
+                 {
+                  name: 'FOR PERMIT IMPLEM',
+                  data: [0, 2, 0, 0, 0, 0, 0, 0]
+                },
+                 {
  
                    name: 'ONGOING IMPLEM',
-                   data: [8, 1, 15, 0, 6, 0, 2, 2]
+                   data: [8, 1, 11, 0, 6, 0, 1, 1]
                  }, {
                    name: 'FOR ACCEPTANCE',
-                   data: [1, 0, 1, 0, 1, 0, 1, 0]
+                   data: [1, 2, 3, 0, 0, 0, 1, 0]
                  }, {
                    name: 'ACCEPTED FOR CUT-OVER',
-                   data: [9, 0, 3, 0, 6, 0, 0, 2]
+                   data: [1, 0, 0, 0, 0, 0, 0, 2]
                  }, {
                   name: 'ACCEPTED/RFS',
-                  data: [2, 1, 11, 10, 11, 0, 0, 1]
+                  data: [10, 1, 17, 10, 18, 0, 1, 2]
                 }
                 // , {
                 //   name: 'OVERALL',
@@ -197,42 +213,43 @@
               {
                    series: [{
                    name: 'PLAN PREPARATION',
-                   data: [0, 0, 0, 0, 0, 0, 0, 1]
+                   data: [0, 0, 1, 0, 1, 0, 0, 1]
                  }, {
  
                    name: 'PLAN APPROVAL',
-                   data: [0, 10, 1, 0, 0, 0, 1, 0]
+                   data: [0, 0, 0, 0, 0, 0, 0, 1]
                  }, {
                    name: 'FPERMIT APPLICATION',
-                   data: [0, 8, 2, 2, 0, 0, 0, 1]
+                   data: [0, 18, 2, 0, 0, 0, 0, 2]
                  }, {
                    name: 'PERMIT APPROVAL',
-                   data: [0, 0, 4, 5, 2, 1, 2, 2]
+                   data: [0, 0, 1, 7, 2, 0, 2, 2]
                  }, {
                   name: 'RTA APPROVAL',
-                  data: [0, 1, 0, 0, 0, 0, 0, 0]
+                  data: [0, 1, 0, 0, 0, 0, 1, 0]
                 }, {
                   name: 'ONGOING',
-                  data: [8, 6, 8, 7, 7, 0, 1, 7]
+                  data: [8, 6, 7, 7, 8, 0, 1, 3]
                 }
                 , {
                   name: 'FOR IMPLEM',
-                  data: [0, 1, 0, 0, 2, 0, 0, 0]
+                  data: [0, 1, 0, 1, 0, 0, 1, 0]
                 }
                 , {
                   name: 'FOR PRE-ACCEPTANCE',
-                  data: [1, 2, 0, 3, 0, 0, 1, 0]
+                  data: [1, 1, 3, 2, 0, 0, 1, 1]
                 }
                 , {
                   name: 'IMPLEM COMPLETED',
-                  data: [2, 0, 0, 1, 0, 0, 2, 2]
-                }
-                , {
-                  name: 'FOR ACCEPTANCE',
-                  data: [0, 0, 0, 3, 0, 0, 0, 1]
-                }, {
+                  data: [2, 0, 1, 1, 0, 1, 2, 5]
+                },
+                // , {
+                //   name: 'FOR ACCEPTANCE',
+                //   data: [0, 0, 0, 3, 0, 0, 0, 1]
+                // },
+                 {
                   name: 'ACCEPTED',
-                  data: [3, 7, 3, 0, 3, 1, 2, 11]
+                  data: [3, 8, 3, 3, 3, 1, 2, 12]
                 }
                 // , {
                 //   name: 'OVERALL',

@@ -285,6 +285,7 @@ class FocController extends Controller
     function get_net_ava_node($get_mttr_node, $get_mttr_foc, $year, $division, $field_force){
 
         $highest_month = Foc::where('year','=', $year)->max('month');
+        // $highest_month = Foc::where('year','=', $year)->max('month');
 
         $months         = array("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec");
         $days_per_month = array(31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31);
@@ -292,7 +293,7 @@ class FocController extends Controller
         if($year==2020){
             $ne_per_month   = array(3090, 3219, 3197, 3586, 3695, 3695, 3714, 3688, 3679, 3679, 3675, 3664);
         }else{
-            $ne_per_month   = array(3653, 3653, 3664, 3685, 3685, 3685, 3685, 3685, 3685, 3685, 3685, 3685);
+            $ne_per_month   = array(3653, 3653, 3664, 3685, 3685, 3658, 3658, 3658, 3658, 3658, 3658, 3658);
         }
         
         

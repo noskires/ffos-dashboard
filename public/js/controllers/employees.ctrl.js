@@ -398,12 +398,12 @@
                 colors: ["#FF1654", "#247BA0"],
                 series: [
                   {
-                    name: "JAN - JUN 2020 DATA",
-                    data: [99.803, 99.794, 99.861, 99.905, 99.859, 99.841, 99.974]
+                    name: "JAN - AUG 2020 DATA",
+                    data: [99.803, 99.794, 99.861, 99.905, 99.859, 99.841, 99.821, 99.896, 99.812]
                   },
                   {
-                    name: "JAN - JUN 2021 DATA",
-                    data: [99.841, 99.871, 99.867, 99.840, 99.811, 99.773, 99.834]
+                    name: "JAN - AUG 2021 DATA",
+                    data: [99.841, 99.871, 99.866, 99.840, 99.811, 99.771, 99.808, 99.776, 99.822]
                   }
                 ],
                 stroke: {
@@ -415,7 +415,7 @@
                   }
                 },
                 xaxis: {
-                  categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "YTD"]
+                  categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "YTD"]
                 },
                 markers: {
                     size: 5
