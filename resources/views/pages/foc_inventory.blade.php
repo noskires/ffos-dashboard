@@ -43,8 +43,8 @@
                
             </div>
 
-			<div class="col-lg-3" style="margin-top:-120;">
-				<a href="" class="text-dark-90" style="color:#000000;"> <b><h5>Date: {{ \Carbon\Carbon::now()->format('M d, Y H:i:s A') }}</h5> </b></a>
+			<div class="col-lg-12" style="margin-top:-10;">
+                DASHBOARD > NLFFOS > <b><u>FOC LINKS INVENTORY</u> </b>
             </div>
             
         </div>
@@ -63,7 +63,7 @@
 					<!--begin::Header-->
 					<div class="card-header border-0 pt-6">
 						<h3 class="card-title align-items-start flex-column">
-							<span class="card-label font-weight-bolder font-size-h4 text-dark-75">OVERALL COMPLETION %</span> 
+							<span class="card-label font-weight-bolder font-size-h4 text-dark-75">OVERALL COMPLETION </span> 
                              
 							<span class="text-muted mt-3 font-weight-bold font-size-lg">AS OF 08/31/2021</span>
 							<!-- <span class="text-muted mt-3 font-weight-bold font-size-lg"><%FocInventoryCtrl.ytd_avg_duration_foc | number:2%> FOC MTTR (SA)</span> -->
@@ -87,10 +87,8 @@
 					<!--begin::Header-->
 					<div class="card-header border-0 pt-6">
 						<h3 class="card-title align-items-start flex-column">
-							<span class="card-label font-weight-bolder font-size-h4 text-dark-75">TARGET FOC</span>
-							<!-- <span class="text-muted mt-3 font-weight-bold font-size-lg">Total tickets 100</span> 
-							<span class="text-muted mt-3 font-weight-bold font-size-lg">Total duration 1207H</span> -->
-                            
+							<span class="card-label font-weight-bolder font-size-h4 text-dark-75">TARGET FOC LINKS</span>
+                            <span class="text-muted mt-3 font-weight-bold font-size-lg">MARCH - DEC 2021</span> 
 						</h3>
 						<div class="card-toolbar">
 							<div class="font-weight-bolder font-size-h1 text-dark-200">344</div>
@@ -111,7 +109,7 @@
 					<!--begin::Header-->
 					<div class="card-header border-0 pt-6">
 						<h3 class="card-title align-items-start flex-column">
-                        <span class="card-label font-weight-bolder font-size-h4 text-dark-75">COMPLETED FOC</span>
+                        <span class="card-label font-weight-bolder font-size-h4 text-dark-75">COMPLETED FOC LINKS</span>
                         <!-- <span class="text-muted mt-3 font-weight-bold font-size-lg">Total tickets 100</span> 
                         <span class="text-muted mt-3 font-weight-bold font-size-lg">Total duration 1207H</span> -->
 						</h3>

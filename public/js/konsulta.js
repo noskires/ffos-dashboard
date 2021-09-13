@@ -89,6 +89,21 @@
                 templateUrl: 'foc.inventory.view'
             })
 
+            // Billing
+
+            .state('billing-fc', {
+                url: '/dashboard/billing-fc/:year',
+                controller: 'BillingCtrl as BillingCtrl',
+                templateUrl: 'billing.fc.view'
+            })
+
+            .state('billing-fh', {
+                url: '/dashboard/billing-fh/:year',
+                controller: 'BillingCtrl as BillingCtrl',
+                templateUrl: 'billing.fh.view'
+            })
+
+
 
             // .state('patients', {
             //     url: '/patients',

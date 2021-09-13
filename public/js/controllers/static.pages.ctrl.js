@@ -219,7 +219,7 @@
                    name: 'PLAN APPROVAL',
                    data: [0, 0, 0, 0, 0, 0, 0, 1]
                  }, {
-                   name: 'FPERMIT APPLICATION',
+                   name: 'PERMIT APPLICATION',
                    data: [0, 18, 2, 0, 0, 0, 0, 2]
                  }, {
                    name: 'PERMIT APPROVAL',

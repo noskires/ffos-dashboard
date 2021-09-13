@@ -75,8 +75,14 @@
 						<script type="text/ng-template" id="foc.inventory.view">
 							@include('pages.foc_inventory')
 						</script>
-
 						
+						<script type="text/ng-template" id="billing.fc.view">
+							@include('pages.billing_fc')
+						</script>
+
+						<script type="text/ng-template" id="billing.fh.view">
+							@include('pages.billing_fh')
+						</script>
 
 						<script type="text/ng-template" id="patient.view">
 							@include('pages.patient-list')

@@ -199,6 +199,7 @@
 		<script src="{{URL::to('public/js/controllers/transport.ctrl.js')}}"></script>
 		<script src="{{URL::to('public/js/controllers/access.ctrl.js')}}"></script>
 		<script src="{{URL::to('public/js/controllers/foc.inventory.ctrl.js')}}"></script>
+		<script src="{{URL::to('public/js/controllers/billing.ctrl.js')}}"></script>
 
 		<script src="{{URL::to('public/js/controllers/static.pages.ctrl.js')}}"></script>
 		

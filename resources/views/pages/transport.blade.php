@@ -43,8 +43,8 @@
                
             </div>
 
-			<div class="col-lg-3" style="margin-top:-120;">
-				<a href="" class="text-dark-90" style="color:#000000;"> <b><h5>Date: {{ \Carbon\Carbon::now()->format('M d, Y H:i:s A') }}</h5> </b></a>
+			<div class="col-lg-12" style="margin-top:-10;">
+                DASHBOARD > NLFFOS > <b><u>PM ACCOMPLISHMENT (TRANSPORT)</u> </b>
             </div>
             
         </div>
@@ -63,7 +63,8 @@
 					<!--begin::Header-->
 					<div class="card-header border-0 pt-6">
 						<h3 class="card-title align-items-start flex-column">
-							<span class="card-label font-weight-bolder font-size-h4 text-dark-75">OVERALL COMPLETION %</span>
+							<span class="card-label font-weight-bolder font-size-h4 text-dark-75">OVERALL COMPLETION</span>
+                            <span class="text-muted mt-3 font-weight-bold font-size-lg">YTD AUGUST 2021</span>
 							<!-- <span class="text-muted mt-3 font-weight-bold font-size-lg"><%TransportCtrl.ytd_avg_duration_node | number:2%> NODE MTTR (SA)</span>
 							<span class="text-muted mt-3 font-weight-bold font-size-lg"><%TransportCtrl.ytd_avg_duration_foc | number:2%> FOC MTTR (SA)</span> -->
 						</h3>
@@ -86,7 +87,7 @@
 					<!--begin::Header-->
 					<div class="card-header border-0 pt-6">
 						<h3 class="card-title align-items-start flex-column">
-							<span class="card-label font-weight-bolder font-size-h4 text-dark-75"># OF EQUIPMENET<</span>
+							<span class="card-label font-weight-bolder font-size-h4 text-dark-75"># OF EQUIPMENT</span>
 							<!-- <span class="text-muted mt-3 font-weight-bold font-size-lg">Total tickets 100</span> 
 							<span class="text-muted mt-3 font-weight-bold font-size-lg">Total duration 1207H</span> -->
                             

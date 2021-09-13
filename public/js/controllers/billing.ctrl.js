@@ -2,10 +2,10 @@
     'use strict';
     angular
         .module('konsulta')
-        .controller('FocInventoryCtrl', FocInventoryCtrl) 
+        .controller('BillingCtrl', BillingCtrl) 
 
-        FocInventoryCtrl.$inject = ['AccessTransportSrvcs', 'DivisionsSrvcs', 'FocSrvcs', '$scope', '$stateParams', '$state', '$uibModal', '$window', '$rootScope', '$compile', 'DTOptionsBuilder', 'DTColumnBuilder', 'SweetAlert'];
-        function FocInventoryCtrl(AccessTransportSrvcs, DivisionsSrvcs, FocSrvcs, $scope, $stateParams, $state, $uibModal, $window, $rootScope, $compile, DTOptionsBuilder, DTColumnBuilder, SweetAlert){
+        BillingCtrl.$inject = ['AccessTransportSrvcs', 'DivisionsSrvcs', 'FocSrvcs', '$scope', '$stateParams', '$state', '$uibModal', '$window', '$rootScope', '$compile', 'DTOptionsBuilder', 'DTColumnBuilder', 'SweetAlert'];
+        function BillingCtrl(AccessTransportSrvcs, DivisionsSrvcs, FocSrvcs, $scope, $stateParams, $state, $uibModal, $window, $rootScope, $compile, DTOptionsBuilder, DTColumnBuilder, SweetAlert){
             var vm = this;
             var data = {};
 
@@ -270,21 +270,8 @@
                     }
                   },
                   colors: ['#00E396'],
-                  // dataLabels: {
-                  //   enabled: false
-                  // },
                   dataLabels: {
-                    fontSize: '8px',
-                    formatter: function(val, opt) {
-                      const goals =
-                        opt.w.config.series[opt.seriesIndex].data[opt.dataPointIndex]
-                          .goals
-                  
-                      if (goals && goals.length) {
-                        return ((val/goals[0].value)*100).toFixed(0)+"%"
-                      }
-                      return val
-                    }
+                    enabled: false
                   },
                   legend: {
                     show: true,
@@ -295,7 +282,193 @@
                     }
                   }
             }
- 
+
+
+            vm.billing = {
+                series: [{
+                    name: 'PENDING',
+                    data: [0, 0, 0, 0, 0, 0, 0, 0],
+                    color: danger
+                  }, {
+                    name: 'ONGOING',
+                    data: [0, 0, 0, 0, 0, 0, 0, 0],
+                    color: warning
+                  }, {
+                    name: 'COMPLETED',
+                    data: [2, 1, 2, 3, 3, 1, 2, 3],
+                    color: success
+                  }],
+                    chart: {
+                    type: 'bar',
+                    height: 250,
+                    stacked: true,
+                    stackType: '100%'
+                  },
+                  dataLabels: { 
+                    enabled: true
+                },
+                  responsive: [{
+                    breakpoint: 480,
+                    options: {
+                      legend: {
+                        position: 'bottom',
+                        offsetX: -10,
+                        offsetY: 0
+                      }
+                    }
+                  }],
+                  xaxis: {
+                    categories: ['FFS1', 'FFS2', 'FFS3', 'FFS4', 'FFS5', 'FFS6', 'FFS7', 'FFS8'],
+                  },
+                  fill: {
+                    opacity: 1
+                  },
+                  legend: {
+                    position: 'bottom',
+                    offsetX: 0,
+                    // offsetY: 50
+                  },
+            }
+
+            vm.billing_fh = {
+                series: [{
+                    name: 'PENDING',
+                    data: [0, 0, 0, 0, 0, 0, 0, 0],
+                    color: danger
+                  }, {
+                    name: 'ONGOING',
+                    data: [0, 0, 0, 0, 0, 0, 0, 0],
+                    color: warning
+                  }, {
+                    name: 'COMPLETED',
+                    data: [1, 1, 1, 1, 1, 1, 1, 1],
+                    color: success
+                  }],
+                    chart: {
+                    type: 'bar',
+                    height: 250,
+                    stacked: true,
+                    stackType: '100%'
+                  },
+                  dataLabels: { 
+                    enabled: true
+                },
+                  responsive: [{
+                    breakpoint: 480,
+                    options: {
+                      legend: {
+                        position: 'bottom',
+                        offsetX: -10,
+                        offsetY: 0
+                      }
+                    }
+                  }],
+                  xaxis: {
+                    categories: ['FFS1', 'FFS2', 'FFS3', 'FFS4', 'FFS5', 'FFS6', 'FFS7', 'FFS8'],
+                  },
+                  fill: {
+                    opacity: 1
+                  },
+                  legend: {
+                    position: 'bottom',
+                    offsetX: 0,
+                    // offsetY: 50
+                  },
+            }
+
+
+            vm.billing_august = {
+                series: [{
+                    name: 'PENDING',
+                    data: [1, 1, 0, 0, 0, 1, 0, 3],
+                    color: danger
+                  }, {
+                    name: 'ONGOING',
+                    data: [1, 0, 2, 3, 3, 0, 2, 0],
+                    color: warning
+                  }, {
+                    name: 'COMPLETED',
+                    data: [0, 0, 0, 0, 0, 0, 0, 0],
+                    color: success
+                  }],
+                    chart: {
+                    type: 'bar',
+                    height: 250,
+                    stacked: true,
+                    stackType: '100%'
+                  },
+                  dataLabels: { 
+                    enabled: true
+                },
+                  responsive: [{
+                    breakpoint: 480,
+                    options: {
+                      legend: {
+                        position: 'bottom',
+                        offsetX: -10,
+                        offsetY: 0
+                      }
+                    }
+                  }],
+                  xaxis: {
+                    categories: ['FFS1', 'FFS2', 'FFS3', 'FFS4', 'FFS5', 'FFS6', 'FFS7', 'FFS8'],
+                  },
+                  fill: {
+                    opacity: 1
+                  },
+                  legend: {
+                    position: 'bottom',
+                    offsetX: 0,
+                    // offsetY: 50
+                  },
+            }
+            
+
+            vm.billing_fh_august = {
+                series: [{
+                    name: 'PENDING',
+                    data: [0, 0, 0, 0, 0, 0, 0, 0],
+                    color: danger
+                  }, {
+                    name: 'ONGOING',
+                    data: [1, 1, 1, 1, 0, 1, 1, 1],
+                    color: warning
+                  }, {
+                    name: 'COMPLETED',
+                    data: [0, 0, 0, 0, 1, 0, 0, 0],
+                    color: success
+                  }],
+                    chart: {
+                    type: 'bar',
+                    height: 250,
+                    stacked: true,
+                    stackType: '100%'
+                  },
+                  dataLabels: { 
+                    enabled: true
+                },
+                  responsive: [{
+                    breakpoint: 480,
+                    options: {
+                      legend: {
+                        position: 'bottom',
+                        offsetX: -10,
+                        offsetY: 0
+                      }
+                    }
+                  }],
+                  xaxis: {
+                    categories: ['FFS1', 'FFS2', 'FFS3', 'FFS4', 'FFS5', 'FFS6', 'FFS7', 'FFS8'],
+                  },
+                  fill: {
+                    opacity: 1
+                  },
+                  legend: {
+                    position: 'bottom',
+                    offsetX: 0,
+                    // offsetY: 50
+                  },
+            }
             
         }
 

@@ -38,6 +38,9 @@ Route::get('dashboard/access/{year}', [AccessTransportController::class, 'index'
 // FOC Inventory
 Route::get('dashboard/foc-inventory/{year}', [AccessTransportController::class, 'index']);
 
+// Billing
+Route::get('dashboard/billing-fc/{year}', [AccessTransportController::class, 'index']);
+Route::get('dashboard/billing-fh/{year}', [AccessTransportController::class, 'index']);
 
 Route::get('project_update', [FocController::class, 'index']);
 
