@@ -111,6 +111,7 @@
                             xaxis: {
                                 categories: response.data.data.kpi.months_display,
                             },
+                            
                             // annotations: {
                             //     yaxis: [
                             //       {

@@ -84,6 +84,14 @@
 							@include('pages.billing_fh')
 						</script>
 
+						<script type="text/ng-template" id="scorecard.fc.view">
+							@include('pages.scorecard_fc')
+						</script>
+
+						<script type="text/ng-template" id="scorecard.fh.view">
+							@include('pages.scorecard_fh')
+						</script>
+
 						<script type="text/ng-template" id="patient.view">
 							@include('pages.patient-list')
 						</script>

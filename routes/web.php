@@ -42,6 +42,10 @@ Route::get('dashboard/foc-inventory/{year}', [AccessTransportController::class, 
 Route::get('dashboard/billing-fc/{year}', [AccessTransportController::class, 'index']);
 Route::get('dashboard/billing-fh/{year}', [AccessTransportController::class, 'index']);
 
+// SCORECARD
+Route::get('dashboard/scorecard-fc/{year}', [AccessTransportController::class, 'index']);
+Route::get('dashboard/scorecard-fh/{year}', [AccessTransportController::class, 'index']);
+
 Route::get('project_update', [FocController::class, 'index']);
 
 // Route::get('patients', [PatientController::class, 'index']);

@@ -25,14 +25,14 @@
 
             //       vm.projects = response.data.data;
 
-            //       vm.sections = ["NFS_WESTNL_FFS1", 
-            //         "NFS_WESTNL_FFS2", 
-            //         "NFS_WESTNL_FFS3", 
-            //         "NFS_EASTNL_FFS4", 
-            //         "NFS_EASTNL_FFS5", 
-            //         "NFS_CENTRALNL_FFS6", 
-            //         "NFS_CENTRALNL_FFS7", 
-            //         "NFS_CENTRALNL_FFS8"];
+            //       vm.sections = ["WESTNL_FFS1", 
+            //         "WESTNL_FFS2", 
+            //         "WESTNL_FFS3", 
+            //         "EASTNL_FFS4", 
+            //         "EASTNL_FFS5", 
+            //         "CENTRALNL_FFS6", 
+            //         "CENTRALNL_FFS7", 
+            //         "CENTRALNL_FFS8"];
         
 
             //       vm.secondary_rehab = [];
@@ -96,14 +96,14 @@
                   // text: 'SECONDARY PROJECTS'
                 },
                 xaxis: {
-                  categories: ["NFS_WESTNL_FFS1", 
-                      "NFS_WESTNL_FFS2", 
-                      "NFS_WESTNL_FFS3", 
-                      "NFS_EASTNL_FFS4", 
-                      "NFS_EASTNL_FFS5", 
-                      "NFS_CENTRALNL_FFS6", 
-                      "NFS_CENTRALNL_FFS7", 
-                      "NFS_CENTRALNL_FFS8"]
+                  categories: ["WESTNL_FFS1", 
+                      "WESTNL_FFS2", 
+                      "WESTNL_FFS3", 
+                      "EASTNL_FFS4", 
+                      "EASTNL_FFS5", 
+                      "CENTRALNL_FFS6", 
+                      "CENTRALNL_FFS7", 
+                      "CENTRALNL_FFS8"]
                       ,
                 },
                 tooltip: {
@@ -180,14 +180,14 @@
                    // text: 'SECONDARY PROJECTS'
                  },
                  xaxis: {
-                   categories: ["NFS_WESTNL_FFS1", 
-                       "NFS_WESTNL_FFS2", 
-                       "NFS_WESTNL_FFS3", 
-                       "NFS_EASTNL_FFS4", 
-                       "NFS_EASTNL_FFS5", 
-                       "NFS_CENTRALNL_FFS6", 
-                       "NFS_CENTRALNL_FFS7", 
-                       "NFS_CENTRALNL_FFS8"]
+                   categories: ["WESTNL_FFS1", 
+                       "WESTNL_FFS2", 
+                       "WESTNL_FFS3", 
+                       "EASTNL_FFS4", 
+                       "EASTNL_FFS5", 
+                       "CENTRALNL_FFS6", 
+                       "CENTRALNL_FFS7", 
+                       "CENTRALNL_FFS8"]
                        ,
                  },
                  tooltip: {
@@ -278,14 +278,14 @@
                    // text: 'SECONDARY PROJECTS'
                  },
                  xaxis: {
-                   categories: ["NFS_WESTNL_FFS1", 
-                       "NFS_WESTNL_FFS2", 
-                       "NFS_WESTNL_FFS3", 
-                       "NFS_EASTNL_FFS4", 
-                       "NFS_EASTNL_FFS5", 
-                       "NFS_CENTRALNL_FFS6", 
-                       "NFS_CENTRALNL_FFS7", 
-                       "NFS_CENTRALNL_FFS8"]
+                   categories: ["WESTNL_FFS1", 
+                       "WESTNL_FFS2", 
+                       "WESTNL_FFS3", 
+                       "EASTNL_FFS4", 
+                       "EASTNL_FFS5", 
+                       "CENTRALNL_FFS6", 
+                       "CENTRALNL_FFS7", 
+                       "CENTRALNL_FFS8"]
                        ,
                  },
                  tooltip: {

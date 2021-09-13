@@ -103,7 +103,19 @@
                 templateUrl: 'billing.fh.view'
             })
 
+            // Scorecard
 
+            .state('scorecard-fc', {
+                url: '/dashboard/scorecard-fc/:year',
+                controller: 'ScoreCardCtrl as ScoreCardCtrl',
+                templateUrl: 'scorecard.fc.view'
+            })
+
+            .state('scorecard-fh', {
+                url: '/dashboard/scorecard-fh/:year',
+                controller: 'ScoreCardCtrl as ScoreCardCtrl',
+                templateUrl: 'scorecard.fh.view'
+            })
 
             // .state('patients', {
             //     url: '/patients',
