@@ -81,6 +81,14 @@
                 templateUrl: 'access.view'
             })
 
+            // FOC Inventory
+
+            .state('foc-inventory', {
+                url: '/dashboard/foc-inventory/:year',
+                controller: 'FocInventoryCtrl as FocInventoryCtrl',
+                templateUrl: 'foc.inventory.view'
+            })
+
 
             // .state('patients', {
             //     url: '/patients',

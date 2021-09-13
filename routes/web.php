@@ -35,6 +35,9 @@ Route::get('dashboard/poi/{year}', [PoiController::class, 'index']);
 Route::get('dashboard/transport/{year}', [AccessTransportController::class, 'index']);
 Route::get('dashboard/access/{year}', [AccessTransportController::class, 'index']);
 
+// FOC Inventory
+Route::get('dashboard/foc-inventory/{year}', [AccessTransportController::class, 'index']);
+
 
 Route::get('project_update', [FocController::class, 'index']);
 

@@ -72,6 +72,10 @@
 							@include('pages.access')
 						</script>
 
+						<script type="text/ng-template" id="foc.inventory.view">
+							@include('pages.foc_inventory')
+						</script>
+
 						
 
 						<script type="text/ng-template" id="patient.view">
