@@ -671,36 +671,38 @@
                 series: [
                     {
                     name: 'FFS1',
-                    data: [82, 82, 79]
+                    data: [82, 82, 79, 81]
                   }, 
                   {
                     name: 'FFS2',
-                    data: [82, 82, 82]
+                    data: [82, 82, 82, 82]
                   }, 
                   {
                     name: 'FFS3',
-                    data: [81, 81, 81]
+                    data: [81, 81, 81, 81]
                   }, 
                   {
                     name: 'FFS4',
-                    data: [95, 95, 96]
+                    data: [95, 95, 96, 95.33]
                   }, 
                   {
                     name: 'FFS5',
-                    data: [89, 90, 92]
+                    data: [89, 90, 92,90.33]
                   }, 
                   {
                     name: 'FFS6',
-                    data: [85, 85, 85]
+                    data: [85, 85, 85, 85]
                   }, 
                   {
                     name: 'FFS7',
-                    data: [82, 82, 82]
+                    data: [82, 82, 82, 82]
                   }, 
                   {
                     name: 'FFS8',
-                    data: [85, 85, 85]
+                    data: [85, 85, 85, 85]
                   }, 
+
+               
                   
                 ],
                     chart: {
@@ -714,6 +716,10 @@
                       horizontal: false,
                       columnWidth: '55%',
                       endingShape: 'rounded',
+                      borderRadius: 6,
+                        dataLabels: {
+                        position: 'top', // top, center, bottom
+                        },
                     //   colors: {
                     //         ranges: [{
                     //             from: 0,
@@ -727,7 +733,15 @@
                     },
                   },
                   dataLabels: {
-                    enabled: false
+                        enabled: false,
+                        formatter: function (val) {
+                            return val + "%";
+                        },
+                        offsetY: -20,
+                        style: {
+                            fontSize: '9px',
+                            colors: ["#304758"]
+                        }
                   },
                   stroke: {
                     show: true,
@@ -735,12 +749,24 @@
                     colors: ['transparent']
                   },
                   xaxis: {
-                    categories: ['Apr', 'May', 'Jun'],
+                    categories: ['Apr', 'May', 'Jun', '2Q AVG'],
                   },
                   yaxis: {
                     title: {
                       text: 'Scorecard %'
-                    }
+                    },
+                    axisBorder: {
+                        show: false
+                      },
+                      axisTicks: {
+                        show: false,
+                      },
+                    labels: {
+                        show: true,
+                        formatter: function (val) {
+                          return val + "%";
+                        }
+                      }
                   },
                   fill: {
                     opacity: 1
