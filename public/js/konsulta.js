@@ -37,19 +37,19 @@
             })
 
             .state('dashboard', {
-                url: '/dashboard/:year',
+                url: '/dashboard/kpi/:year',
                 controller: 'EmployeesCtrl as EmployeesCtrl',
                 templateUrl: 'foc.view'
             })
             
             .state('dashboard_division', {
-                url: '/dashboard/:year/:division',
+                url: '/dashboard/kpi/:year/:division',
                 controller: 'DivisionsCtrl as DivisionsCtrl',
                 templateUrl: 'division.view'
             })
 
             .state('dashboard_section', {
-                url: '/dashboard/:year/:division/:section',
+                url: '/dashboard/kpi/:year/:division/:section',
                 controller: 'SectionsCtrl as SectionsCtrl',
                 templateUrl: 'section.view'
             })
@@ -59,6 +59,28 @@
                 controller: 'StaticCtrl as StaticCtrl',
                 templateUrl: 'project_update.view'
             })
+
+            // POI
+
+            .state('poi', {
+                url: '/dashboard/poi/:year',
+                controller: 'PoiCtrl as PoiCtrl',
+                templateUrl: 'poi.view'
+            })
+
+            // ACCESS TRANSPORT EQUIP
+            .state('transport', {
+                url: '/dashboard/transport/:year',
+                controller: 'TransportCtrl as TransportCtrl',
+                templateUrl: 'transport.view'
+            })
+
+            .state('access', {
+                url: '/dashboard/access/:year',
+                controller: 'AccessCtrl as AccessCtrl',
+                templateUrl: 'access.view'
+            })
+
 
             // .state('patients', {
             //     url: '/patients',

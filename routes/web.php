@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\FocController;
+use App\Http\Controllers\PoiController;
+use App\Http\Controllers\AccessTransportController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,9 +24,16 @@ Route::get('/', function () {
 Route::get('index', [PatientController::class, 'index']);
 Route::get('patients', [PatientController::class, 'index']);
 Route::get('dashboard', [FocController::class, 'index']);
-Route::get('dashboard/{year}', [FocController::class, 'index']);
-Route::get('dashboard/{year}/{division}', [FocController::class, 'index']);
-Route::get('dashboard/{year}/{division}/{section}', [FocController::class, 'index']);
+Route::get('dashboard/kpi/{year}', [FocController::class, 'index']);
+Route::get('dashboard/kpi/{year}/{division}', [FocController::class, 'index']);
+Route::get('dashboard/kpi/{year}/{division}/{section}', [FocController::class, 'index']);
+
+// POI
+Route::get('dashboard/poi/{year}', [PoiController::class, 'index']);
+
+// Access Transport
+Route::get('dashboard/transport/{year}', [AccessTransportController::class, 'index']);
+Route::get('dashboard/access/{year}', [AccessTransportController::class, 'index']);
 
 
 Route::get('project_update', [FocController::class, 'index']);

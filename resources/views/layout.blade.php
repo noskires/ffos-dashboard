@@ -60,6 +60,20 @@
 							@include('pages.project_update')
 						</script>
 
+						<script type="text/ng-template" id="poi.view">
+							@include('pages.poi')
+						</script>
+
+						<script type="text/ng-template" id="transport.view">
+							@include('pages.transport')
+						</script>
+
+						<script type="text/ng-template" id="access.view">
+							@include('pages.access')
+						</script>
+
+						
+
 						<script type="text/ng-template" id="patient.view">
 							@include('pages.patient-list')
 						</script>

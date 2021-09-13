@@ -41,5 +41,6 @@ Route::get('v1/section_kpi', [SectionsController::class, 'show']);
 
 // Projects
 Route::get('v1/projects', [ProjectsController::class, 'show']);
+Route::get('v1/projects1', [ProjectsController::class, 'get_count_of_project']);
 
 // Route::get('/export-transactions','ExportExcelController@exportTransactions');

@@ -2,14 +2,16 @@
     'use strict';
     angular
         .module('konsulta')
-        .controller('EmployeesCtrl', EmployeesCtrl)
-        // .controller('CreateEmployeesCtrl', CreateEmployeesCtrl)
-        // .controller('EditEmployeesCtrl', EditEmployeesCtrl)
+        .controller('PoiCtrl', PoiCtrl)
+        // .controller('CreatePoiCtrl', CreatePoiCtrl)
+        // .controller('EditPoiCtrl', EditPoiCtrl)
 
-        EmployeesCtrl.$inject = ['EmployeesSrvcs', 'DivisionsSrvcs', 'FocSrvcs', '$scope', '$stateParams', '$state', '$uibModal', '$window', '$rootScope', '$compile', 'DTOptionsBuilder', 'DTColumnBuilder', 'SweetAlert'];
-        function EmployeesCtrl(EmployeesSrvcs, DivisionsSrvcs, FocSrvcs, $scope, $stateParams, $state, $uibModal, $window, $rootScope, $compile, DTOptionsBuilder, DTColumnBuilder, SweetAlert){
+        PoiCtrl.$inject = ['PoiSrvcs', 'DivisionsSrvcs', 'FocSrvcs', '$scope', '$stateParams', '$state', '$uibModal', '$window', '$rootScope', '$compile', 'DTOptionsBuilder', 'DTColumnBuilder', 'SweetAlert'];
+        function PoiCtrl(PoiSrvcs, DivisionsSrvcs, FocSrvcs, $scope, $stateParams, $state, $uibModal, $window, $rootScope, $compile, DTOptionsBuilder, DTColumnBuilder, SweetAlert){
             var vm = this;
             var data = {};
+
+ 
 
             const primary = '#6993FF';
             const success = '#1BC5BD';
@@ -68,18 +70,21 @@
     
                         vm.kpi = {
                             series: [{
-                                name: 'NODE MTTR',
+                                name: 'FTTBTS POI',
                                 type: 'column',
                                 // data: [6.98, 6.34, 5.23, 6.26, 3.67, 5.48]
-                                data: response.data.data.kpi.mttr_node_display
+                                // data: response.data.data.kpi.mttr_node_display
+                                data: [1,2,3,4,5,6,7,8,9,10]
                             }, {
-                                name: 'FOC MTTR',
+                                name: 'FTTH POI',
                                 type: 'column',
-                                data: response.data.data.kpi.mttr_foc_display
+                                // data: response.data.data.kpi.mttr_foc_display
+                                data: [2,3,4,5,6,7,8,9,10,11]
                             }, {
-                                name: 'NET. AVA',
+                                name: 'TOTAL',
                                 type: 'line',
-                                data: response.data.data.kpi.net_ava
+                                // data: response.data.data.kpi.net_ava
+                                data: [3,5,7,9,11,13,15,17,19,21]
                             }],
                             
                             chart: {
@@ -322,180 +327,7 @@
                 }, function (){ alert('Bad Request!!!') })
             }
 
-             // stack 100
-             vm.stacked100 = {
-                series: [{
-                name: 'OPEN',
-                data: [44, 55, 41, 37, 22, 43, 21, 33]
-              }, {
-                name: 'ONGOING',
-                data: [53, 32, 33, 52, 13, 43, 32, 20]
-              }, {
-                name: 'FOR IMPLEMENTATION',
-                data: [12, 17, 11, 9, 15, 11, 20, 21]
-              }, {
-                name: 'ACCEPTED',
-                data: [25, 12, 19, 32, 25, 24, 10,12]
-              }],
-                chart: {
-                type: 'bar',
-                height: 350,
-                stacked: true,
-                stackType: '100%'
-              },
-              plotOptions: {
-                bar: {
-                  horizontal: true,
-                },
-              },
-              stroke: {
-                width: 1,
-                colors: ['#fff']
-              },
-              title: {
-                // text: 'SECONDARY PROJECTS'
-              },
-              xaxis: {
-                categories: ["NFS_WESTNL_FFS1", 
-                    "NFS_WESTNL_FFS2", 
-                    "NFS_WESTNL_FFS3", 
-                    "NFS_EASTNL_FFS4", 
-                    "NFS_EASTNL_FFS5", 
-                    "NFS_CENTRALNL_FFS6", 
-                    "NFS_CENTRALNL_FFS7", 
-                    "NFS_CENTRALNL_FFS8"]
-                    ,
-              },
-              tooltip: {
-                y: {
-                  formatter: function (val) {
-                    return val + "K"
-                  }
-                }
-              },
-              fill: {
-                opacity: 1
-              
-              },
-              legend: {
-                position: 'top',
-                horizontalAlign: 'left',
-                offsetX: 40
-              }
-              };
-
-
-            //   comparison start
-            vm.comparison = {
-                chart: {
-                  height: 350,
-                  type: "line",
-                  stacked: false
-                },
-                dataLabels: {
-                  enabled: false
-                },
-                colors: ["#FF1654", "#247BA0"],
-                series: [
-                  {
-                    name: "JAN - AUG 2020 DATA",
-                    data: [99.803, 99.794, 99.861, 99.905, 99.859, 99.841, 99.821, 99.896, 99.812]
-                  },
-                  {
-                    name: "JAN - AUG 2021 DATA",
-                    data: [99.841, 99.871, 99.866, 99.840, 99.811, 99.771, 99.808, 99.776, 99.822]
-                  }
-                ],
-                stroke: {
-                  width: [4, 4]
-                },
-                plotOptions: {
-                  bar: {
-                    columnWidth: "20%"
-                  }
-                },
-                xaxis: {
-                  categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "YTD"]
-                },
-                markers: {
-                    size: 5
-                  },
-                yaxis: [
-                  {
-                    axisTicks: {
-                      show: true
-                    },
-                    axisBorder: {
-                      show: true,
-                      color: "#FF1654"
-                    },
-                    labels: {
-                      style: {
-                        colors: "#FF1654"
-                      }
-                    },
-                    labels: {
-                        formatter: (value) => value.toFixed(3) +'%',
-                    },
-                    title: {
-                      text: "2020 Data",
-                      style: {
-                        color: "#FF1654"
-                      }
-                    }
-
-                    ,
-                    min: 99.5,
-                                    max: 100,
-                                    tickAmount: 5,
-                  },
-                  {
-                    opposite: true,
-                    axisTicks: {
-                      show: true
-                    },
-                    axisBorder: {
-                      show: true,
-                      color: "#247BA0"
-                    },
-                    labels: {
-                      style: {
-                        colors: "#247BA0"
-                      }
-                    },
-                    labels: {
-                        formatter: (value) => value.toFixed(3) +'%',
-                    },
-                    title: {
-                      text: "2021 Data",
-                      style: {
-                        color: "#247BA0"
-                      }
-                    },
-                        min: 99.5,
-                        max: 100,
-                        tickAmount: 5,
-                    },
-                    
-                ],
-                tooltip: {
-                  shared: false,
-                  intersect: true,
-                  x: {
-                    show: false
-                  }
-                },
-                legend: {
-                  horizontalAlign: "center",
-                //   offsetX: 40
-                }
-              };
-
-              //comparison end
-      
-             
-            // stack 100
-            
+  
             
             function kFormatter(num) {
                 return Math.abs(num) > 999 ? Math.sign(num)*((Math.abs(num)/1000).toFixed(1)) + 'k' : Math.sign(num)*Math.abs(num)
@@ -708,20 +540,40 @@
                     
 
                     vm.kpi = {
+                        // series: [{
+                        //     name: 'NODE MTTR',
+                        //     type: 'column',
+                        //     // data: [6.98, 6.34, 5.23, 6.26, 3.67, 5.48]
+                        //     data: response.data.data.kpi.mttr_node_display
+                        // }, {
+                        //     name: 'FOC MTTR',
+                        //     type: 'column',
+                        //     data: response.data.data.kpi.mttr_foc_display
+                        // }, {
+                        //     name: 'NET. AVA',
+                        //     type: 'line',
+                        //     data: response.data.data.kpi.net_ava
+                        // }],
+
                         series: [{
-                            name: 'NODE MTTR',
+                            name: 'FTTBTS POI',
                             type: 'column',
                             // data: [6.98, 6.34, 5.23, 6.26, 3.67, 5.48]
-                            data: response.data.data.kpi.mttr_node_display
+                            // data: response.data.data.kpi.mttr_node_display
+                            data: [1,2,3,4,5,6]
                         }, {
-                            name: 'FOC MTTR',
+                            name: 'FTTH POI',
                             type: 'column',
-                            data: response.data.data.kpi.mttr_foc_display
+                            // data: response.data.data.kpi.mttr_foc_display
+                            data: [2,3,4,5,6,7]
                         }, {
-                            name: 'NET. AVA',
+                            name: 'TOTAL',
                             type: 'line',
-                            data: response.data.data.kpi.net_ava
+                            // data: response.data.data.kpi.net_ava
+                            data: [3,5,7,9,11,13]
                         }],
+                        // colors: ['#fff', "#FF1654", "#247BA0"],
+
                         chart: {
                             height: 250,
                             type: 'line',
@@ -736,7 +588,7 @@
                             width: [1, 1, 4]
                         },
                         title: {
-                            text: 'Jan - '+response.data.data.kpi.last_month+' data',
+                            text: 'FTTBTS and FTTH POI',
                             align: 'left',
                             offsetX: 110
                         },
@@ -745,7 +597,8 @@
                             enabled: true,
                         },
                         xaxis: {
-                            categories: response.data.data.kpi.months_display,
+                            // categories: response.data.data.kpi.months_display,
+                            categories: ["NE MM", "SW MM", "NL", "SL", "VIS", "MIN"],
                         },
                         // annotations: {
                         //     yaxis: [
@@ -773,13 +626,13 @@
                                     color: primary
                                 },
                                 labels: {
-                                    formatter: (value) => value.toFixed(2),
+                                    // formatter: (value) => value.toFixed(2),
                                     style: {
                                         colors: primary,
                                     }
                                 },
                                 title: {
-                                    text: "NODE MTTR",
+                                    text: "FTTBTS POI",
                                     style: {
                                         color: primary,
                                     }
@@ -804,13 +657,13 @@
                                     color: success
                                 },
                                 labels: {
-                                    formatter: (value) => value.toFixed(2),
+                                    // formatter: (value) => value.toFixed(2),
                                     style: {
                                         colors: success,
                                     }
                                 },
                                 title: {
-                                    text: "FOC MTTR",
+                                    text: "FTTH POI",
                                     style: {
                                         color: success,
                                     }
@@ -831,21 +684,21 @@
                                     color: warning
                                 },
                                 labels: {
-                                    formatter: (value) => value.toFixed(3) +'%',
+                                    // formatter: (value) => value.toFixed(3) +'%',
                                     style: {
                                         colors: warning,
                                     },
                                 },
                                 title: {
-                                    text: "NET. AVA",
+                                    text: "TOTAL POI",
                                     style: {
                                         color: warning,
                                     }
                                 },
                                 forceNiceScale: false,
                                 
-                                min: 99,
-                                max: 100,
+                                // min: 99,
+                                // max: 100,
                                 tickAmount: 5,
 
                             },
@@ -959,6 +812,674 @@
                 }
             }, function (){ alert('Bad Request!!!') })
 
+            // 
+
+            vm.fttbts_poi = {
+         
+                series: [14, 23, 21, 17, 15, 10],
+                chart: {
+                    width: 530,
+                    type: 'polarArea',
+                },
+                labels:["NE MM", "SW MM", "NL", "SL", "VIS", "MIN"],
+                stroke: {
+                colors: ['#fff']
+                },
+                fill: {
+                opacity: 0.8
+                },
+                responsive: [{
+                breakpoint: 480,
+                options: {
+                    chart: {
+                        width: 200
+                    },
+                    legend: {
+                        position: 'top'
+                    }
+                }
+                }]
+
+            };
+
+            vm.ftth_poi = {
+         
+                series: [14, 23, 21, 17, 15, 10],
+                chart: {
+                    width: 530,
+                    type: 'polarArea',
+                },
+                labels:["NE MM", "SW MM", "NL", "SL", "VIS", "MIN"],
+                stroke: {
+                colors: ['#fff'],
+                },
+                fill: {
+                opacity: 0.8
+                },
+                responsive: [{
+                breakpoint: 480,
+                options: {
+                    chart: {
+                        width: 200
+                    },
+                    legend: {
+                        position: 'top'
+                    }
+                }
+                }]
+
+            };
+
+
+            vm.radial = {
+                series: [102, 55, 67],
+                chart: {
+                width: 500,
+                height: 300,
+                type: 'radialBar',
+                },
+                // title: {
+                //     text: 'PM ACCOMPLISHMENT (DIVISION LEVEL)',
+                //     align: 'left',
+                //     offsetX: 0
+                // },
+                labels: ['NL WEST', 'NL EAST', 'NL CENTRAL'],
+                plotOptions: {
+                radialBar: {
+                    dataLabels: {
+                    name: {
+                        fontSize: '22px',
+                    },
+                    value: {
+                        fontSize: '16px',
+                    },
+                    total: {
+                        show: true,
+                        label: 'Total',
+                        formatter: function (w) {
+                        // By default this function returns the average of all series. The below is just an example to show the use of custom formatter function
+                        return 249
+                        }
+                    }
+                    }
+                }
+                },
+                legend: {
+                        show: true,
+                        position: 'bottom'
+                      }
+                
+            }
+
+            vm.radar = {
+
+                series: [{
+                    name: 'Series 1',
+                    data: [80, 50, 30, 40, 100, 20, 100],
+                  }, {
+                    name: 'Series 2',
+                    data: [20, 30, 40, 80, 20, 80, 100],
+                  }, {
+                    name: 'Series 3',
+                    data: [44, 76, 78, 13, 43, 10, 100],
+                  }, {
+                    name: 'Series 3',
+                    data: [44, 76, 78, 13, 43, 10, 100],
+                  }
+                
+                
+                ],
+                    chart: {
+                    height: 350,
+                    type: 'radar',
+                    dropShadow: {
+                      enabled: true,
+                      blur: 1,
+                      left: 1,
+                      top: 1
+                    }
+                  },
+                  title: {
+                    text: 'Radar Chart - Multi Series'
+                  },
+                  stroke: {
+                    width: 2
+                  },
+                  fill: {
+                    opacity: 0.1
+                  },
+                  markers: {
+                    size: 0
+                  },
+                  xaxis: {
+                    categories: ['2011', '2012', '2013', '2014', '2015', '2016']
+                  }
+            }
+
+            vm.groupbar1 = {
+                series: [{
+                    data: [44, 55, 41, 64, 22, 43, 21, 11]
+                  }, {
+                    data: [53, 32, 33, 52, 13, 44, 32, 20]
+                  }],
+                    chart: {
+                    type: 'bar',
+                    height: 420,
+                    width: 400
+                  },
+                  plotOptions: {
+                    bar: {
+                      horizontal: true,
+                      dataLabels: {
+                        position: 'top',
+                      },
+                    }
+                  },
+                  dataLabels: {
+                    enabled: true,
+                    offsetX: -6,
+                    style: {
+                      fontSize: '12px',
+                      colors: ['#fff']
+                    }
+                  },
+                  stroke: {
+                    show: true,
+                    width: 1,
+                    colors: ['#fff']
+                  },
+                  tooltip: {
+                    shared: true,
+                    intersect: false
+                  },
+                  xaxis: {
+                    categories: [
+                        "NFS_WESTNL_FFS1",
+                        "NFS_WESTNL_FFS2",
+                        "NFS_WESTNL_FFS3",
+                        "NFS_EASTNL_FFS4",
+                        "NFS_EASTNL_FFS5",
+                        "NFS_CENTRALNL_FFS6",
+                        "NFS_CENTRALNL_FFS7",
+                        "NFS_CENTRALNL_FFS8", 
+                    ],
+                  },
+            }
+
+
+            vm.access_node1 = { 
+
+                series: [{
+                    name: 'TARGET',
+                    type: 'column',
+                    data: [140,84,73,133,98,145,187,77]
+                }, {
+                    name: 'ACTUAL',
+                    type: 'column',
+                    data: [140,72,65,133,98,138,160,75]
+                }, {
+                    name: 'COMPLETION',
+                    type: 'line',
+                    data: [100,86,89,100,100,95,86,97]
+                }],
+                // colors: ['#fff', "#FF1654", "#247BA0"],
+
+                chart: {
+                    height: 250,
+                    type: 'line',
+                    stacked: false,
+                     
+                },
+                dataLabels: {
+                    formatter: (value) => value.toFixed(3),
+                    enabled: false
+                },
+                stroke: {
+                    width: [1, 1, 4]
+                },
+                // title: {
+                //     text: 'PM ACCOMPLISHMENT (SECTION LEVEL)',
+                //     align: 'left',
+                //     offsetX: 0
+                // },
+                dataLabels: {
+                    // formatter: (value) => value.toFixed(3)+' = 12',
+                    enabled: true,
+                },
+
+                
+                xaxis: {
+                    
+                    // categories: response.data.data.kpi.months_display,
+                    categories: ["FFS1", "FFS2", "FFS3", "FFS4", "FFS5", "FFS6", "FFS7", "FFS8"],
+                },
+                // annotations: {
+                //     yaxis: [
+                //       {
+                //         y: 4,
+                //         borderColor: 'red',
+                //         label: {
+                //           borderColor: 'red',
+                //           style: {
+                //             color: '#fff',
+                //             background: 'red'
+                //           },
+                //           text: 'Y-axis annotation on 8800'
+                //         }
+                //       }
+                //     ]
+                //   },
+                yaxis: [
+                    {
+
+                        
+
+                        axisTicks: {
+                            show: true,
+                        },
+                        axisBorder: {
+                            show: true,
+                            color: primary
+                        },
+                        labels: {
+                            formatter: (value) => value.toFixed(2),
+                            style: {
+                                colors: primary,
+
+                                
+                            }
+                        },
+                        title: {
+                            text: "TARGET",
+                            style: {
+                                color: primary,
+                            }
+                        },
+                        tooltip: {
+                            enabled: true
+                        },
+                        min: 0,
+                        max: 300,
+                        tickAmount: 5,
+                        forceNiceScale: false,
+
+                        
+
+                    },
+                    {
+                        seriesName: '',
+                        opposite: true,
+                        axisTicks: {
+                            show: true,
+                        },
+                        axisBorder: {
+                            show: true,
+                            color: success
+                        },
+                        labels: {
+                            // formatter: (value) => value.toFixed(2),
+                            style: {
+                                colors: success,
+                            }
+                        },
+                        title: {
+                            text: "ACTUAL",
+                            style: {
+                                color: success,
+                            }
+                        },
+                        min: 0,
+                        max: 300,
+                        tickAmount: 5,
+                        forceNiceScale: false,
+                    },
+                    {
+                        dataLabels: {
+                            enabled: true,
+                            formatter: function (val) {
+                              return val + "%";
+                            }
+                            
+                          },
+                          
+                        seriesName: '',
+                        opposite: true,
+                        axisTicks: {
+                            show: true,
+                        },
+                        axisBorder: {
+                            show: true,
+                            color: warning
+                        },
+                        labels: {
+                            formatter: function (val) {
+                                return val + "%";
+                              },
+                            // formatter: (value) => value +'%',
+                            style: {
+                                colors: warning,
+                            },
+
+                            dataLabels: {
+                                enabled: true,
+                                formatter: function (val) {
+                                  return val + "%";
+                                }
+                                
+                              },
+                        },
+
+                       
+                        
+                        title: {
+                            text: "COMPLETION",
+                            style: {
+                                color: warning,
+                            }
+                        },
+                        forceNiceScale: false,
+                        
+                        min: 50,
+                        max: 100,
+                        tickAmount: 5,
+
+                        dataLabels: {
+                            enabled: true,
+                            formatter: function (val) {
+                              return val + "%";
+                            }
+                            
+                          },
+
+                    },
+                ],
+                tooltip: {
+                    fixed: {
+                        enabled: false,
+                        // position: 'topLeft', // topRight, topLeft, bottomRight, bottomLeft
+                        // offsetY: 30,
+                        offsetX: 160
+                    },
+                },
+                legend: {
+                    horizontalAlign: 'center',
+                    // offsetX: 40
+                }	 
+            }
+
+            vm.markershere = {
+                series: [
+                    {
+                      name: 'Actual',
+                      data: [
+                        {
+                          x: 'FFS1',
+                          y: 140,
+                          goals: [
+                            {
+                              name: 'Expected',
+                              value: 140,
+                              strokeWidth: 5,
+                              strokeColor: '#775DD0'
+                            }
+                          ]
+                        },
+                        {
+                          x: 'FFS2',
+                          y: 84,
+                          goals: [
+                            {
+                              name: 'Expected',
+                              value: 72,
+                              strokeWidth: 5,
+                              strokeColor: '#775DD0'
+                            }
+                          ]
+                        },
+                        {
+                          x: 'FFS3',
+                          y: 73,
+                          goals: [
+                            {
+                              name: 'Expected',
+                              value: 65,
+                              strokeWidth: 5,
+                              strokeColor: '#775DD0'
+                            }
+                          ]
+                        },
+                        {
+                          x: 'FFS4',
+                          y: 133,
+                          goals: [
+                            {
+                              name: 'Expected',
+                              value: 133,
+                              strokeWidth: 5,
+                              strokeColor: '#775DD0'
+                            }
+                          ]
+                        },
+                        {
+                          x: 'FFS5',
+                          y: 98,
+                          goals: [
+                            {
+                              name: 'Expected',
+                              value: 98,
+                              strokeWidth: 5,
+                              strokeColor: '#775DD0'
+                            }
+                          ]
+                        },
+                        {
+                          x: 'FFS6',
+                          y: 160,
+                          goals: [
+                            {
+                              name: 'Expected',
+                              value: 187,
+                              strokeWidth: 5,
+                              strokeColor: '#775DD0'
+                            }
+                          ]
+                        },
+                        {
+                          x: 'FFS7',
+                          y: 160,
+                          goals: [
+                            {
+                              name: 'Expected',
+                              value: 187,
+                              strokeWidth: 5,
+                              strokeColor: '#775DD0'
+                            }
+                          ]
+                        },
+                        {
+                          x: 'FFS8',
+                          y: 75,
+                          goals: [
+                            {
+                              name: 'Expected',
+                              value: 77,
+                              strokeWidth: 5,
+                              strokeColor: '#775DD0'
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ],
+                    chart: {
+                    height: 250,
+                    type: 'bar',
+                    fontSize: '8px',
+                  },
+                  plotOptions: {
+                    bar: {
+                      columnWidth: '100%',
+                      horizontal: true,
+                    }  
+                  },
+                  colors: ['#00E396'],
+                //   dataLabels: {
+                //     enabled: true
+                //   },
+                  dataLabels: {
+                    fontSize: '8px',
+                    formatter: function(val, opt) {
+                      const goals =
+                        opt.w.config.series[opt.seriesIndex].data[opt.dataPointIndex]
+                          .goals
+                  
+                      if (goals && goals.length) {
+                        return `${val} / ${goals[0].value}`
+                      }
+                      return val
+                    }
+                  },
+                  legend: {
+                    show: true,
+                    showForSingleSeries: true,
+                    customLegendItems: ['Actual', 'Expected'],
+                    markers: {
+                      fillColors: ['#00E396', '#775DD0']
+                    }
+                  }
+            }
+ 
+
+
+            var options = {
+                series: [
+                {
+                  name: 'Actual',
+                  data: [
+                    {
+                      x: '2011',
+                      y: 1292,
+                      goals: [
+                        {
+                          name: 'Expected',
+                          value: 1400,
+                          strokeWidth: 5,
+                          strokeColor: '#775DD0'
+                        }
+                      ]
+                    },
+                    {
+                      x: '2012',
+                      y: 4432,
+                      goals: [
+                        {
+                          name: 'Expected',
+                          value: 5400,
+                          strokeWidth: 5,
+                          strokeColor: '#775DD0'
+                        }
+                      ]
+                    },
+                    {
+                      x: '2013',
+                      y: 5423,
+                      goals: [
+                        {
+                          name: 'Expected',
+                          value: 5200,
+                          strokeWidth: 5,
+                          strokeColor: '#775DD0'
+                        }
+                      ]
+                    },
+                    {
+                      x: '2014',
+                      y: 6653,
+                      goals: [
+                        {
+                          name: 'Expected',
+                          value: 6500,
+                          strokeWidth: 5,
+                          strokeColor: '#775DD0'
+                        }
+                      ]
+                    },
+                    {
+                      x: '2015',
+                      y: 8133,
+                      goals: [
+                        {
+                          name: 'Expected',
+                          value: 6600,
+                          strokeWidth: 5,
+                          strokeColor: '#775DD0'
+                        }
+                      ]
+                    },
+                    {
+                      x: '2016',
+                      y: 7132,
+                      goals: [
+                        {
+                          name: 'Expected',
+                          value: 7500,
+                          strokeWidth: 5,
+                          strokeColor: '#775DD0'
+                        }
+                      ]
+                    },
+                    {
+                      x: '2017',
+                      y: 7332,
+                      goals: [
+                        {
+                          name: 'Expected',
+                          value: 8700,
+                          strokeWidth: 5,
+                          strokeColor: '#775DD0'
+                        }
+                      ]
+                    },
+                    {
+                      x: '2018',
+                      y: 6553,
+                      goals: [
+                        {
+                          name: 'Expected',
+                          value: 7300,
+                          strokeWidth: 5,
+                          strokeColor: '#775DD0'
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+                chart: {
+                height: 350,
+                type: 'bar'
+              },
+              plotOptions: {
+                bar: {
+                  columnWidth: '60%'
+                }
+              },
+              colors: ['#00E396'],
+              dataLabels: {
+                enabled: false
+              },
+              legend: {
+                show: true,
+                showForSingleSeries: true,
+                customLegendItems: ['Actual', 'Expected'],
+                markers: {
+                  fillColors: ['#00E396', '#775DD0']
+                }
+              }
+              };
+      
+              var chart = new ApexCharts(document.querySelector("#chart"), options);
+              chart.render();
             
         }
 

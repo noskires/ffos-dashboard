@@ -182,11 +182,11 @@
 		
 		<!-- apexcharts -->
 		
-
+		<script type="text/javascript" src="{{URL::to('public/node_modules/charts/apexcharts.min.js')}}"></script>
 		<script type="text/javascript" src="{{URL::to('public/node_modules/apexcharts-angularjs-master/dist/apexcharts.angularjs.min.js')}}"></script>
 
-		<!-- <script type="text/javascript" src="{{URL::to('public/node_modules/charts/apexcharts.js')}}"></script>
-		<script type="text/javascript" src="{{URL::to('public/node_modules/charts/widgets.js')}}"></script> -->
+		
+		<!-- <script type="text/javascript" src="{{URL::to('public/node_modules/charts/widgets.js')}}"></script> -->
 
 
 		<script src="{{URL::to('public/js/konsulta.js')}}"></script>
@@ -195,9 +195,12 @@
 		<script src="{{URL::to('public/js/controllers/employees.ctrl.js')}}"></script>
 		<script src="{{URL::to('public/js/controllers/divisions.ctrl.js')}}"></script>
 		<script src="{{URL::to('public/js/controllers/sections.ctrl.js')}}"></script>
+		<script src="{{URL::to('public/js/controllers/poi.ctrl.js')}}"></script>
+		<script src="{{URL::to('public/js/controllers/transport.ctrl.js')}}"></script>
+		<script src="{{URL::to('public/js/controllers/access.ctrl.js')}}"></script>
 
 		<script src="{{URL::to('public/js/controllers/static.pages.ctrl.js')}}"></script>
-
+		
 		<!-- Services -->
 		<script src="{{URL::to('public/js/services/employees.srvcs.js')}}"></script>
 		<script src="{{URL::to('public/js/services/divisions.srvcs.js')}}"></script>
@@ -205,9 +208,11 @@
 
 		<script src="{{URL::to('public/js/services/static.pages.srvcs.js')}}"></script>
 		<script src="{{URL::to('public/js/services/foc.srvcs.js')}}"></script>
+		<script src="{{URL::to('public/js/services/poi.srvcs.js')}}"></script>
+		<script src="{{URL::to('public/js/services/access.transport.srvcs.js')}}"></script>
+
 		<!-- end:: Additional Script -->
 
- 
 
 	</body>
 

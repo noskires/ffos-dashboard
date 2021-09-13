@@ -5,15 +5,15 @@ namespace App\Http\Controllers;
 // use Illuminate\Support\Facades\Request;
 use Illuminate\Http\Request;
 // use Illuminate\Support\Facades\Input;
+Use \Carbon\Carbon;
 
 use App\Models\Patient;
-use App\Models\Foc;
-use App\Models\Project;
+use App\Models\Foc; 
 use DB;
 use Requests;
 use DataTables;
 
-class ProjectsController extends Controller
+class PoiController extends Controller
 {
     public function index(){
         return view('index');
@@ -25,8 +25,6 @@ class ProjectsController extends Controller
             'division'=>$request->input('division'),
             'year'=>$request->input('year')
         );
-
-  
 
         if($req['division']==""){
             $req['division'] = "";
@@ -72,29 +70,28 @@ class ProjectsController extends Controller
         // }
 
 
-        // $data['top_contributor_node'] = $this->get_top_contributor($req['year'], $req['division'], '', 'NODE'); 
-        // $data['top_contributor_foc'] = $this->get_top_contributor($req['year'], $req['division'], '', 'FOC'); 
+        $data['top_contributor_node'] = $this->get_top_contributor($req['year'], $req['division'], '', 'NODE'); 
+        $data['top_contributor_foc'] = $this->get_top_contributor($req['year'], $req['division'], '', 'FOC'); 
 
-        // $mttr_node_sa = $this->get_mttr($req['year'], 6, $req['division'], '', 'NODE', 'Y');
-        // $mttr_foc_sa = $this->get_mttr($req['year'], 6, $req['division'], '', 'FOC', 'Y');
+        $mttr_node_sa = $this->get_mttr($req['year'], 6, $req['division'], '', 'NODE', 'Y');
+        $mttr_foc_sa = $this->get_mttr($req['year'], 6, $req['division'], '', 'FOC', 'Y');
 
-        // $data['kpi'] = $this->get_net_ava_node($mttr_node_sa, $mttr_foc_sa, $req['year'], $req['division'], '');
+        $data['kpi'] = $this->get_net_ava_node($mttr_node_sa, $mttr_foc_sa, $req['year'], $req['division'], '');
 
-        // $data['mttr_node'] = $this->get_mttr($req['year'], 6, $req['division'], '', 'NODE', 'Y');
-        // $data['mttr_foc'] = $this->get_mttr($req['year'], 6, $req['division'], '', 'FOC', 'Y');
-
-
-        $data['secondary_rehab'] = $this->projects('Secondary Rehab');
+        $data['mttr_node'] = $this->get_mttr($req['year'], 6, $req['division'], '', 'NODE', 'Y');
+        $data['mttr_foc'] = $this->get_mttr($req['year'], 6, $req['division'], '', 'FOC', 'Y');
         
         $data['division'] = $req['division'];
         return response()->json([
             'status'=>200,
             'data'=>$data,
-            // 'count'=>$foc->count(),
+            'count'=>$foc->count(),
             'message'=>''
         ],200,[], JSON_NUMERIC_CHECK);
         
     }
+
+
 
     public function get_per_section_weekly($section){
         
@@ -288,6 +285,7 @@ class ProjectsController extends Controller
     function get_net_ava_node($get_mttr_node, $get_mttr_foc, $year, $division, $field_force){
 
         $highest_month = Foc::where('year','=', $year)->max('month');
+        // $highest_month = Foc::where('year','=', $year)->max('month');
 
         $months         = array("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec");
         $days_per_month = array(31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31);
@@ -295,7 +293,7 @@ class ProjectsController extends Controller
         if($year==2020){
             $ne_per_month   = array(3090, 3219, 3197, 3586, 3695, 3695, 3714, 3688, 3679, 3679, 3675, 3664);
         }else{
-            $ne_per_month   = array(3653, 3653, 3664, 3685, 3685, 3685, 3685, 3685, 3685, 3685, 3685, 3685);
+            $ne_per_month   = array(3653, 3653, 3664, 3685, 3685, 3658, 3658, 3658, 3658, 3658, 3658, 3658);
         }
         
         
@@ -406,110 +404,4 @@ class ProjectsController extends Controller
     }
 
 
-    function projects($project_type){
-
-        $secondary_rehab_status = Project::select('project_status')->where('project_type', $project_type)->groupby('project_status')->get();
-        
-        $projects = Project::select(
-            'section',
-            'project_status',
-            DB::raw("COUNT(*) as total_project")
-        )->where('project_type', $project_type)->groupby('section', 'project_status')->get();
-
-        $sections = array(
-            array('id'=>1, "section"=>"NFS_WESTNL_FFS1"),
-            array('id'=>2, "section"=>"NFS_WESTNL_FFS2"),
-            array('id'=>3, "section"=>"NFS_WESTNL_FFS3"),
-            array('id'=>4, "section"=>"NFS_EASTNL_FFS4"),
-            array('id'=>5, "section"=>"NFS_EASTNL_FFS5"),
-            array('id'=>6, "section"=>"NFS_CENTRALNL_FFS6"),
-            array('id'=>7, "section"=>"NFS_CENTRALNL_FFS7"),
-            array('id'=>8, "section"=>"NFS_CENTRALNL_FFS8")
-        );
-
-        $statuses = array(
-            array("id"=>1, "name"=>"OPEN"),
-            array("id"=>2, "name"=>"ONGOING"),
-            array("id"=>3, "name"=>"FOR IMPLEMENTATION"),
-            array("id"=>4, "name"=>"ACCEPTED")
-        );
-
-        $data['OPEN'] = array();
-
-        $data['sec'] = array();
-        $data['Accepted'] = array();
-
-        foreach ($secondary_rehab_status as $key=>$status) {
-            $data[$status->project_status] = array();
-        }
-
-        foreach ($statuses as $key1=>$status) {
-            $data[$status['name']] = array();
-        }
-
-        foreach ($secondary_rehab_status as $key2=>$status) {
-                foreach ($sections as $key=>$section) {
-            
-                // return  $this->get_count_of_project("OPEN", $status);
-                array_push($data[$status->project_status], $this->get_count_of_project($section['section'], $status->project_status));
-            }
-
-        }
-        return $data;
-        // foreach ($sections as $key2=>$section) {
-
-        //     array_push($data['sec'], $section['section']);
-
-        //     foreach ($projects as $key=>$project) {
-
-        //         foreach ($statuses as $key1=>$status) {
-                    
-        //             // if(!array_search($section['section'], array_column($projects->all(), 'section'))){
-        //             //     $data[$status['name']][$section['section']] = 0;
-        //             // }
-
-        //             if($section['section']==$project['section']){
-        //                 // $project['total_project'];
-
-        //                 if(trim($project['project_status'])=="Open"){
-        //                     $data[$status['name']][$section['section']] = $data[$status['name']][$section['section']] + $project['total_project'];
-        //                 }else{
-        //                     $data[$status['name']][$section['section']] = 0;
-        //                 }
-
-        //                 // if(trim($project['project_status'])=="Open"){
-        //                 //     array_push($data[$status['name']], $project['total_project']);
-        //                 // }else{
-        //                 //     array_push($data[$status['name']], 0);
-        //                 // }
-
-        //             }
-
-        //         }
-        //     }
-        // }
-
-
-        // foreach ($data['OPEN'] as $key1=>$open_data) {
-        //     $data['open_data'] = array();
-        // }
-        
-
-        $data['projects'] = $projects;
-        return $data;
-    }
-
-    function get_count_of_project($section, $status)
-    {
-
-        $projects = Project::select('*')
-        ->where('project_type', 'Secondary Rehab')
-        ->where('project_status', $status)
-        ->where('section', $section)
-        ->count();
-
-        return $projects;
-    }
-    
-    
 }
