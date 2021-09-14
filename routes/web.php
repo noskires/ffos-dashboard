@@ -46,6 +46,9 @@ Route::get('dashboard/billing-fh/{year}', [AccessTransportController::class, 'in
 Route::get('dashboard/scorecard-fc/{year}', [AccessTransportController::class, 'index']);
 Route::get('dashboard/scorecard-fh/{year}', [AccessTransportController::class, 'index']);
 
+// SECONDARY MTTR
+Route::get('dashboard/secondary-mttr/{year}', [AccessTransportController::class, 'index']);
+
 Route::get('project_update', [FocController::class, 'index']);
 
 // Route::get('patients', [PatientController::class, 'index']);

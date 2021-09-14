@@ -584,35 +584,35 @@
                 series: [
                     {
                     name: 'FFS1',
-                    data: [80, 82, 80]
+                    data: [80, 82, 80, 80.67]
                   }, 
                   {
                     name: 'FFS2',
-                    data: [84, 84, 84]
+                    data: [84, 84, 84, 84.00]
                   }, 
                   {
                     name: 'FFS3',
-                    data: [79, 80, 82]
+                    data: [79, 80, 82, 80.33]
                   }, 
                   {
                     name: 'FFS4',
-                    data: [82, 85, 84]
+                    data: [82, 85, 84, 80.67]
                   }, 
                   {
                     name: 'FFS5',
-                    data: [81, 85, 88]
+                    data: [81, 85, 88, 84.67]
                   }, 
                   {
                     name: 'FFS6',
-                    data: [82, 82, 82]
+                    data: [82, 82, 82, 82]
                   }, 
                   {
                     name: 'FFS7',
-                    data: [92, 92, 92]
+                    data: [92, 92, 92, 92]
                   }, 
                   {
                     name: 'FFS8',
-                    data: [84, 84, 84]
+                    data: [84, 84, 84, 84]
                   }, 
                   
                 ],
@@ -627,6 +627,8 @@
                       horizontal: false,
                       columnWidth: '55%',
                       endingShape: 'rounded',
+                 
+                      borderRadius: 6,
                     //   colors: {
                     //         ranges: [{
                     //             from: 0,
@@ -648,7 +650,7 @@
                     colors: ['transparent']
                   },
                   xaxis: {
-                    categories: ['Apr', 'May', 'Jun'],
+                    categories: ['Apr', 'May', 'Jun', "2Q AVG"],
                   },
                   yaxis: {
                     title: {

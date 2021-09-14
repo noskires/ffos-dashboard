@@ -92,6 +92,10 @@
 							@include('pages.scorecard_fh')
 						</script>
 
+						<script type="text/ng-template" id="secondary.mttr.view">
+							@include('pages.secondary_mttr')
+						</script>
+
 						<script type="text/ng-template" id="patient.view">
 							@include('pages.patient-list')
 						</script>

@@ -117,6 +117,14 @@
                 templateUrl: 'scorecard.fh.view'
             })
 
+            // SECONDARY MTTR
+
+            .state('secondary-mttr', {
+                url: '/dashboard/secondary-mttr/:year',
+                controller: 'SecondaryMttrCtrl as SecondaryMttrCtrl',
+                templateUrl: 'secondary.mttr.view'
+            })
+
             // .state('patients', {
             //     url: '/patients',
             //     controller: 'EmployeesCtrl as EmployeesCtrl',

@@ -65,7 +65,7 @@
                             <span class="text-muted mt-3 font-weight-bold font-size-lg">AS OF SEPTEMBER 04, 2021</span>
 						</h3>
 						<div class="card-toolbar">
-							<div class="font-weight-bolder font-size-h1 text-dark-90 warning">114</div>
+							<div class="font-weight-bolder font-size-h1 text-dark-90 warning">59/114</div>
 						</div>
 					</div>
 					<!--end::Header-->
@@ -88,7 +88,7 @@
                             
 						</h3>
 						<div class="card-toolbar">
-							<div class="font-weight-bolder font-size-h1 text-dark-200">141</div>
+							<div class="font-weight-bolder font-size-h1 text-dark-200">35/141</div>
 						</div>
 					</div>
 					<!--end::Header-->
@@ -110,7 +110,7 @@
                         <span class="text-muted mt-3 font-weight-bold font-size-lg">AS OF SEPTEMBER 04, 2021</span>
 						</h3>
 						<div class="card-toolbar">
-							<div class="font-weight-bolder font-size-h1 text-dark-75">45</div>
+							<div class="font-weight-bolder font-size-h1 text-dark-75">31/45</div>
 						</div>
 					</div>
 					<!--end::Header-->
