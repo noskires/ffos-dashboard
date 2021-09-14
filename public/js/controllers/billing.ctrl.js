@@ -380,15 +380,15 @@
             vm.billing_august = {
                 series: [{
                     name: 'PENDING',
-                    data: [1, 1, 0, 0, 0, 1, 0, 3],
+                    data: [0, 0, 0, 0, 0, 0, 0, 0],
                     color: danger
                   }, {
                     name: 'ONGOING',
-                    data: [1, 0, 2, 3, 3, 0, 2, 0],
+                    data: [2, 1, 2, 0, 0, 1, 2, 3],
                     color: warning
                   }, {
                     name: 'COMPLETED',
-                    data: [0, 0, 0, 0, 0, 0, 0, 0],
+                    data: [0, 0, 0, 3, 3, 0, 0, 0],
                     color: success
                   }],
                     chart: {
@@ -423,7 +423,6 @@
                   },
             }
             
-
             vm.billing_fh_august = {
                 series: [{
                     name: 'PENDING',
@@ -431,11 +430,11 @@
                     color: danger
                   }, {
                     name: 'ONGOING',
-                    data: [1, 1, 1, 1, 0, 1, 1, 1],
+                    data: [0, 0, 0, 0, 0, 0, 0, 0],
                     color: warning
                   }, {
                     name: 'COMPLETED',
-                    data: [0, 0, 0, 0, 1, 0, 0, 0],
+                    data: [1, 1, 1, 1, 1, 1, 1, 1],
                     color: success
                   }],
                     chart: {

@@ -186,7 +186,80 @@
             </div>
         </div>
 
+
+        <div class="row"> 
+            <div class="col-lg-6">
+                <!--begin::Card-->
+                <div class="card card-custom gutter-b">
+                    <div class="card-header">
+                        <div class="card-title">
+                            <h3 class="card-label">FTTH POI - NLZ > DIVISION </h3>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <!--begin::Chart-->
+                        <div class="d-flex justify-content-center" apexcharts options="PoiCtrl.nl_pie_ftth"></div>
+                        <!--end::Chart-->
+                    </div>
+                </div>
+                <!--end::Card-->
+            </div> 
+            <div class="col-lg-6">
+                <!--begin::Card-->
+                <div class="card card-custom gutter-b">
+                    <div class="card-header">
+                        <div class="card-title">
+                            <h3 class="card-label">FTTBTS POI - NLZ > DIVISION </h3>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <!--begin::Chart-->
+                        <!-- <div id="chart" class="d-flex justify-content-center"></div> -->
+                        <div class="d-flex justify-content-center" apexcharts options="PoiCtrl.nl_pie_fttbts"></div>
+                        <!--end::Chart-->
+                    </div>
+                </div>
+                <!--end::Card-->
+            </div>
+        </div>
+
+        <div class="row"> 
+            <div class="col-lg-6">
+                <!--begin::Card-->
+                <div class="card card-custom gutter-b">
+                    <div class="card-header">
+                        <div class="card-title">
+                            <h3 class="card-label">FTTH POI - NLZ > DIVISION > SECTION </h3>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <!--begin::Chart-->
+                        <div class="d-flex justify-content-center" apexcharts options="PoiCtrl.nl_section_ftth"></div>
+                        <!--end::Chart-->
+                    </div>
+                </div>
+                <!--end::Card-->
+            </div> 
+            <div class="col-lg-6">
+                <!--begin::Card-->
+                <div class="card card-custom gutter-b">
+                    <div class="card-header">
+                        <div class="card-title">
+                            <h3 class="card-label">FTTBTS POI - NLZ > DIVISION > SECTION </h3>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <!--begin::Chart-->
+                        <!-- <div id="chart" class="d-flex justify-content-center"></div> -->
+                        <div class="d-flex justify-content-center" apexcharts options="PoiCtrl.nl_section_fttbts"></div>
+                        <!--end::Chart-->
+                    </div>
+                </div>
+                <!--end::Card-->
+            </div>
+        </div>
+
  
  
- 
+        
 <!--end::Entry-->

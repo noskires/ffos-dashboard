@@ -646,6 +646,107 @@
                 }]
 
             };
+
+
+            vm.nl_pie_fttbts = {
+                series: [61, 55, 43],
+                chart: {
+                width: 380,
+                type: 'pie',
+                },
+                labels: ['NL WEST', 'NL EAST', 'NL CENTRAL'],
+                responsive: [{
+                breakpoint: 480,
+                options: {
+                    chart: {
+                    width: 200
+                    },
+                    legend: {
+                    position: 'bottom'
+                    }
+                }
+                }]
+            }
+
+            vm.nl_pie_ftth = {
+                series: [532, 492, 280],
+                chart: {
+                width: 380,
+                type: 'pie',
+                },
+                labels: ['NL WEST', 'NL EAST', 'NL CENTRAL'],
+                responsive: [{
+                breakpoint: 480,
+                options: {
+                    chart: {
+                    width: 200
+                    },
+                    legend: {
+                    position: 'bottom'
+                    }
+                }
+                }]
+            }
+
+            vm.nl_section_ftth = {
+                series: [{
+                    data: [175, 258, 99, 276, 216, 132, 83, 65]
+                  }],
+                    chart: {
+                    type: 'bar',
+                    height: 250,
+                    width: 350,
+                  },
+                  plotOptions: {
+                    bar: {
+                      borderRadius: 4,
+                      horizontal: true,
+                    }
+                  },
+                  dataLabels: {
+                    enabled: false
+                  },
+                  xaxis: {
+                    categories: ["WESTNL_FFS1", 
+                    "WESTNL_FFS2", 
+                    "WESTNL_FFS3", 
+                    "EASTNL_FFS4", 
+                    "EASTNL_FFS5", 
+                    "CENTRALNL_FFS6", 
+                    "CENTRALNL_FFS7", 
+                    "CENTRALNL_FFS8"],
+                  }
+            }
+
+            vm.nl_section_fttbts = {
+                series: [{
+                    data: [11, 42, 8, 36, 19, 32, 5, 6]
+                  }],
+                    chart: {
+                    type: 'bar',
+                    height: 250,
+                    width: 350,
+                  },
+                  plotOptions: {
+                    bar: {
+                      borderRadius: 4,
+                      horizontal: true,
+                    }
+                  },
+                  dataLabels: {
+                    enabled: false
+                  },
+                  xaxis: {
+                    categories: ["WESTNL_FFS1", 
+                    "WESTNL_FFS2", 
+                    "WESTNL_FFS3", 
+                    "EASTNL_FFS4", 
+                    "EASTNL_FFS5", 
+                    "CENTRALNL_FFS6", 
+                    "CENTRALNL_FFS7", 
+                    "CENTRALNL_FFS8"],
+                  }
+            }
  
             
         }
