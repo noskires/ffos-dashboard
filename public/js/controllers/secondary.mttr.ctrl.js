@@ -73,7 +73,7 @@
               },
               tooltip: {
                 x: {
-                  format: 'dd/MM/yy HH:mm'
+                //   format: 'dd/MM/yy HH:mm'
                 },
               },
             }
@@ -114,7 +114,7 @@
 
                 vm.mttr_summary = {
                     series: [{
-                        name: 'OPERATIONAL (DA)',
+                        name: 'OPERATIONAL (DAY)',
                         data: [1.1, 1.2, 0.9, 0.9, 0.9, 0.8, 0.8, 0.6]
                       }, {
                         name: 'ALL IN (DAY)',
@@ -136,7 +136,7 @@
                       },
                       tooltip: {
                         x: {
-                          format: 'dd/MM/yy HH:mm'
+                        //   format: 'dd/MM/yy HH:mm'
                         },
                       },
                     }
