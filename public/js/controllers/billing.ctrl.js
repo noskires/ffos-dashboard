@@ -384,11 +384,11 @@
                     color: danger
                   }, {
                     name: 'ONGOING',
-                    data: [2, 1, 2, 0, 0, 1, 2, 3],
+                    data: [2, 1, 2, 0, 0, 0, 0, 0],
                     color: warning
                   }, {
                     name: 'COMPLETED',
-                    data: [0, 0, 0, 3, 3, 0, 0, 0],
+                    data: [0, 0, 0, 3, 3, 1, 2, 3],
                     color: success
                   }],
                     chart: {
