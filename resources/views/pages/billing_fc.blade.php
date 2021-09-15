@@ -62,7 +62,7 @@
                 <div class="card card-custom gutter-b">
                     <div class="card-header">
                         <div class="card-title">
-                        <h3 class="card-label">BILLING STATUS FOR AUG 2021</h3>
+                        <h3 class="card-label">BILLING STATUS FOR AUG 2021 <span class="text-muted mt-3 font-weight-bold font-size-lg">AS OF SEPTEMBER 14, 2021 05:00 PM </h3>
                         </div>
                     </div>
                     <div class="card-body">
