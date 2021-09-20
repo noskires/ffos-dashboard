@@ -56,8 +56,12 @@
 							@include('pages.content_section')
 						</script>
 
-						<script type="text/ng-template" id="project_update.view">
-							@include('pages.project_update')
+						<script type="text/ng-template" id="project.view">
+							@include('pages.project')
+						</script>
+
+						<script type="text/ng-template" id="project.import.view">
+							@include('pages.project-import')
 						</script>
 
 						<script type="text/ng-template" id="poi.view">

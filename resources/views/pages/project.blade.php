@@ -65,7 +65,7 @@
                             <span class="text-muted mt-3 font-weight-bold font-size-lg">AS OF SEPTEMBER 04, 2021</span>
 						</h3>
 						<div class="card-toolbar">
-							<div class="font-weight-bolder font-size-h1 text-dark-90 warning">59/114</div>
+							<div class="font-weight-bolder font-size-h1 text-dark-90 warning"><%ProjectCtrl.primary_rebuild_summary.completed%>/<%ProjectCtrl.primary_rebuild_summary.overall%></div>
 						</div>
 					</div>
 					<!--end::Header-->
@@ -88,7 +88,7 @@
                             
 						</h3>
 						<div class="card-toolbar">
-							<div class="font-weight-bolder font-size-h1 text-dark-200">35/141</div>
+							<div class="font-weight-bolder font-size-h1 text-dark-200"><%ProjectCtrl.primary_rehab_summary.completed%>/<%ProjectCtrl.primary_rehab_summary.overall%></div>
 						</div>
 					</div>
 					<!--end::Header-->
@@ -110,7 +110,7 @@
                         <span class="text-muted mt-3 font-weight-bold font-size-lg">AS OF SEPTEMBER 04, 2021</span>
 						</h3>
 						<div class="card-toolbar">
-							<div class="font-weight-bolder font-size-h1 text-dark-75">31/45</div>
+							<div class="font-weight-bolder font-size-h1 text-dark-75"><%ProjectCtrl.secondary_rehab_summary.completed%>/<%ProjectCtrl.secondary_rehab_summary.overall%></div>
 						</div>
 					</div>
 					<!--end::Header-->
@@ -140,7 +140,7 @@
                 <!--end::Header-->
                 <div class="card-body">
                     <!--begin::Chart-->
-                    <div apexcharts options="StaticCtrl.primary_rebuild"></div>
+                    <div apexcharts options="ProjectCtrl.primary_rebuild"></div>
                     <!--end::Chart-->
                 </div>
             </div>
@@ -164,7 +164,7 @@
                 <!--end::Header-->
                 <div class="card-body">
                     <!--begin::Chart-->
-                    <div apexcharts options="StaticCtrl.primary_rehab"></div>
+                    <div apexcharts options="ProjectCtrl.primary_rehab"></div>
                     <!--end::Chart-->
                 </div>
             </div>
@@ -189,7 +189,7 @@
                 <!--end::Header-->
                 <div class="card-body">
                     <!--begin::Chart-->
-                    <div apexcharts options="StaticCtrl.secondary_rehab"></div>
+                    <div apexcharts options="ProjectCtrl.secondary_rehab"></div>
                     <!--end::Chart-->
                 </div>
             </div>
@@ -217,8 +217,8 @@
                     </div> 
                 </div> 
                 <div class="card-body"> 
-                    <%StaticCtrl.secondary_rehab%> 
-                    <div apexcharts options="StaticCtrl.annotation"></div> 
+                    <%ProjectCtrl.secondary_rehab%> 
+                    <div apexcharts options="ProjectCtrl.annotation"></div> 
                 </div>
             </div> 
         </div>

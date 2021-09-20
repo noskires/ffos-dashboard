@@ -203,17 +203,20 @@
 		<script src="{{URL::to('public/js/controllers/scorecard.ctrl.js')}}"></script>
 		<script src="{{URL::to('public/js/controllers/secondary.mttr.ctrl.js')}}"></script>
 		
-		<script src="{{URL::to('public/js/controllers/static.pages.ctrl.js')}}"></script>
+		<script src="{{URL::to('public/js/controllers/projects.ctrl.js')}}"></script>
+		<script src="{{URL::to('public/js/services/projects.srvcs.js')}}"></script>
 		
 		<!-- Services -->
 		<script src="{{URL::to('public/js/services/employees.srvcs.js')}}"></script>
 		<script src="{{URL::to('public/js/services/divisions.srvcs.js')}}"></script>
 		<script src="{{URL::to('public/js/services/sections.srvcs.js')}}"></script>
 
-		<script src="{{URL::to('public/js/services/static.pages.srvcs.js')}}"></script>
+		
 		<script src="{{URL::to('public/js/services/foc.srvcs.js')}}"></script>
 		<script src="{{URL::to('public/js/services/poi.srvcs.js')}}"></script>
 		<script src="{{URL::to('public/js/services/access.transport.srvcs.js')}}"></script>
+
+		
 
 		<!-- end:: Additional Script -->
 

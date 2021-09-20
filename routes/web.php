@@ -5,6 +5,8 @@ use App\Http\Controllers\PatientController;
 use App\Http\Controllers\FocController;
 use App\Http\Controllers\PoiController;
 use App\Http\Controllers\AccessTransportController;
+use App\Http\Controllers\FileUpload;
+use App\Http\Controllers\MyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,7 +24,7 @@ Route::get('/', function () {
 });
 
 Route::get('index', [PatientController::class, 'index']);
-Route::get('patients', [PatientController::class, 'index']);
+// Route::get('patients', [PatientController::class, 'index']);
 Route::get('dashboard', [FocController::class, 'index']);
 Route::get('dashboard/kpi/{year}', [FocController::class, 'index']);
 Route::get('dashboard/kpi/{year}/{division}', [FocController::class, 'index']);
@@ -49,7 +51,17 @@ Route::get('dashboard/scorecard-fh/{year}', [AccessTransportController::class, '
 // SECONDARY MTTR
 Route::get('dashboard/secondary-mttr/{year}', [AccessTransportController::class, 'index']);
 
-Route::get('project_update', [FocController::class, 'index']);
+Route::get('dashboard/projects/{year}', [FocController::class, 'index']);
+Route::get('dashboard/project-import', [FocController::class, 'index']);
+Route::get('dashboard/project-export', [MyController::class, 'export'])->name('export');
+
+Route::get('/upload-file', [FileUpload::class, 'createForm']);
+Route::post('/upload-file', [FileUpload::class, 'fileUpload'])->name('fileUpload');
+
+
+Route::get('importExportView', [MyController::class, 'importExportView']);
+// Route::get('export', [MyController::class, 'export'])->name('export');
+Route::post('import', [MyController::class, 'import'])->name('import');
 
 // Route::get('patients', [PatientController::class, 'index']);
 // Route::get('registration', [PatientController::class, 'index']);

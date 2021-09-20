@@ -54,10 +54,24 @@
                 templateUrl: 'section.view'
             })
 
-            .state('project_update', {
-                url: '/project_update',
-                controller: 'StaticCtrl as StaticCtrl',
-                templateUrl: 'project_update.view'
+            // Projects
+
+            .state('projects', {
+                url: '/dashboard/projects/:year',
+                controller: 'ProjectCtrl as ProjectCtrl',
+                templateUrl: 'project.view'
+            })
+
+            .state('project-import', {
+                url: '/dashboard/project-import',
+                controller: 'ProjectCtrl as ProjectCtrl',
+                templateUrl: 'project.import.view'
+            })
+
+            .state('project-export', {
+                url: '/dashboard/project-export',
+                // controller: 'ProjectCtrl as ProjectCtrl',
+                // templateUrl: 'project.export.view'
             })
 
             // POI
