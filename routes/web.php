@@ -52,8 +52,9 @@ Route::get('dashboard/scorecard-fh/{year}', [AccessTransportController::class, '
 Route::get('dashboard/secondary-mttr/{year}', [AccessTransportController::class, 'index']);
 
 Route::get('dashboard/projects/{year}', [FocController::class, 'index']);
-Route::get('dashboard/project-import', [FocController::class, 'index']);
+Route::get('dashboard/project-import-view', [FocController::class, 'index']);
 Route::get('dashboard/project-export', [MyController::class, 'export'])->name('export');
+Route::post('dashboard/project-import', [MyController::class, 'import'])->name('import');
 
 Route::get('/upload-file', [FileUpload::class, 'createForm']);
 Route::post('/upload-file', [FileUpload::class, 'fileUpload'])->name('fileUpload');
@@ -61,7 +62,7 @@ Route::post('/upload-file', [FileUpload::class, 'fileUpload'])->name('fileUpload
 
 Route::get('importExportView', [MyController::class, 'importExportView']);
 // Route::get('export', [MyController::class, 'export'])->name('export');
-Route::post('import', [MyController::class, 'import'])->name('import');
+// Route::post('import', [MyController::class, 'import'])->name('import');
 
 // Route::get('patients', [PatientController::class, 'index']);
 // Route::get('registration', [PatientController::class, 'index']);

@@ -62,10 +62,16 @@
                 templateUrl: 'project.view'
             })
 
-            .state('project-import', {
-                url: '/dashboard/project-import',
+            .state('project-import-view', {
+                url: '/dashboard/project-import-view',
                 controller: 'ProjectCtrl as ProjectCtrl',
                 templateUrl: 'project.import.view'
+            })
+
+            .state('project-import', {
+                url: '/dashboard/project-import',
+                // controller: 'ProjectCtrl as ProjectCtrl',
+                // templateUrl: 'project.export.view'
             })
 
             .state('project-export', {
