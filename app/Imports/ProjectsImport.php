@@ -31,13 +31,13 @@ class ProjectsImport implements ToModel, WithHeadingRow
             'project_status' => $row['project_status'],
         ]);
 
-        return $collection = Project::select(
-            'id', 
-            'division',
-            'section',
-            'project_name',
-            'project_status',
-            'project_type',
-        );
+        // return $collection = Project::select(
+        //     'id', 
+        //     'division',
+        //     'section',
+        //     'project_name',
+        //     'project_status',
+        //     'project_type',
+        // );
     }
 }
