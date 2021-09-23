@@ -8,6 +8,7 @@ use App\Http\Controllers\ProjectsController;
 use App\Http\Controllers\DivisionsController;
 use App\Http\Controllers\SectionsController;
 use App\Http\Controllers\ExportPatientController;
+use App\Http\Controllers\AsOfDateController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,5 +43,11 @@ Route::get('v1/section_kpi', [SectionsController::class, 'show']);
 // Projects
 Route::get('v1/projects', [ProjectsController::class, 'show']);
 Route::get('v1/projects1', [ProjectsController::class, 'get_count_of_project']);
+
+// As of date
+Route::get('v1/as-of-dates', [AsOfDateController::class, 'show']);
+Route::get('v2/as-of-dates', [AsOfDateController::class, 'show2']);
+Route::post('v1/as-of-date/store', [AsOfDateController::class, 'store']);
+Route::post('v1/as-of-date/update', [AsOfDateController::class, 'update']);
 
 // Route::get('/export-transactions','ExportExcelController@exportTransactions');

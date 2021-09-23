@@ -22,21 +22,17 @@ class MyController extends Controller
     */
     public function export() 
     {
-        return Excel::download(new ProjectsExport, 'Projects.xlsx');
+        return Excel::download(new ProjectsExport, 'Primary and Secondary Projects.xlsx');
     }
      
     /**
     * @return \Illuminate\Support\Collection
     */
-    public function import() 
+    public function import()
     {
         Excel::import(new ProjectsImport,request()->file('file'));
              
         return back();
     }
 
-
-    // ?????????????
-
-    
 }

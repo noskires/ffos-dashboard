@@ -100,6 +100,14 @@
 							@include('pages.secondary_mttr')
 						</script>
 
+						<script type="text/ng-template" id="as_of_date.view">
+							@include('pages.as_of_date')
+						</script>
+
+						<script type="text/ng-template" id="as_of_date_admin.view">
+							@include('pages.as_of_date_admin')
+						</script>
+
 						<script type="text/ng-template" id="patient.view">
 							@include('pages.patient-list')
 						</script>
@@ -109,6 +117,7 @@
 					<!--end::Content-->
 
 					@include("partials/_footer")
+				
 				</div>
 
 				<!--end::Wrapper-->

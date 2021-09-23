@@ -5,6 +5,7 @@ use App\Http\Controllers\PatientController;
 use App\Http\Controllers\FocController;
 use App\Http\Controllers\PoiController;
 use App\Http\Controllers\AccessTransportController;
+use App\Http\Controllers\AsOfDateController;
 use App\Http\Controllers\FileUpload;
 use App\Http\Controllers\MyController;
 
@@ -52,15 +53,21 @@ Route::get('dashboard/scorecard-fh/{year}', [AccessTransportController::class, '
 Route::get('dashboard/secondary-mttr/{year}', [AccessTransportController::class, 'index']);
 
 Route::get('dashboard/projects/{year}', [FocController::class, 'index']);
-Route::get('dashboard/project-import-view', [FocController::class, 'index']);
+Route::get('dashboard/project-import-export', [FocController::class, 'index']);
 Route::get('dashboard/project-export', [MyController::class, 'export'])->name('export');
 Route::post('dashboard/project-import', [MyController::class, 'import'])->name('import');
 
 Route::get('/upload-file', [FileUpload::class, 'createForm']);
 Route::post('/upload-file', [FileUpload::class, 'fileUpload'])->name('fileUpload');
 
+Route::get('dashboard/as-of-date', [AsOfDateController::class, 'index']);
+Route::get('dashboard/as-of-date-admin', [AsOfDateController::class, 'index']);
 
-Route::get('importExportView', [MyController::class, 'importExportView']);
+// AS OF DATE
+
+// Route::get('as', [MyController::class, 'importExportView']);
+
+
 // Route::get('export', [MyController::class, 'export'])->name('export');
 // Route::post('import', [MyController::class, 'import'])->name('import');
 

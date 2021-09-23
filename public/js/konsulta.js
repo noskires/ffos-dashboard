@@ -62,8 +62,8 @@
                 templateUrl: 'project.view'
             })
 
-            .state('project-import-view', {
-                url: '/dashboard/project-import-view',
+            .state('project-import-export', {
+                url: '/dashboard/project-import-export',
                 controller: 'ProjectCtrl as ProjectCtrl',
                 templateUrl: 'project.import.view'
             })
@@ -143,6 +143,20 @@
                 url: '/dashboard/secondary-mttr/:year',
                 controller: 'SecondaryMttrCtrl as SecondaryMttrCtrl',
                 templateUrl: 'secondary.mttr.view'
+            })
+
+            // AS OF DATE
+
+            .state('as-of-date', {
+                url: '/dashboard/as-of-date',
+                controller: 'AsOfDateCtrl as AsOfDateCtrl',
+                templateUrl: 'as_of_date.view'
+            })
+
+            .state('as-of-date-admin', {
+                url: '/dashboard/as-of-date-admin',
+                controller: 'AsOfDateCtrl as AsOfDateCtrl',
+                templateUrl: 'as_of_date_admin.view'
             })
 
             // .state('patients', {

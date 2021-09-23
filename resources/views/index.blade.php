@@ -23,6 +23,8 @@
 		<link href="{{URL::to('public/assets/plugins/custom/prismjs/prismjs.bundle.css')}}" rel="stylesheet" type="text/css" />
 		<link href="{{URL::to('public/assets/css/style.bundle.css')}}" rel="stylesheet" type="text/css" />
 		<link href="{{URL::to('public/assets/css/style.mykee.css')}}" rel="stylesheet" type="text/css" />
+
+
 		<!--end::Global Theme Styles-->
 
 		<!--begin::Layout Themes(used by all pages)-->
@@ -31,7 +33,33 @@
 		<!--begin::Datatables-->
 		<link href="{{URL::to('public/assets/plugins/custom/datatables/datatables.bundle.css')}}" rel="stylesheet" type="text/css" />
 		<!--end::Datatables-->
+		<style type="text/css">
+			label{
+				color:black;
+			}
+			
+			.fade.in {
+				opacity: 1;
+			}
 
+			.modal.in .modal-dialog {
+				-webkit-transform: translate(0, 0);
+				-o-transform: translate(0, 0);
+				transform: translate(0, 0);
+			}
+
+			.modal-backdrop.in {
+				filter: alpha(opacity=50);
+				opacity: .5;
+			}
+
+			@media (min-width: 768px) {
+				.modal-xlg {
+					width: 90%;
+					max-width:1200px;
+				}
+			}
+		</style>
 		<link rel="shortcut icon" href="{{URL::to('public/assets/media/logos/nfs2.PNG')}}" />
 		@if(Config::get('defaults.default.is_local')==1)
 		<base href="/ffos-kpi/">
@@ -45,17 +73,17 @@
 	<!--begin::Body-->
 	<body id="kt_body" class="page-loading-enabled page-loading header-fixed header-mobile-fixed subheader-enabled page-loading">
 
-		@include('partials._page-loader');
+		@include('partials._page-loader')
 		
-		@include('layout');
+		@include('layout')
 
-		@include('partials._extras.offcanvas.quick-user');
+		@include('partials._extras.offcanvas.quick-user')
 
-		@include('partials._extras.offcanvas.quick-panel');
+		@include('partials._extras.offcanvas.quick-panel')
 
-		@include('partials._extras.chat');
+		@include('partials._extras.chat')
 
-		@include('partials._extras.scrolltop');
+		@include('partials._extras.scrolltop')
 		<script>
 			var HOST_URL = "https://preview.keenthemes.com/keen/theme/tools/preview";
 		</script>
@@ -119,7 +147,7 @@
 					}
 				},
 				"font-family": "Poppins"
-			};
+			}
 		</script>
  
 
@@ -175,19 +203,17 @@
 		<!-- Sweet Alert -->
 		<script type="text/javascript" src="{{URL::to('public/node_modules/angular-sweetalert/SweetAlert.min.js')}}"></script>
 		<script type="text/javascript" src="{{URL::to('public/node_modules/sweetalert/dist/sweetalert.min.js')}}"></script> 
+		<link rel="stylesheet" type="text/css" href="{{URL::to('public/node_modules/sweetalert/dist/sweetalert.css')}}">  
 
 		<!-- Chart Js -->
 		<script type="text/javascript" src="{{URL::to('public/node_modules/angular-chart.js/chart.min.js')}}"></script>
 		<script type="text/javascript" src="{{URL::to('public/node_modules/angular-chart.js/angular-chart.min.js')}}"></script>
 		
 		<!-- apexcharts -->
-		
 		<script type="text/javascript" src="{{URL::to('public/node_modules/charts/apexcharts.min.js')}}"></script>
 		<script type="text/javascript" src="{{URL::to('public/node_modules/apexcharts-angularjs-master/dist/apexcharts.angularjs.min.js')}}"></script>
 
-		
 		<!-- <script type="text/javascript" src="{{URL::to('public/node_modules/charts/widgets.js')}}"></script> -->
-
 
 		<script src="{{URL::to('public/js/konsulta.js')}}"></script>
 
@@ -203,8 +229,12 @@
 		<script src="{{URL::to('public/js/controllers/scorecard.ctrl.js')}}"></script>
 		<script src="{{URL::to('public/js/controllers/secondary.mttr.ctrl.js')}}"></script>
 		
+		
 		<script src="{{URL::to('public/js/controllers/projects.ctrl.js')}}"></script>
 		<script src="{{URL::to('public/js/services/projects.srvcs.js')}}"></script>
+
+		<script src="{{URL::to('public/js/controllers/as.of.date.ctrl.js')}}"></script>
+		<script src="{{URL::to('public/js/services/as.of.date.srvcs.js')}}"></script>
 		
 		<!-- Services -->
 		<script src="{{URL::to('public/js/services/employees.srvcs.js')}}"></script>

@@ -62,7 +62,7 @@
 					<div class="card-header border-0 pt-6">
 						<h3 class="card-title align-items-start flex-column">
 							<span class="card-label font-weight-bolder font-size-h4 text-dark-75"># PRIMARY REBUILD PROJECT</span>
-                            <span class="text-muted mt-3 font-weight-bold font-size-lg">AS OF SEPTEMBER 04, 2021</span>
+                            <span class="text-muted mt-3 font-weight-bold font-size-lg">AS OF <%ProjectCtrl.primary_rebuild_as_of%></span>
 						</h3>
 						<div class="card-toolbar">
 							<div class="font-weight-bolder font-size-h1 text-dark-90 warning"><%ProjectCtrl.primary_rebuild_summary.completed%>/<%ProjectCtrl.primary_rebuild_summary.overall%></div>
@@ -84,7 +84,7 @@
 					<div class="card-header border-0 pt-6">
 						<h3 class="card-title align-items-start flex-column">
 							<span class="card-label font-weight-bolder font-size-h4 text-dark-75"># PRIMARY REHAB PROJECT</span>
-							<span class="text-muted mt-3 font-weight-bold font-size-lg">AS OF SEPTEMBER 04, 2021</span>
+							<span class="text-muted mt-3 font-weight-bold font-size-lg">AS OF <%ProjectCtrl.primary_rehab_as_of%></span>
                             
 						</h3>
 						<div class="card-toolbar">
@@ -107,7 +107,7 @@
 					<div class="card-header border-0 pt-6">
 						<h3 class="card-title align-items-start flex-column">
                         <span class="card-label font-weight-bolder font-size-h4 text-dark-75"># SECONDARY REHAB PROJECT</span>
-                        <span class="text-muted mt-3 font-weight-bold font-size-lg">AS OF SEPTEMBER 04, 2021</span>
+                        <span class="text-muted mt-3 font-weight-bold font-size-lg">AS OF <%ProjectCtrl.secondary_rehab_as_of%></span>
 						</h3>
 						<div class="card-toolbar">
 							<div class="font-weight-bolder font-size-h1 text-dark-75"><%ProjectCtrl.secondary_rehab_summary.completed%>/<%ProjectCtrl.secondary_rehab_summary.overall%></div>
