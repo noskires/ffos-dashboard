@@ -108,6 +108,26 @@
 							@include('pages.as_of_date_admin')
 						</script>
 
+						<script type="text/ng-template" id="organization_section.view">
+							@include('pages.organization_section')
+						</script>
+
+						<script type="text/ng-template" id="organization_division.view">
+							@include('pages.organization_division')
+						</script>
+
+						<script type="text/ng-template" id="organization_center.view">
+							@include('pages.organization_center')
+						</script>
+
+						<script type="text/ng-template" id="network_element.view">
+							@include('pages.network_element')
+						</script>
+
+						<script type="text/ng-template" id="organizational_chart.view">
+							@include('pages.organizational_chart')
+						</script>
+
 						<script type="text/ng-template" id="patient.view">
 							@include('pages.patient-list')
 						</script>

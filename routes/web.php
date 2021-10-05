@@ -8,6 +8,10 @@ use App\Http\Controllers\AccessTransportController;
 use App\Http\Controllers\AsOfDateController;
 use App\Http\Controllers\FileUpload;
 use App\Http\Controllers\MyController;
+use App\Http\Controllers\OrganizationSectionController;
+use App\Http\Controllers\OrganizationDivisionController;
+use App\Http\Controllers\OrganizationCenterController;
+use App\Http\Controllers\NetworkElementsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -62,6 +66,17 @@ Route::post('/upload-file', [FileUpload::class, 'fileUpload'])->name('fileUpload
 
 Route::get('dashboard/as-of-date', [AsOfDateController::class, 'index']);
 Route::get('dashboard/as-of-date-admin', [AsOfDateController::class, 'index']);
+
+// ORGANIZATION
+Route::get('organizational-chart', [OrganizationSectionController::class, 'index']);
+
+Route::get('organization/sections', [OrganizationSectionController::class, 'index']);
+Route::get('organization/divisions', [OrganizationDivisionController::class, 'index']);
+Route::get('organization/centers', [OrganizationCenterController::class, 'index']);
+
+
+// NE
+Route::get('network-elements', [NetworkElementsController::class, 'index']);
 
 // AS OF DATE
 

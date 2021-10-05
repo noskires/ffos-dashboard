@@ -361,6 +361,11 @@
 						</ul>
 					</div>
 				</li>
+				<li class="menu-item" aria-haspopup="true">
+					<a href="organizational-chart" class="menu-link">
+						<span class="menu-text">About</span>
+					</a>
+				</li>
 <!-- 
 				<div class="pull-right">
 				 	<b><h4>Date: {{ \Carbon\Carbon::now()->format('M d, Y H:i:s A') }}</h4> </b>

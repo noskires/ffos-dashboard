@@ -159,23 +159,41 @@
                 templateUrl: 'as_of_date_admin.view'
             })
 
-            // .state('patients', {
-            //     url: '/patients',
-            //     controller: 'EmployeesCtrl as EmployeesCtrl',
-            //     templateUrl: 'patients.view'
-            // })
+            // ORGANIZATIONS
 
-            // .state('registration', {
-            //     url: '/registration',
-            //     controller: 'EmployeesCtrl as EmployeesCtrl',
-            //     templateUrl: 'registration.view'
-            // })
+            .state('organzation-section', {
+                url: '/organization/sections',
+                controller: 'OrganizationSectionCtrl as OrganizationSectionCtrl',
+                templateUrl: 'organization_section.view'
+            })
 
-            // .state('employee-details', {
-            //     url: '/employee/:id/:actionType',
-            //     controller: 'EmployeesCtrl as EmployeesCtrl',
-            //     templateUrl: 'employees.view'
-            // })
+            .state('organzation-division', {
+                url: '/organization/divisions',
+                controller: 'OrganizationDivisionCtrl as OrganizationDivisionCtrl',
+                templateUrl: 'organization_division.view'
+            })
+
+            .state('organzation-center', {
+                url: '/organization/centers',
+                controller: 'OrganizationCenterCtrl as OrganizationCenterCtrl',
+                templateUrl: 'organization_center.view'
+            })
+
+            // NETWORK ELEMENTS
+
+            .state('network-element', {
+                url: '/network-elements',
+                controller: 'NetworkElementsCtrl as NetworkElementsCtrl',
+                templateUrl: 'network_element.view'
+            })
+
+            // NETWORK ELEMENTS
+
+            .state('organizational-chart', {
+                url: '/organizational-chart',
+                // controller: 'NetworkElementsCtrl as NetworkElementsCtrl',
+                templateUrl: 'organizational_chart.view'
+            })
 
             $urlRouterProvider.otherwise('/index');
 

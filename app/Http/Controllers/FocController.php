@@ -93,63 +93,63 @@ class FocController extends Controller
         
     }
 
-    public function get_per_section_weekly($section){
+    // public function get_per_section_weekly($section){
         
-        $foc_per_week = Foc::select('new_node_owner',"week_number", 
-                    DB::raw("COUNT(*) as total_ticket"),
-                    DB::raw('ROUND(AVG(duration),2) as avg_duration')
-                )
-                ->where('is_service_affecting', 'Y')
-                ->where('region', "NL")
-                ->where('new_node_owner', $section)
-                ->where('week_number', '<=',22)
-                ->groupby('new_node_owner','week_number')->get();
+    //     $foc_per_week = Foc::select('new_node_owner',"week_number", 
+    //                 DB::raw("COUNT(*) as total_ticket"),
+    //                 DB::raw('ROUND(AVG(duration),2) as avg_duration')
+    //             )
+    //             ->where('is_service_affecting', 'Y')
+    //             ->where('region', "NL")
+    //             ->where('new_node_owner', $section)
+    //             ->where('week_number', '<=',22)
+    //             ->groupby('new_node_owner','week_number')->get();
 
-        $foc_ytd = Foc::select(DB::raw("COUNT(id) as total_ticket"),  DB::raw('ROUND(AVG(duration),4) as avg_duration'))
-                ->where('is_service_affecting', 'Y')
-                ->where('region', "NL")
-                ->where('week_number', '<=',22)
-                ->where('new_node_owner', $section)->get();
+    //     $foc_ytd = Foc::select(DB::raw("COUNT(id) as total_ticket"),  DB::raw('ROUND(AVG(duration),4) as avg_duration'))
+    //             ->where('is_service_affecting', 'Y')
+    //             ->where('region', "NL")
+    //             ->where('week_number', '<=',22)
+    //             ->where('new_node_owner', $section)->get();
     
  
-        $data['foc'] = array('per_week'=>$foc_per_week,'total_ticket'=>$foc_ytd);
-        // $data['per_week'] = $foc;
-        // $data['total_ticket'] = $total_ticket;
-        // $data['avg_duration'] = $avg_duration;
-        return $data;
-    }
+    //     $data['foc'] = array('per_week'=>$foc_per_week,'total_ticket'=>$foc_ytd);
+    //     // $data['per_week'] = $foc;
+    //     // $data['total_ticket'] = $total_ticket;
+    //     // $data['avg_duration'] = $avg_duration;
+    //     return $data;
+    // }
 
-    public function get_per_section_monthly($section){
+    // public function get_per_section_monthly($section){
         
-        $foc_per_week = Foc::select('new_node_owner',"month", 
-                    DB::raw("COUNT(*) as total_ticket"),
-                    DB::raw('ROUND(AVG(duration),2) as avg_duration')
-                )
-                ->where('is_service_affecting', 'Y')
-                ->where('region', "NL")
-                ->where('new_node_owner', $section)
-                ->where('month', '<=',6)
-                ->groupby('new_node_owner','month')->get();
+    //     $foc_per_week = Foc::select('new_node_owner',"month", 
+    //                 DB::raw("COUNT(*) as total_ticket"),
+    //                 DB::raw('ROUND(AVG(duration),2) as avg_duration')
+    //             )
+    //             ->where('is_service_affecting', 'Y')
+    //             ->where('region', "NL")
+    //             ->where('new_node_owner', $section)
+    //             ->where('month', '<=',6)
+    //             ->groupby('new_node_owner','month')->get();
 
-        $foc_ytd = Foc::select(DB::raw("COUNT(id) as total_ticket"), 
-                DB::raw('ROUND(AVG(duration),4) as avg_duration'))
-                ->where('is_service_affecting', 'Y')
-                ->where('region', "NL")
-                ->where('month', '<=',5)
-                ->where('new_node_owner', $section)->get();
+    //     $foc_ytd = Foc::select(DB::raw("COUNT(id) as total_ticket"), 
+    //             DB::raw('ROUND(AVG(duration),4) as avg_duration'))
+    //             ->where('is_service_affecting', 'Y')
+    //             ->where('region', "NL")
+    //             ->where('month', '<=',5)
+    //             ->where('new_node_owner', $section)->get();
 
         
 
-        $data['foc'] = array('per_month'=>$foc_per_week,'ytd'=>$foc_ytd);
-        // $data['per_week'] = $foc;
-        // $data['total_ticket'] = $total_ticket;
-        // $data['avg_duration'] = $avg_duration;
+    //     $data['foc'] = array('per_month'=>$foc_per_week,'ytd'=>$foc_ytd);
+    //     // $data['per_week'] = $foc;
+    //     // $data['total_ticket'] = $total_ticket;
+    //     // $data['avg_duration'] = $avg_duration;
 
 
         
             
-        return $data;
-    }
+    //     return $data;
+    // }
 
     public function get_top_contributor($year, $division, $section, $type){
         $highest_month = Foc::where('year','=', $year)->max('month');

@@ -213,6 +213,10 @@
 		<script type="text/javascript" src="{{URL::to('public/node_modules/charts/apexcharts.min.js')}}"></script>
 		<script type="text/javascript" src="{{URL::to('public/node_modules/apexcharts-angularjs-master/dist/apexcharts.angularjs.min.js')}}"></script>
 
+		<!-- Org chart -->
+		<script type="text/javascript" src="{{URL::to('public/node_modules/OrgChart-master/src/js/jquery.orgchart.js')}}"></script>
+		<link rel="stylesheet" type="text/css" href="{{URL::to('public/node_modules/OrgChart-master/css/jquery.orgchart.css')}}">  
+
 		<!-- <script type="text/javascript" src="{{URL::to('public/node_modules/charts/widgets.js')}}"></script> -->
 
 		<script src="{{URL::to('public/js/konsulta.js')}}"></script>
@@ -235,6 +239,18 @@
 
 		<script src="{{URL::to('public/js/controllers/as.of.date.ctrl.js')}}"></script>
 		<script src="{{URL::to('public/js/services/as.of.date.srvcs.js')}}"></script>
+
+		<script src="{{URL::to('public/js/controllers/organization.center.ctrl.js')}}"></script>
+		<script src="{{URL::to('public/js/services/organization.center.srvcs.js')}}"></script>
+
+		<script src="{{URL::to('public/js/controllers/organization.division.ctrl.js')}}"></script>
+		<script src="{{URL::to('public/js/services/organization.division.srvcs.js')}}"></script>
+
+		<script src="{{URL::to('public/js/controllers/organization.section.ctrl.js')}}"></script>
+		<script src="{{URL::to('public/js/services/organization.section.srvcs.js')}}"></script>
+
+		<script src="{{URL::to('public/js/controllers/network.elements.ctrl.js')}}"></script>
+		<script src="{{URL::to('public/js/services/network.elements.srvcs.js')}}"></script>
 		
 		<!-- Services -->
 		<script src="{{URL::to('public/js/services/employees.srvcs.js')}}"></script>

@@ -9,6 +9,10 @@ use App\Http\Controllers\DivisionsController;
 use App\Http\Controllers\SectionsController;
 use App\Http\Controllers\ExportPatientController;
 use App\Http\Controllers\AsOfDateController;
+use App\Http\Controllers\OrganizationSectionController;
+use App\Http\Controllers\OrganizationDivisionController;
+use App\Http\Controllers\OrganizationCenterController;
+use App\Http\Controllers\NetworkElementsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,5 +53,29 @@ Route::get('v1/as-of-dates', [AsOfDateController::class, 'show']);
 Route::get('v2/as-of-dates', [AsOfDateController::class, 'show2']);
 Route::post('v1/as-of-date/store', [AsOfDateController::class, 'store']);
 Route::post('v1/as-of-date/update', [AsOfDateController::class, 'update']);
+
+
+// Organizations
+Route::get('v1/organization-sections', [OrganizationSectionController::class, 'show']);
+Route::get('v2/organization-sections', [OrganizationSectionController::class, 'show2']);
+Route::post('v1/organization-section/store', [OrganizationSectionController::class, 'store']);
+Route::post('v1/organization-section/update', [OrganizationSectionController::class, 'update']);
+
+Route::get('v1/organization-divisions', [OrganizationDivisionController::class, 'show']);
+Route::get('v2/organization-divisions', [OrganizationDivisionController::class, 'show2']);
+Route::post('v1/organization-division/store', [OrganizationDivisionController::class, 'store']);
+Route::post('v1/organization-division/update', [OrganizationDivisionController::class, 'update']);
+
+Route::get('v1/organization-centers', [OrganizationCenterController::class, 'show']);
+Route::get('v2/organization-centers', [OrganizationCenterController::class, 'show2']);
+Route::post('v1/organization-center/store', [OrganizationCenterController::class, 'store']);
+Route::post('v1/organization-center/update', [OrganizationCenterController::class, 'update']);
+
+// NE
+
+Route::get('v1/network-elements', [NetworkElementsController::class, 'show']);
+Route::get('v2/network-elements', [NetworkElementsController::class, 'show2']);
+Route::post('v1/network-element/store', [NetworkElementsController::class, 'store']);
+Route::post('v1/network-element/update', [NetworkElementsController::class, 'update']);
 
 // Route::get('/export-transactions','ExportExcelController@exportTransactions');
