@@ -856,7 +856,7 @@
             { 
 				name: "Miranda, Ronald S. ", 
                 avatar: "public/assets/img/RSM.png",
-				title: 'Center Head/VP',
+				title: 'Center Head/AVP',
 				className: 'middle-level',
 				'children': [
 					{'name':'Mercado Jr., Carlos G. ', 'title': 'Division Head', 'className': 'rd-dept', avatar: "public/assets/img/CGM.png",
