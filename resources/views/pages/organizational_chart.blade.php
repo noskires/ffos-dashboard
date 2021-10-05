@@ -861,13 +861,13 @@
 				'children': [
 					{'name':'Mercado Jr., Carlos G. ', 'title': 'Division Head', 'className': 'rd-dept', avatar: "public/assets/img/CGM.png",
 						'children': [
-							{'name':'Garvez, Anjela P.', 'title': 'Executive Secretary', 'className': 'frontend1', avatar: "public/assets/img/APG.JPG",},
+							{'name':'Garvez, Anjela P.', 'title': 'Executive Secretary', 'className': 'frontend1', avatar: "public/assets/img/APG.jpg",},
 							{'name':'Agustin, Rajesh Khan D.', 'title': 'Section Head', 'className': 'frontend1', avatar: "public/assets/img/RDA.png",
 								'children': [
 									{'name':'Angeles, Janver D.', 'title': 'Telecom Engineer', 'className': 'pipeline1', avatar: "public/assets/img/JDA.png"},
 									{'name':'Concepcion, Ryan Leandro N.', 'title': 'Telecom Engineer', 'className': 'pipeline1', avatar: "public/assets/img/RNC.png"},
-									{'name':'Dela Resma, Gian Carlo V.', 'title': 'Jr Telecom Engineer', 'className': 'pipeline1', avatar: "public/assets/img/GVD.JPG"},
-									{'name':'Supnet, Erikson B.', 'title': 'Telecom Engineer', 'className': 'pipeline1', avatar:'public/assets/img/EBS.PNG'},
+									{'name':'Dela Resma, Gian Carlo V.', 'title': 'Jr Telecom Engineer', 'className': 'pipeline1', avatar: "public/assets/img/GVD.jpg"},
+									{'name':'Supnet, Erikson B.', 'title': 'Telecom Engineer', 'className': 'pipeline1', avatar:'public/assets/img/EBS.png'},
 									{'name':'Urbano, Cleto B.', 'title': 'Telecom Engineer', 'className': 'pipeline1', avatar: "public/assets/img/CBU.png"},
 								]
 							},
@@ -876,7 +876,7 @@
 									{'name':'Esguerra, Ryan Christian V.', 'title': 'Jr Telecom Engineer', 'className': 'pipeline1', avatar: "public/assets/img/RVE.png"},
 									{'name':'Manalo, Carlito D.', 'title': 'Telecom Associate', 'className': 'pipeline1', avatar: "public/assets/img/CDM.png"},
 									{'name':'Matias, John Austin S.', 'title': 'Jr Telecom Engineer', 'className': 'pipeline1', avatar: "public/assets/img/JSM.png"},
-									{'name':'Ramones, Aljhun C.', 'title': 'Jr Telecom Engineer', 'className': 'pipeline1', avatar: "public/assets/img/ACR.JPEG"}
+									{'name':'Ramones, Aljhun C.', 'title': 'Jr Telecom Engineer', 'className': 'pipeline1', avatar: "public/assets/img/ACR.jpeg"}
 								]
 							}
 						]
