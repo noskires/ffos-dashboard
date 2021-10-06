@@ -57,7 +57,7 @@
                 "CENTRALNL_FFS8", 
             ];
             vm.value_target = [38,37,11,70,33,47,60,48];
-            vm.value_actual = [10,22,7,41,10,13,54,28];
+            vm.value_actual = [20,22,7,45,16,20,54,40];
             vm.series = [];
             vm.overall_target = 0;
             vm.overall_actual = 0;
@@ -150,7 +150,7 @@
             }
  
             vm.overall_status = {
-                series: [54],
+                series: [65],
                 chart: {
                     height: 200,
                     type: 'radialBar',
@@ -167,7 +167,7 @@
             };
 
             vm.dfon_status = {
-                series: [53],
+                series: [57],
                 chart: {
                     height: 200,
                     type: 'radialBar',
@@ -183,7 +183,7 @@
             };
 
             vm.ief_status = {
-                series: [62],
+                series: [76],
                 chart: {
                     height: 200,
                     type: 'radialBar',
@@ -199,7 +199,7 @@
             };
 
             vm.fitl_status = {
-                series: [29],
+                series: [41],
                 chart: {
                     height: 200,
                     type: 'radialBar',
@@ -221,7 +221,7 @@
                       data: [
                         {
                           x: 'NL WEST',
-                          y: 39,
+                          y: 49,
                           goals: [
                             {
                               name: 'Expected',
@@ -233,7 +233,7 @@
                         },
                         {
                           x: 'NL EAST',
-                          y: 51,
+                          y: 61,
                           goals: [
                             {
                               name: 'Expected',
@@ -245,7 +245,7 @@
                         },
                         {
                           x: 'NL CENTRAL',
-                          y: 95,
+                          y: 114,
                           goals: [
                             {
                               name: 'Expected',

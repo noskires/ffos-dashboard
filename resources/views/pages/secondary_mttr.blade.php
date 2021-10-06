@@ -67,7 +67,7 @@
                 <div class="card card-custom gutter-b">
                     <div class="card-header">
                         <div class="card-title">
-                        <h5 class="card-label">MTTR SECONDARY SUMMARY </h5>
+                        <h5 class="card-label">MTTR SECONDARY SUMMARY (FEB - SEP 2021) </h5>
                         </div>
                     </div>
                     <div class="card-body">
@@ -86,7 +86,7 @@
                 <div class="card card-custom gutter-b">
                     <div class="card-header">
                         <div class="card-title">
-                        <h3 class="card-label">MTTR - AGEING DAY ALL IN</h3>
+                        <h3 class="card-label">MTTR - AGEING DAY (SDT CREATION)</h3>
                         </div>
                     </div>
                     <div class="card-body">
@@ -103,7 +103,7 @@
                 <div class="card card-custom gutter-b">
                     <div class="card-header">
                         <div class="card-title">
-                        <h3 class="card-label">MTTR - AGEING DAY UNDER FFS</h3>
+                        <h3 class="card-label">MTTR - AGEING DAY (FFS HANDLING)</h3>
                         </div>
                     </div>
                     <div class="card-body">

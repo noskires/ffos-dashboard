@@ -65,7 +65,7 @@
 						<h3 class="card-title align-items-start flex-column">
 							<span class="card-label font-weight-bolder font-size-h4 text-dark-75">OVERALL COMPLETION </span> 
                              
-							<span class="text-muted mt-3 font-weight-bold font-size-lg">AS OF 08/31/2021</span>
+							<span class="text-muted mt-3 font-weight-bold font-size-lg">AS OF 09/30/2021</span>
 							<!-- <span class="text-muted mt-3 font-weight-bold font-size-lg"><%FocInventoryCtrl.ytd_avg_duration_foc | number:2%> FOC MTTR (SA)</span> -->
 						</h3>
 						<div class="card-toolbar">
