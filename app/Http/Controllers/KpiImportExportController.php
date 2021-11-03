@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
     
 use Illuminate\Http\Request;
+use App\Models\Foc;
 // use App\Exports\ProjectsExport;
 use App\Imports\KpiImport;
 use Maatwebsite\Excel\Facades\Excel;
@@ -34,5 +35,11 @@ class KpiImportExportController extends Controller
              
         return back();
     }
+
+    public function truncateKpiTable()
+    {
+        Foc::truncate();
+    }
+
 
 }

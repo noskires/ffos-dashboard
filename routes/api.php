@@ -14,6 +14,7 @@ use App\Http\Controllers\OrganizationDivisionController;
 use App\Http\Controllers\OrganizationCenterController;
 use App\Http\Controllers\NetworkElementsController;
 use App\Http\Controllers\FocInventoryController;
+use App\Http\Controllers\KpiImportExportController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,6 +44,8 @@ Route::get('v1/foc', [FocController::class, 'show']);
 Route::get('v1/list_per_week', [FocController::class, 'show']);
 Route::get('v1/division_kpi', [DivisionsController::class, 'show']);
 Route::get('v1/section_kpi', [SectionsController::class, 'show']);
+
+Route::get('v1/truncate-kpi-123', [KpiImportExportController::class, 'truncateKpiTable']);
 // Route::get('v1/list', [DivisionsController::class, 'list']);
 
 // Projects

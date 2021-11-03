@@ -16,7 +16,7 @@ class KpiImport implements ToModel, WithHeadingRow
 
     public function __construct()
     {
-        Foc::truncate();
+        // Foc::truncate();
     }
 
 
