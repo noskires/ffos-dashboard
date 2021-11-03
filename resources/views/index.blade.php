@@ -229,6 +229,7 @@
 		<script src="{{URL::to('public/js/controllers/transport.ctrl.js')}}"></script>
 		<script src="{{URL::to('public/js/controllers/access.ctrl.js')}}"></script>
 		<script src="{{URL::to('public/js/controllers/foc.inventory.ctrl.js')}}"></script>
+		<script src="{{URL::to('public/js/services/foc.inventory.srvcs.js')}}"></script>
 		<script src="{{URL::to('public/js/controllers/billing.ctrl.js')}}"></script>
 		<script src="{{URL::to('public/js/controllers/scorecard.ctrl.js')}}"></script>
 		<script src="{{URL::to('public/js/controllers/secondary.mttr.ctrl.js')}}"></script>
@@ -262,10 +263,7 @@
 		<script src="{{URL::to('public/js/services/poi.srvcs.js')}}"></script>
 		<script src="{{URL::to('public/js/services/access.transport.srvcs.js')}}"></script>
 
-		
-
 		<!-- end:: Additional Script -->
-
 
 	</body>
 

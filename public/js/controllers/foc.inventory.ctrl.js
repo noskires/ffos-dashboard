@@ -2,14 +2,14 @@
     'use strict';
     angular
         .module('konsulta')
-        .controller('FocInventoryCtrl', FocInventoryCtrl) 
+        .controller('FocInventoryCtrl', FocInventoryCtrl)
+        .controller('AddFocInventoryCtrl', AddFocInventoryCtrl)
+        .controller('EditFocInventoryCtrl', EditFocInventoryCtrl)
 
-        FocInventoryCtrl.$inject = ['AccessTransportSrvcs', 'DivisionsSrvcs', 'FocSrvcs', '$scope', '$stateParams', '$state', '$uibModal', '$window', '$rootScope', '$compile', 'DTOptionsBuilder', 'DTColumnBuilder', 'SweetAlert'];
-        function FocInventoryCtrl(AccessTransportSrvcs, DivisionsSrvcs, FocSrvcs, $scope, $stateParams, $state, $uibModal, $window, $rootScope, $compile, DTOptionsBuilder, DTColumnBuilder, SweetAlert){
+        FocInventoryCtrl.$inject = ['FocInventorySrvcs', 'DivisionsSrvcs', 'FocSrvcs', '$scope', '$stateParams', '$state', '$uibModal', '$window', '$rootScope', '$compile', 'DTOptionsBuilder', 'DTColumnBuilder', 'SweetAlert'];
+        function FocInventoryCtrl(FocInventorySrvcs, DivisionsSrvcs, FocSrvcs, $scope, $stateParams, $state, $uibModal, $window, $rootScope, $compile, DTOptionsBuilder, DTColumnBuilder, SweetAlert){
             var vm = this;
             var data = {};
-
- 
 
             const primary = '#6993FF';
             const success = '#1BC5BD';
@@ -44,7 +44,92 @@
                 
             }
 
+            // Start Automation here
+
+            vm.edit = function(id){
+ 
+
+              FocInventorySrvcs.list({id:id, inventory_code:''}).then (function (response) {
+                    if(response.data.status == 200)
+                    {
+
+                        vm.list = response.data.data[0];
+
+                        $uibModal.open({
+                            templateUrl: 'edit-foc-inventory-modal',
+                            controller: 'EditFocInventoryCtrl',
+                            controllerAs: 'FocInventoryCtrl',
+                            backdrop: 'static',
+                            keyboard  : false,
+                            resolve :{
+                                collection: function () {
+                                    return {
+                                        data: vm.list
+                                    };
+                                }
+                            },
+                            // size: 'lg'
+                        });
+
+                        return false;
+                    }
+                }, function (){ alert('Bad Request!!!') })
+            }
+
+            vm.add = function(){
+                
+                $uibModal.open({
+                    templateUrl: 'add-foc-inventory-modal',
+                    controller: 'AddFocInventoryCtrl',
+                    controllerAs: 'FocInventoryCtrl',
+                    backdrop: 'static',
+                    keyboard  : false,
+                    resolve :{
+                        collection: function () {
+                            return {
+                                data: null
+                            };
+                        }
+                    },
+                    // size: 'lg'
+                });
+            }
+
+
+            vm.renderActions = function(data) {
+              return ' <a nowrap="nowrap" href="#" ng-click="FocInventoryCtrl.edit(\'' + data + '\');"> Edit </a>';
+              // return ' <a nowrap="nowrap" href="#" ng-click="AsOfDateCtrl.editEmployee(\'' + data + '\');"> edit </a> | <a nowrap="nowrap" href="#" ng-click="AsOfDateCtrl.deleteEmployee(\'' + data + '\');"> delete </a>';
+            }
+
+            vm.dtOptions = DTOptionsBuilder.newOptions()
+                .withOption('ajax', {
+                // Either you specify the AjaxDataProp here
+                // dataSrc: 'data',
+                url: 'api/v2/inventory/foc',
+                type: 'GET'
+            })
+            // or here
+            .withDataProp('data')
+                .withOption('processing', true)
+                .withOption('serverSide', true)
+                .withPaginationType('full_numbers');
+            vm.dtColumns = [ 
+                DTColumnBuilder.newColumn('id').withTitle('ID'),
+                DTColumnBuilder.newColumn('section_code').withTitle('Section'),
+                DTColumnBuilder.newColumn('inventory_type').withTitle('Type'),
+                DTColumnBuilder.newColumn('foc_link').withTitle('FOC Link'),
+                DTColumnBuilder.newColumn('cable_id').withTitle('Cable ID'),
+                DTColumnBuilder.newColumn('date_submitted').withTitle('Date Submitted'),
+                DTColumnBuilder.newColumn('id').withTitle('Actions').renderWith(vm.renderActions)
+                .withOption('createdCell', function(cell, cellData, rowData, rowIndex, colIndex) {
+                    $compile(angular.element(cell).contents())($scope);
+                }), 
+                // DTColumnBuilder.newColumn('').withTitle('Action')  
+            ];
+
             
+
+            // End Automation here
 
             vm.sections = [
                 "WESTNL_FFS1",
@@ -56,6 +141,7 @@
                 "CENTRALNL_FFS7",
                 "CENTRALNL_FFS8", 
             ];
+
             vm.value_target = [38,37,11,70,33,47,60,48];
             vm.value_actual = [20,22,7,45,16,20,54,40];
             vm.series = [];
@@ -74,8 +160,6 @@
             vm.central_target = vm.value_target[5]+vm.value_target[6]+vm.value_target[7];
             vm.central_actual = vm.value_actual[5]+vm.value_actual[6]+vm.value_actual[7];
             vm.central_completion = ((vm.central_actual/vm.central_target)*100).toFixed(0);
-
-      
             
             angular.forEach(vm.sections, function(value, key) {
                 
@@ -298,5 +382,62 @@
  
             
         }
+
+        AddFocInventoryCtrl.$inject = ['collection', 'FocInventorySrvcs', '$state', '$stateParams', '$uibModal', '$uibModalInstance', '$window', 'SweetAlert'];
+            function AddFocInventoryCtrl(collection, FocInventorySrvcs, $state, $stateParams, $uibModal, $uibModalInstance, $window, SweetAlert){
+                var vm = this;
+                var data = {};
+
+                // vm.collection = collection.data;
+                // console.log(vm.collection)
+    
+    
+                vm.addDetailsBtn = function(data){
+                    
+                  FocInventorySrvcs.store(data).then (function (response) {
+                        if(response.data.status == 200){
+                            // alert('Successfully Updated!')
+                            SweetAlert.swal("Success!", "Successfully saved!", "success");
+                            $state.reload();
+                            vm.close()
+                        }
+                    }, function (){ alert('Bad Request!!!') })
+                }
+
+                vm.close = function() {
+                    $uibModalInstance.close();
+                };
+
+            }
+
+            EditFocInventoryCtrl.$inject = ['collection', 'FocInventorySrvcs', '$state', '$stateParams', '$uibModal', '$uibModalInstance', '$window', 'SweetAlert'];
+              function EditFocInventoryCtrl(collection, FocInventorySrvcs, $state, $stateParams, $uibModal, $uibModalInstance, $window, SweetAlert){
+                  var vm = this;
+                  var data = {};
+
+                  vm.collection = collection.data;
+                  console.log(vm.collection)
+      
+
+                  collection.data.date_submitted = new Date(collection.data.date_submitted);
+      
+      
+                  vm.updateDetailsBtn = function(data){
+                      
+                    FocInventorySrvcs.update(data).then (function (response) {
+                          if(response.data.status == 200){
+                              // alert('Successfully Updated!')
+                              SweetAlert.swal("Success!", "Successfully updated!", "success");
+                              $state.reload();
+                              vm.close()
+                          }
+                      }, function (){ alert('Bad Request!!!') })
+                  }
+
+                  vm.close = function() {
+                      $uibModalInstance.close();
+                  };
+
+              }
 
 })();

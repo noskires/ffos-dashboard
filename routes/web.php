@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\FocController;
+use App\Http\Controllers\KpiImportExportController;
 use App\Http\Controllers\PoiController;
 use App\Http\Controllers\AccessTransportController;
 use App\Http\Controllers\AsOfDateController;
@@ -12,6 +13,8 @@ use App\Http\Controllers\OrganizationSectionController;
 use App\Http\Controllers\OrganizationDivisionController;
 use App\Http\Controllers\OrganizationCenterController;
 use App\Http\Controllers\NetworkElementsController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -35,6 +38,10 @@ Route::get('dashboard/kpi/{year}', [FocController::class, 'index']);
 Route::get('dashboard/kpi/{year}/{division}', [FocController::class, 'index']);
 Route::get('dashboard/kpi/{year}/{division}/{section}', [FocController::class, 'index']);
 
+Route::get('dashboard/kpi-import-export', [FocController::class, 'index']);
+Route::get('dashboard/kpi-export', [KpiImportExportController::class, 'export'])->name('export-kpi');
+Route::post('dashboard/kpi-import', [KpiImportExportController::class, 'import'])->name('import-kpi');
+
 // POI
 Route::get('dashboard/poi/{year}', [PoiController::class, 'index']);
 
@@ -44,6 +51,7 @@ Route::get('dashboard/access/{year}', [AccessTransportController::class, 'index'
 
 // FOC Inventory
 Route::get('dashboard/foc-inventory/{year}', [AccessTransportController::class, 'index']);
+Route::get('dashboard/foc-inventory-admin', [AccessTransportController::class, 'index']);
 
 // Billing
 Route::get('dashboard/billing-fc/{year}', [AccessTransportController::class, 'index']);
@@ -60,6 +68,7 @@ Route::get('dashboard/projects/{year}', [FocController::class, 'index']);
 Route::get('dashboard/project-import-export', [FocController::class, 'index']);
 Route::get('dashboard/project-export', [MyController::class, 'export'])->name('export');
 Route::post('dashboard/project-import', [MyController::class, 'import'])->name('import');
+
 
 Route::get('/upload-file', [FileUpload::class, 'createForm']);
 Route::post('/upload-file', [FileUpload::class, 'fileUpload'])->name('fileUpload');

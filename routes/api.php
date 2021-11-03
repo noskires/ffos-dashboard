@@ -13,6 +13,7 @@ use App\Http\Controllers\OrganizationSectionController;
 use App\Http\Controllers\OrganizationDivisionController;
 use App\Http\Controllers\OrganizationCenterController;
 use App\Http\Controllers\NetworkElementsController;
+use App\Http\Controllers\FocInventoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -53,6 +54,12 @@ Route::get('v1/as-of-dates', [AsOfDateController::class, 'show']);
 Route::get('v2/as-of-dates', [AsOfDateController::class, 'show2']);
 Route::post('v1/as-of-date/store', [AsOfDateController::class, 'store']);
 Route::post('v1/as-of-date/update', [AsOfDateController::class, 'update']);
+
+// FOC inventory
+Route::get('v1/inventory/foc', [FocInventoryController::class, 'show']);
+Route::get('v2/inventory/foc', [FocInventoryController::class, 'show2']);
+Route::post('v1/inventory/foc/store', [FocInventoryController::class, 'store']);
+Route::post('v1/inventory/foc/update', [FocInventoryController::class, 'update']);
 
 
 // Organizations

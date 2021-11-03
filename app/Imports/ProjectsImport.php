@@ -24,11 +24,11 @@ class ProjectsImport implements ToModel, WithHeadingRow
     {
  
         return new Project([
-            'division'      => $row['division'],
-            'section'       => $row['section'], 
-            'project_name'  => $row['project_name'],
-            'project_type'  => $row['project_type'],
-            'project_status' => $row['project_status'],
+            'division'          => $row['division'],
+            'section'           => $row['section'],
+            'project_name'      => $row['project_name'],
+            'project_type'      => $row['project_type'],
+            'project_status'    => $row['project_status'],
         ]);
 
         // return $collection = Project::select(

@@ -109,6 +109,12 @@
                 templateUrl: 'foc.inventory.view'
             })
 
+            .state('foc-inventory-admin', {
+                url: '/dashboard/foc-inventory-admin',
+                controller: 'FocInventoryCtrl as FocInventoryCtrl',
+                templateUrl: 'foc.inventory.admin.view'
+            })
+
             // Billing
 
             .state('billing-fc', {
@@ -185,6 +191,13 @@
                 url: '/network-elements',
                 controller: 'NetworkElementsCtrl as NetworkElementsCtrl',
                 templateUrl: 'network_element.view'
+            })
+
+            // KPI
+            .state('kpi-import-export', {
+                url: '/dashboard/kpi-import-export',
+                // controller: 'EmployeesCtrl as EmployeesCtrl',
+                templateUrl: 'kpi.import.view'
             })
 
             // NETWORK ELEMENTS

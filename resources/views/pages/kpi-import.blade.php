@@ -9,7 +9,7 @@
 					<!--begin::Header-->
 					<div class="card-header border-0 pt-6">
 						<h3 class="card-title align-items-start flex-column">
-							<span class="card-label font-weight-bolder font-size-h4 text-dark-75">PRIMARY AND SECONDARY PROJECTS</span> 
+							<span class="card-label font-weight-bolder font-size-h4 text-dark-75">KPI IMPORT</span> 
 						</h3>
 						<div class="card-toolbar">
 							<div class="font-weight-bolder font-size-h1 text-dark-90 warning"></div>
@@ -18,7 +18,7 @@
 					<!--end::Header-->
 					<!--begin::Body-->
 					<div class="card-body p-0 h-125px">
-                    <form action="{{ route('import') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('import-kpi') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <input type="file" name="file" class="form-control">
                         <br>

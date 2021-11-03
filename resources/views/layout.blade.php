@@ -47,6 +47,10 @@
 						<script type="text/ng-template" id="foc.view">
 							@include('pages.content')
 						</script>
+
+						<script type="text/ng-template" id="kpi.import.view">
+							@include('pages.kpi-import')
+						</script>
 						
 						<script type="text/ng-template" id="division.view">
 							@include('pages.content_division')
@@ -78,6 +82,10 @@
 
 						<script type="text/ng-template" id="foc.inventory.view">
 							@include('pages.foc_inventory')
+						</script>
+
+						<script type="text/ng-template" id="foc.inventory.admin.view">
+							@include('pages.foc_inventory_admin')
 						</script>
 						
 						<script type="text/ng-template" id="billing.fc.view">
