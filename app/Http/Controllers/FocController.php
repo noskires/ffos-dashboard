@@ -228,7 +228,7 @@ class FocController extends Controller
                         "total_duration"=>($total_root_cause['total_duration']-$total_top_root_cause_duration));
             $top_contributor->push($others);
         }
-
+    
         return $top_contributor;
     }
 

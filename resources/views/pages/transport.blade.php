@@ -64,12 +64,12 @@
 					<div class="card-header border-0 pt-6">
 						<h3 class="card-title align-items-start flex-column">
 							<span class="card-label font-weight-bolder font-size-h4 text-dark-75">OVERALL COMPLETION</span>
-                            <span class="text-muted mt-3 font-weight-bold font-size-lg">YTD AUGUST 2021</span>
+                            <span class="text-muted mt-3 font-weight-bold font-size-lg">YTD OCTOBER 2021</span>
 							<!-- <span class="text-muted mt-3 font-weight-bold font-size-lg"><%TransportCtrl.ytd_avg_duration_node | number:2%> NODE MTTR (SA)</span>
 							<span class="text-muted mt-3 font-weight-bold font-size-lg"><%TransportCtrl.ytd_avg_duration_foc | number:2%> FOC MTTR (SA)</span> -->
 						</h3>
 						<div class="card-toolbar">
-							<div class="font-weight-bolder font-size-h1 text-dark-90 warning">92%</div>
+							<div class="font-weight-bolder font-size-h1 text-dark-90 warning">88%</div>
 						</div>
 					</div>
 					<!--end::Header-->
@@ -93,7 +93,7 @@
                             
 						</h3>
 						<div class="card-toolbar">
-							<div class="font-weight-bolder font-size-h1 text-dark-200">2,558</div>
+							<div class="font-weight-bolder font-size-h1 text-dark-200">3,201</div>
 						</div>
 					</div>
 					<!--end::Header-->
@@ -116,7 +116,7 @@
                         <span class="text-muted mt-3 font-weight-bold font-size-lg">Total duration 1207H</span> -->
 						</h3>
 						<div class="card-toolbar">
-							<div class="font-weight-bolder font-size-h1 text-dark-75">2356</div>
+							<div class="font-weight-bolder font-size-h1 text-dark-75">2,804</div>
 						</div>
 					</div>
 					<!--end::Header-->

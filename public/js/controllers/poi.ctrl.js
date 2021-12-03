@@ -423,17 +423,17 @@
                             type: 'column',
                             // data: [6.98, 6.34, 5.23, 6.26, 3.67, 5.48]
                             // data: response.data.data.kpi.mttr_node_display
-                            data: [92,25,178,292,254,57]
+                            data: [99,42,200,327,367,72]
                         }, {
                             name: 'FTTH POI',
                             type: 'column',
                             // data: response.data.data.kpi.mttr_foc_display
-                            data: [276,245,1415,314,85,299]
+                            data: [280,417,1631,495,101,510]
                         }, {
                             name: 'TOTAL',
                             type: 'line',
                             // data: response.data.data.kpi.net_ava
-                            data: [368,270,1593,706,339,356]
+                            data: [379,459,1831,822,468,582]
                         }],
                         colors: ['#2B908F', "#FF1654", "#2E294E"],
 
@@ -588,7 +588,7 @@
 
             vm.fttbts_poi = {
          
-                series: [92,25,178,292,254,57],
+                series: [99,42,200,327,367,72],
                 chart: {
                     width: 400,
                     type: 'polarArea',
@@ -618,7 +618,7 @@
 
             vm.ftth_poi = {
          
-                series: [276,245,1415,314,85,299],
+                series: [280,417,1631,495,101,510],
                 chart: {
                     width: 400,
                     type: 'polarArea',
@@ -646,7 +646,7 @@
 
 
             vm.nl_pie_fttbts = {
-                series: [71, 61, 46],
+                series: [78, 69, 53],
                 chart: {
                 width: 380,
                 type: 'pie',
@@ -666,7 +666,7 @@
             }
 
             vm.nl_pie_ftth = {
-                series: [604, 521, 290],
+                series: [743, 558, 330],
                 chart: {
                 width: 380,
                 type: 'pie',
@@ -687,7 +687,7 @@
 
             vm.nl_section_ftth = {
                 series: [{
-                    data: [193, 300, 111, 276, 245, 142, 83, 65]
+                    data: [235, 334, 174, 276, 282, 182, 83, 65]
                   }],
                     chart: {
                     type: 'bar',
@@ -717,7 +717,7 @@
 
             vm.nl_section_fttbts = {
                 series: [{
-                    data: [11, 52, 8, 42, 19, 34, 6, 6]
+                    data: [13, 57, 8, 50, 19, 36, 9, 8]
                   }],
                     chart: {
                     type: 'bar',

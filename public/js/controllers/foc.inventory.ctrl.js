@@ -120,6 +120,7 @@
                 DTColumnBuilder.newColumn('foc_link').withTitle('FOC Link'),
                 DTColumnBuilder.newColumn('cable_id').withTitle('Cable ID'),
                 DTColumnBuilder.newColumn('date_submitted').withTitle('Date Submitted'),
+                DTColumnBuilder.newColumn('remarks').withTitle('Remarks'),
                 DTColumnBuilder.newColumn('id').withTitle('Actions').renderWith(vm.renderActions)
                 .withOption('createdCell', function(cell, cellData, rowData, rowIndex, colIndex) {
                     $compile(angular.element(cell).contents())($scope);
@@ -180,14 +181,10 @@
                 vm.overall_actual = vm.overall_actual + vm.value_actual[key];
                 vm.overall_completion = ((vm.overall_actual/vm.overall_target)*100).toFixed(0);
 
- 
-
                 vm.series.push(vm.co_data); 
             });
             
-
             console.log(vm.series)
-
 
             vm.distribution_per_section = {
                 series: [

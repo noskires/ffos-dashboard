@@ -55,8 +55,8 @@
                 "CENTRALNL_FFS7",
                 "CENTRALNL_FFS8", 
             ];
-            vm.co_transport_value_target = [160,96,83,152,112,166,214,88];
-            vm.co_transport_value_actual = [160,76,69,152,112,149,210,86];
+            vm.co_transport_value_target = [200,120,104,190,140,207,267,110];
+            vm.co_transport_value_actual = [190,96,83,183,138,170,237,108];
             vm.co_transport_series = [];
             vm.co_transport_overall_target = 0;
             vm.co_transport_overall_actual = 0;
@@ -74,8 +74,8 @@
             vm.co_transport_central_actual = vm.co_transport_value_actual[5]+vm.co_transport_value_actual[6]+vm.co_transport_value_actual[7];
             vm.co_transport_central_completion = ((vm.co_transport_central_actual/vm.co_transport_central_target)*100).toFixed(0);
 
-            vm.npob_transport_value_target = [27,33,22,62,134,238,320,299];
-            vm.npob_transport_value_actual = [26,28,21,59,128,200,298,230];
+            vm.npob_transport_value_target = [34,47,27,77,167,297,400,374];
+            vm.npob_transport_value_actual = [29,42,25,71,158,201,353,280];
             vm.npob_transport_series = [];
             vm.npob_transport_overall_target = 0;
             vm.npob_transport_overall_actual = 0;
@@ -93,8 +93,8 @@
             vm.npob_transport_central_actual = vm.npob_transport_value_actual[5]+vm.npob_transport_value_actual[6]+vm.npob_transport_value_actual[7];
             vm.npob_transport_central_completion = ((vm.npob_transport_central_actual/vm.npob_transport_central_target)*100).toFixed(0);
 
-            vm.cs_transport_value_target = [88,24,40,32,24,40,96,8];
-            vm.cs_transport_value_actual = [88,24,40,32,24,40,96,8];
+            vm.cs_transport_value_target = [100,30,50,40,30,50,120,10];
+            vm.cs_transport_value_actual = [100,30,50,40,30,50,120,10];
             vm.cs_transport_series = [];
             vm.cs_transport_overall_target = 0;
             vm.cs_transport_overall_actual = 0;

@@ -63,6 +63,7 @@ Route::get('v1/inventory/foc', [FocInventoryController::class, 'show']);
 Route::get('v2/inventory/foc', [FocInventoryController::class, 'show2']);
 Route::post('v1/inventory/foc/store', [FocInventoryController::class, 'store']);
 Route::post('v1/inventory/foc/update', [FocInventoryController::class, 'update']);
+Route::get('v1/inventory/ffs', [FocInventoryController::class, 'getPerFfs']);
 
 
 // Organizations

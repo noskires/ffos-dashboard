@@ -151,4 +151,30 @@ class FocInventoryController extends Controller
    	//  	return $transaction;
   	// }
 
+    public function getPerFfs(){
+        
+        $data['ffs_team'] = array(
+            "NFS_WESTNL_FFS1",
+            "NFS_WESTNL_FFS2",
+            "NFS_WESTNL_FFS3",
+            "NFS_EASTNL_FFS4",
+            "NFS_EASTNL_FFS5",
+            "NFS_CENTRALNL_FFS6",
+            "NFS_CENTRALNL_FFS7",
+            "NFS_CENTRALNL_FFS8"
+        );
+
+        $data['actual_count_per_ffs_team']=array();
+        $data['target_count_per_ffs']=array(38,37,11,70,33,47,60,48);
+        $data['actual_percentage_per_ffs_team']=array();
+
+        foreach($data['ffs_team'] as $key=>$ffsTeam){
+            $count = FocInventory::select('*')->where('section_code', $ffsTeam)->count();
+            array_push($data['actual_count_per_ffs_team'], $count);
+            array_push($data['actual_percentage_per_ffs_team'], round(($count/$data['target_count_per_ffs'][$key])*100,2));
+        }
+        
+        return $data;
+
+    }
 }

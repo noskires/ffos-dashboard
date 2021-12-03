@@ -64,10 +64,10 @@
 					<div class="card-header border-0 pt-6">
 						<h3 class="card-title align-items-start flex-column">
 							<span class="card-label font-weight-bolder font-size-h4 text-dark-75">TOTAL FOC POI</span>
-							<span class="text-muted mt-3 font-weight-bold font-size-lg">AS OF OCTOBER 03, 2021</span>
+							<span class="text-muted mt-3 font-weight-bold font-size-lg">AS OF NOVEMBER 28, 2021</span>
 						</h3>
 						<div class="card-toolbar">
-							<div class="font-weight-bolder font-size-h1 text-dark-90 warning">3,632</div>
+							<div class="font-weight-bolder font-size-h1 text-dark-90 warning">4,541</div>
 						</div>
 					</div>
 					<!--end::Header-->
@@ -91,7 +91,7 @@
                             
 						</h3>
 						<div class="card-toolbar">
-							<div class="font-weight-bolder font-size-h1 text-dark-200">2,734</div>
+							<div class="font-weight-bolder font-size-h1 text-dark-200">3,434</div>
 						</div>
 					</div>
 					<!--end::Header-->
@@ -112,7 +112,7 @@
                         <span class="card-label font-weight-bolder font-size-h4 text-dark-75">FTTBTS FOC POI</span>
 						</h3>
 						<div class="card-toolbar">
-							<div class="font-weight-bolder font-size-h1 text-dark-75">898</div>
+							<div class="font-weight-bolder font-size-h1 text-dark-75">1,107</div>
 						</div>
 					</div>
 					<!--end::Header-->
