@@ -16,10 +16,6 @@
                 </select>
             </div> -->
 
-			
-
-			
-
             <div class="col-lg-3">
                 <!-- <select class="form-control" id="selectB" name="" ng-model="SecondaryMttrCtrl.division"
                     ng-change="SecondaryMttrCtrl.select_division(SecondaryMttrCtrl.division)">
@@ -30,7 +26,7 @@
                 </select> -->
             </div>
 
-            <div class="col-lg-3"> 
+            <div class="col-lg-3">
                 <!-- <select class="form-control" id="selectA" name="" ng-model="SecondaryMttrCtrl.selected_year"
                     ng-change="SecondaryMttrCtrl.select_year(SecondaryMttrCtrl.selected_year)">
                     <option value="">Year</option>
@@ -57,11 +53,7 @@
 
 		<!--begin::Row-->
  
- 
-        
- 
         <div class="row">
-          
             <div class="col-lg-12">
                 <!--begin::Card-->
                 <div class="card card-custom gutter-b">
@@ -115,11 +107,8 @@
                 <!--end::Card-->
             </div>
 
-            
         </div>
-
     </div>
-
 </div>
  
 <!--end::Entry-->
