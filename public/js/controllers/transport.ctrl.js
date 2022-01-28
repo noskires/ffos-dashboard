@@ -55,8 +55,8 @@
                 "CENTRALNL_FFS7",
                 "CENTRALNL_FFS8", 
             ];
-            vm.co_transport_value_target = [200,120,104,190,140,207,267,110];
-            vm.co_transport_value_actual = [190,96,83,183,138,170,237,108];
+            vm.co_transport_value_target = [262,144,123,279,178,239,332,159];
+            vm.co_transport_value_actual = [256,120,101,271,163,202,300,157];
             vm.co_transport_series = [];
             vm.co_transport_overall_target = 0;
             vm.co_transport_overall_actual = 0;
@@ -74,8 +74,8 @@
             vm.co_transport_central_actual = vm.co_transport_value_actual[5]+vm.co_transport_value_actual[6]+vm.co_transport_value_actual[7];
             vm.co_transport_central_completion = ((vm.co_transport_central_actual/vm.co_transport_central_target)*100).toFixed(0);
 
-            vm.npob_transport_value_target = [34,47,27,77,167,297,400,374];
-            vm.npob_transport_value_actual = [29,42,25,71,158,201,353,280];
+            vm.npob_transport_value_target = [40,56,32,92,200,356,480,448];
+            vm.npob_transport_value_actual = [39,51,30,83,192,278,426,347];
             vm.npob_transport_series = [];
             vm.npob_transport_overall_target = 0;
             vm.npob_transport_overall_actual = 0;
@@ -93,8 +93,8 @@
             vm.npob_transport_central_actual = vm.npob_transport_value_actual[5]+vm.npob_transport_value_actual[6]+vm.npob_transport_value_actual[7];
             vm.npob_transport_central_completion = ((vm.npob_transport_central_actual/vm.npob_transport_central_target)*100).toFixed(0);
 
-            vm.cs_transport_value_target = [100,30,50,40,30,50,120,10];
-            vm.cs_transport_value_actual = [100,30,50,40,30,50,120,10];
+            vm.cs_transport_value_target = [129,33,54,45,30,60,144,12];
+            vm.cs_transport_value_actual = [129,33,54,45,30,60,144,12];
             vm.cs_transport_series = [];
             vm.cs_transport_overall_target = 0;
             vm.cs_transport_overall_actual = 0;

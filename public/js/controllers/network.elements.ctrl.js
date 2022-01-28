@@ -23,7 +23,7 @@
 
             vm.edit = function(id){
 
-                NetworkElementsSrvcs.list({id:id, center_code:''}).then (function (response) {
+                NetworkElementsSrvcs.list({id:id, section_code:'', division_code:'', year:''}).then (function (response) {
                     if(response.data.status == 200)
                     {
 

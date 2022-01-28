@@ -89,4 +89,6 @@ Route::get('v2/network-elements', [NetworkElementsController::class, 'show2']);
 Route::post('v1/network-element/store', [NetworkElementsController::class, 'store']);
 Route::post('v1/network-element/update', [NetworkElementsController::class, 'update']);
 
+Route::get('v1/network-elements/get-total-ne-permonth', [NetworkElementsController::class, 'getTotalNePerMonth']);
+
 // Route::get('/export-transactions','ExportExcelController@exportTransactions');

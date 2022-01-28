@@ -10,7 +10,7 @@
                     return $http({
                         method: 'GET',
                         data: data,
-                        url: 'api/v1/network-elements?id='+data.id+'&section_code='+data.section_code,
+                        url: 'api/v1/network-elements?id='+data.id+'&section_code='+data.section_code+'&division_code='+data.division_code+'&year='+data.year,
                         headers: {'Content-Type': 'application/json'}
                     })
                 },

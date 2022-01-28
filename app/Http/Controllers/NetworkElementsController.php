@@ -27,18 +27,25 @@ class NetworkElementsController extends Controller
         $data = array(
             'id'=>$request->input('id'),
             'code'=>$request->input('code'),
+            'year'=>$request->input('year'),
         );
         
-        $list = NetworkElement::select('*');
+        // $list = NetworkElement::select('*');
 
-        if($data['id']){
-            $list = $list->where('id', $data['id']);
-        }
+        // if($data['id']){
+        //     $list = $list->where('id', $data['id']);
+        // }
 
-        if($data['code']){
-            $list = $list->where('code', $data['code']);
-        }
+        // if($data['code']){
+        //     $list = $list->where('code', $data['code']);
+        // }
 
+        // if($data['year']){
+        //     $list = $list->where('year', $data['year']);
+        // }
+
+        $list = NetworkElement::defaultFields()->whereFields($request);
+        
         $list = $list->get();
 
         return response()->json([
@@ -147,5 +154,70 @@ class NetworkElementsController extends Controller
 
    	//  	return $transaction;
   	// }
+
+      function getTotalNePerMonth1212 (Request $request, $year){
+
+        $request['year'] = $year;
+
+        // $lists = NetworkElement::defaultFields()->whereFields($request)->get();
+
+        $lists->select(
+            'ne.id',
+            'ne.section_code',
+            'ne.division_code',
+            'ne.year',
+            'ne.january',
+            'ne.february',
+            'ne.march',
+            'ne.april',
+            'ne.may',
+            'ne.june',
+            'ne.july',
+            'ne.august',
+            'ne.september',
+            'ne.october',
+            'ne.november',
+            'ne.december',
+            'divisions.division_name',
+        )
+        ->leftJoin('divisions', function($join){
+            $join->on('divisions.division_code', '=', 'ne.division_code');
+        })->get();
+        
+        $total_jan = 0;
+        $total_feb = 0;
+        $total_mar = 0;
+        $total_apr = 0;
+        $total_may = 0;
+        $total_jun = 0;
+        $total_jul = 0;
+        $total_aug = 0;
+        $total_sep = 0;
+        $total_oct = 0;
+        $total_nov = 0;
+        $total_dec = 0;
+
+        foreach ($lists as $key=>$list) {
+            $total_jan = $total_jan+$list['january'];
+            $total_feb = $total_feb+$list['february'];
+            $total_mar = $total_mar+$list['march'];
+            $total_apr = $total_apr+$list['april'];
+            $total_may = $total_may+$list['may'];
+            $total_jun = $total_jun+$list['june'];
+            $total_jul = $total_jul+$list['july'];
+            $total_aug = $total_aug+$list['august'];
+            $total_sep = $total_sep+$list['september'];
+            $total_oct = $total_oct+$list['october'];
+            $total_nov = $total_nov+$list['november'];
+            $total_dec = $total_dec+$list['december'];
+        }
+
+        $monthly_count  = array($total_jan, $total_feb, $total_mar, $total_apr, $total_may,
+                            $total_jun, $total_jul, $total_aug, $total_sep, $total_oct, $total_nov, $total_dec); 
+
+        return $monthly_count;
+        
+    }
+    
 
 }

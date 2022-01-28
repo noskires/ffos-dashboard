@@ -10,4 +10,8 @@ class Division extends Model {
     
     protected $primaryKey = 'id';
     protected $table = "divisions";
+
+    public function networkElement(){
+    	return $this->hasOne('App\Models\NetworkElement', 'division_code', 'division_code');
+    }
 }

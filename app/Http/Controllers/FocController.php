@@ -9,6 +9,8 @@ Use \Carbon\Carbon;
 
 use App\Models\Patient;
 use App\Models\Foc;
+use App\Models\NetworkElement;
+
 use DB;
 use Requests;
 use DataTables;
@@ -290,12 +292,13 @@ class FocController extends Controller
         $months         = array("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec");
         $days_per_month = array(31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31);
 
-        if($year==2020){
-            $ne_per_month   = array(3090, 3219, 3197, 3586, 3695, 3695, 3714, 3688, 3679, 3679, 3675, 3664);
-        }else{
-            $ne_per_month   = array(3653, 3653, 3664, 3685, 3685, 3658, 3658, 3658, 3580, 3599, 3675, 3675);
-        }
-        
+        // if($year==2020){
+        //     $ne_per_month   = array(3090, 3219, 3197, 3586, 3695, 3695, 3714, 3688, 3679, 3679, 3675, 3664);
+        // }else{
+        //     $ne_per_month   = array(3653, 3653, 3664, 3685, 3685, 3658, 3658, 3658, 3580, 3599, 3675, 3675);
+        // }
+
+        $ne_per_month = $this->getTotalNePerMonth($year);
         
 
         $ne_per_month_division = array(
@@ -403,5 +406,67 @@ class FocController extends Controller
         return $data;
     }
 
+    function getTotalNePerMonth ($year){
 
+        // $request['year'] = $year;
+
+        // $lists = NetworkElement::defaultFields()->whereFields($request)->get();
+
+        $lists= NetworkElement::select(
+            'ne.id',
+            'ne.section_code',
+            'ne.division_code',
+            'ne.year',
+            'ne.january',
+            'ne.february',
+            'ne.march',
+            'ne.april',
+            'ne.may',
+            'ne.june',
+            'ne.july',
+            'ne.august',
+            'ne.september',
+            'ne.october',
+            'ne.november',
+            'ne.december',
+            'divisions.division_name',
+        )
+        ->leftJoin('divisions', function($join){
+            $join->on('divisions.division_code', '=', 'ne.division_code');
+        })->where('ne.year', $year)->get();
+        
+        $total_jan = 0;
+        $total_feb = 0;
+        $total_mar = 0;
+        $total_apr = 0;
+        $total_may = 0;
+        $total_jun = 0;
+        $total_jul = 0;
+        $total_aug = 0;
+        $total_sep = 0;
+        $total_oct = 0;
+        $total_nov = 0;
+        $total_dec = 0;
+
+        foreach ($lists as $key=>$list) {
+            $total_jan = $total_jan+$list['january'];
+            $total_feb = $total_feb+$list['february'];
+            $total_mar = $total_mar+$list['march'];
+            $total_apr = $total_apr+$list['april'];
+            $total_may = $total_may+$list['may'];
+            $total_jun = $total_jun+$list['june'];
+            $total_jul = $total_jul+$list['july'];
+            $total_aug = $total_aug+$list['august'];
+            $total_sep = $total_sep+$list['september'];
+            $total_oct = $total_oct+$list['october'];
+            $total_nov = $total_nov+$list['november'];
+            $total_dec = $total_dec+$list['december'];
+        }
+
+        $monthly_count  = array($total_jan, $total_feb, $total_mar, $total_apr, $total_may,
+                            $total_jun, $total_jul, $total_aug, $total_sep, $total_oct, $total_nov, $total_dec); 
+
+        return $monthly_count;
+        
+    }
 }
