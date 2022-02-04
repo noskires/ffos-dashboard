@@ -29,6 +29,7 @@
                 <select class="form-control" name="" ng-model="SectionsCtrl.selected_year"
                     ng-change="SectionsCtrl.select_year(SectionsCtrl.selected_year, SectionsCtrl.division, SectionsCtrl.section)">
                     <option value="">Year</option>
+					<option value="2022">2022</option>
                     <option value="2021">2021</option>
                     <option value="2020">2020</option>
                 </select>

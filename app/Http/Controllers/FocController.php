@@ -302,9 +302,9 @@ class FocController extends Controller
         
 
         $ne_per_month_division = array(
-            "NFS_WESTNL"=>array(1216,1216,1223,1230,1230,1216,1216,1216,1185,1180,1196,1196),
-            "NFS_EASTNL"=>array(864,864,865,867,867,877,877,877,857,864,888,888),
-            "NFS_CENTRALNL"=>array(1573,1573,1576,1588,1588,1565,1565,1565,1538,1555,1591,1591),
+            "NFS_WESTNL"=>array(1216,1216,1223,1230,1230,1216,1216,1216,1185,1180,1196,1195),
+            "NFS_EASTNL"=>array(864,864,865,867,867,877,877,877,857,864,888,887),
+            "NFS_CENTRALNL"=>array(1573,1573,1576,1588,1588,1565,1565,1565,1538,1555,1591,1588),
         );
 
         $number_of_elements = count($get_mttr_node['per_month']);
